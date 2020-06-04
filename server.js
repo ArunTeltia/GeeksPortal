@@ -63,10 +63,10 @@ app.get("/files", function (req, res) {
   }
   res.send(sorted);
 });
-//upload image to folder upload
-//   app.post('/upload', upload.array('flFileUpload', 12), function (req, res, next) {
-//       res.redirect('back')
-//   });
+// upload image to folder upload
+  app.post('/upload', upload.array('flFileUpload', 12), function (req, res, next) {
+      res.redirect('back')
+  });
 //   delete file
 //   app.post('/delete_file', function(req, res, next){
 //     var url_del = 'public' + req.body.url_del
