@@ -31,10 +31,15 @@ const contributeRouter = require("./routes/contributeRouter");
 const adminRouter = require("./routes/adminRouter");
 const certiAuthRouter =require("./routes/certiAuthRouter");
 
+
+var upload_file = require('./froalaEditorFiles/file_upload.js');
+var upload_image = require('./froalaEditorFiles//image_upload.js');
+
 const app = express();
 
 app.set("view engine", "ejs");
 
+app.use(express.static(__dirname+"/"));
 app.use(express.static(__dirname + "/public"));
 app.use(
   bodyParser.urlencoded({
@@ -43,30 +48,30 @@ app.use(
 );
 app.use(bodyParser.json());
 
-//imageUploadroutes///////////////////////////////////
-app.get("/files", function (req, res) {
-  const images = fs.readdirSync("public/upload");
-  var sorted = [];
-  for (let item of images) {
-    if (
-      item.split(".").pop() === "png" ||
-      item.split(".").pop() === "jpg" ||
-      item.split(".").pop() === "jpeg" ||
-      item.split(".").pop() === "svg"
-    ) {
-      var abc = {
-        image: "/upload/" + item,
-        folder: "/",
-      };
-      sorted.push(abc);
-    }
-  }
-  res.send(sorted);
-});
-// upload image to folder upload
-  app.post('/upload', upload.array('flFileUpload', 12), function (req, res, next) {
-      res.redirect('back')
-  });
+//CKeditor imageUploadroutes///////////////////////////////////
+// app.get("/files", function (req, res) {
+//   const images = fs.readdirSync("public/upload");
+//   var sorted = [];
+//   for (let item of images) {
+//     if (
+//       item.split(".").pop() === "png" ||
+//       item.split(".").pop() === "jpg" ||
+//       item.split(".").pop() === "jpeg" ||
+//       item.split(".").pop() === "svg"
+//     ) {
+//       var abc = {
+//         image: "/upload/" + item,
+//         folder: "/",
+//       };
+//       sorted.push(abc);
+//     }
+//   }
+//   res.send(sorted);
+// });
+// // upload image to folder upload
+//   app.post('/upload', upload.array('flFileUpload', 12), function (req, res, next) {
+//       res.redirect('back')
+//   });
 //   delete file
 //   app.post('/delete_file', function(req, res, next){
 //     var url_del = 'public' + req.body.url_del
@@ -78,60 +83,39 @@ app.get("/files", function (req, res) {
 //   });
 ////////////////////////////////////////////////////
 
-// app.use(busboy());
 
-// var HOME_URL = 'http://localhost:3000';
-// var IMG_FOLDER = '/UploadImages/';
+// File POST handler.
+app.post('/e2/file_upload', function (req, res) {
 
-// /*** image broser for ckeditor ***/
-// app.all('/browse_url', function (req, res) {
-// 	var data = {};
-// 	var dirname = process.cwd() + '/public/' + IMG_FOLDER;
-// 	fs.readdir(dirname, function(err, filenames) {
-// 		if (err) {
-// 			return err;
-// 		}
-// 		var data = [];
-// 		filenames.forEach(function(filename) {
-// 			data.push({
-// 				"image": HOME_URL + IMG_FOLDER + filename,
-// 				"thumb": HOME_URL + IMG_FOLDER + filename,
-// 				"folder": "Small"
-// 			});
-// 		});
-// 		//console.log(data);
-// 		res.send(data);
-// 	});
+  upload_file(req, function(err, data) {
 
-// });
-// app.post('/upload_url', function (req, res) {
-// 	var fstream;
-// 	var msg = "";
-// 	var CKEcallback = req.query.CKEditorFuncNum;
-// 	req.pipe(req.busboy);
-// 	req.busboy.on('file', function (fieldname, file, filename) {
-// 		console.log("Uploading: " + filename);
-// 		//console.dir(file);
-// 		fstream = fs.createWriteStream(process.cwd() + '/public/' + IMG_FOLDER + filename);
-// 		file.pipe(fstream);
-// 		fstream.on('close', function () {
-// 			//res.redirect('back');
-// 			var fileUrl =  process.cwd() + '/public/' + IMG_FOLDER + filename;
-// 			fs.chmodSync(fileUrl, 0777);
-// 			fileUrl = HOME_URL + IMG_FOLDER + filename;
-// 			res.send("<script type='text/javascript'>\
-//       (function(){var d=document.domain;while (true){try{var A=window.parent.document.domain;break;}catch(e) {};d=d.replace(/.*?(?:\.|$)/,'');if (d.length==0) break;try{document.domain=d;}catch (e){break;}}})();\
-//       window.parent.CKEDITOR.tools.callFunction('" + CKEcallback + "','" + fileUrl + "', '" +  msg + "');\
-//       </script>");
+    if (err) {
+      return res.status(404).end(JSON.stringify(err));
+    }
+    res.send(data);
+  });
+});
 
-// 		});
+// Image POST handler.
+app.post('/e2/image_upload', function (req, res) {
 
-// 	});
-// });
+  upload_image(req, function(err, data) {
 
-// app.get("/e2",(req,res)=>{
-//     res.render("E2");
-// });
+    if (err) {
+      return res.status(404).end(JSON.stringify(err));
+    }
+    res.send(data);
+  });
+});
+
+
+// Create folder for uploading files.
+var filesDir = path.join(path.dirname(require.main.filename),'public', 'uploads');
+if (!fs.existsSync(filesDir)){
+    fs.mkdirSync(filesDir);
+}
+
+
 
 app.use(
   cookieSession({

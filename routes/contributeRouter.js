@@ -2,19 +2,22 @@ const contribute = require("express").Router();
 const connection = require("../config/DBconnection");
 const authCheck = require("../config/authCheck");
 
+// var upload_file = require('../froalaEditorFiles/file_upload');
+// var upload_image = require('../froalaEditorFiles/image_upload.js');
+
 var ar = [];
 var tg = [];
 
 contribute
   .route("/")
   .get(authCheck, (req, res) => {
-    res.render("Editor", {
+    res.render("E2", {
       photo: req.user.Photo,
       user: req.user,
     });
   })
   .post(authCheck, (req, res) => {
-    // console.log(req.body);
+    // console.log(req.user);
     let obj = JSON.parse(JSON.stringify(req.body));
     console.log(obj);
     let ArtTags = JSON.parse(obj.tags);
@@ -73,7 +76,7 @@ contribute
           "','" +
           obj.theme +
           "','" +
-          req.user+
+          req.user.ID+
           "')";
         connection.query(sql, function (err, results) {
           if (err) throw err;
@@ -126,5 +129,28 @@ contribute
     });
     res.redirect("/compose");
   });
+
+  // contribute.post('/file_upload', function (req, res) {
+
+  //   upload_file(req, function(err, data) {
+  
+  //     if (err) {
+  //       return res.status(404).end(JSON.stringify(err));
+  //     }
+  //     res.send(data);
+  //   });
+  // });
+  
+  // // Image POST handler.
+  // contribute.post('/image_upload', function (req, res) {
+  
+  //   upload_image(req, function(err, data) {
+  
+  //     if (err) {
+  //       return res.status(404).end(JSON.stringify(err));
+  //     }
+  //     res.send(data);
+  //   });
+  // });
 
 module.exports = contribute;
