@@ -1,0 +1,248 @@
+<%- include("partials/header") %>
+
+<body class="bg-light">
+   <header >
+       <div class="container p-5">
+           <div class="row">
+            <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+            <button role="button"  id="ViewArticle" class="btn btn-warning mb-2"><a href="/articles/article">VIEW ARTICLES</a></button>
+            </div>
+            <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+                <button role="button" id="ViewCode" class="btn btn-warning mb-2"><a href="/articles/code">VIEW CODE</a></button>
+            </div>
+             <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+                <button role="button" id="ViewPuzzle" class="btn btn-warning mb-2"><a href="/articles/puzzel<%= post.Head %>">VIEW PUZZLES</a></button>
+            </div>
+           </div>
+       </div>
+   </header>
+
+   <section>
+       <div class="container">
+           <div class="" id="ViewA" >
+            <div class="accordion" id="a1">
+                <% posts1.forEach(function(post){ %>
+                    <% var Id="b"+post.Id %> 
+                    <% var Idd="#b"+post.Id %> 
+                <div class="row">
+                    <div class="col-12">
+                     <div class="card">
+                  <div class="card-header" id="h1">
+                    <div class="row ">
+                        <div class="col-10">
+                            <p>Article : <%= post.Head %></p>
+                           <p></p>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger"data-toggle="collapse" data-target=<%=Idd %>  aria-expanded="false" ><a href="/articles/<%= post.Head %>">VIEW</a> </button>
+                        </div>
+                    </div>
+                  </div>
+              
+                  <!-- <div id=%=Id %> class="collapse " aria-labelledby="h1" data-parent="#a1">
+                    <div class="card-body">
+                     <div class="row">
+                         <div class="col-12">
+                             <strong>Difficulty Level :</strong><span>%= post.Level %></span>
+                         </div>
+                         <div class="col-12">
+                            <strong>Title :</strong><span>%= post.Head %></span>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-7">
+                                    <strong>Article :</strong><span>%= post.Blog %></span>
+                                </div>
+                                <div class="col-4">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-warning">DRAFT</button>
+                                        <button type="button" class="btn btn-warning">REJECT</button>
+                                        <button type="button" class="btn btn-warning">ACCEPT</button>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                     </div>
+                    </div>
+                  </div> -->
+                </div>
+                </div>
+                </div>
+                 <%})%> 
+                </div>
+           </div>
+
+
+           <div class="d-none" id="ViewC" >
+            <div class="accordion" id="a2">
+                <% posts2.forEach(function(post){ %>
+                    <% var Id="b"+post.Id %> 
+                    <% var Idd="#b"+post.Id %> 
+                <div class="row">
+                    <div class="col-12">
+                     <div class="card">
+                  <div class="card-header" id="h1">
+                    <div class="row ">
+                        <div class="col-10">
+                            <p>Article : <%= post.Head %></p>
+                           <p></p>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger"data-toggle="collapse" data-target=<%=Idd %>  aria-expanded="false" > <a href="/articles/<%= post.Head %>">VIEW</a></button>
+                        </div>
+                    </div>
+                  </div>
+              
+                  <!-- <div id=%=Id %> class="collapse " aria-labelledby="h1" data-parent="#a2">
+                    <div class="card-body">
+                     <div class="row">
+                         <div class="col-12">
+                             <strong>Difficulty Level :</strong><span>%= post.Level %></span>
+                         </div>
+                         <div class="col-12">
+                            <strong>Title :</strong><span>%= post.Head %></span>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-7">
+                                    <strong>Article :</strong><span>%= post.Blog %></span>
+                                </div>
+                                <div class="col-4">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-warning">DRAFT</button>
+                                        <button type="button" class="btn btn-warning">REJECT</button>
+                                        <button type="button" class="btn btn-warning">ACCEPT</button>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                     </div>
+                    </div>
+                  </div> -->
+                </div>
+                </div>
+                </div>
+                 <%})%> 
+                </div>
+           </div>
+           <div class="d-none" id="ViewP" >
+            <div class="accordion" id="a3">
+                <% posts3.forEach(function(post){ %>
+                    <% var Id="b"+post.Id %> 
+                    <% var Idd="#b"+post.Id %> 
+                <div class="row">
+                    <div class="col-12">
+                     <div class="card">
+                  <div class="card-header" id="h1">
+                    <div class="row ">
+                        <div class="col-10">
+                            <p>Article : <%= post.Head %></p>
+                           <p></p>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger"data-toggle="collapse" data-target=<%=Idd %>  aria-expanded="false" ><a href="/articles/<%= post.Head %>">VIEW</a></button>
+                        </div>
+                    </div>
+                  </div>
+              
+                  <!-- <div id=%=Id %> class="collapse " aria-labelledby="h1" data-parent="#a3">
+                    <div class="card-body">
+                     <div class="row">
+                         <div class="col-12">
+                             <strong>Difficulty Level :</strong><span>%= post.Level %></span>
+                         </div>
+                         <div class="col-12">
+                            <strong>Title :</strong><span>%= post.Head %></span>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-7">
+                                    <strong>Article :</strong><span>%= post.Blog %></span>
+                                </div>
+                                <div class="col-4">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-warning">DRAFT</button>
+                                        <button type="button" class="btn btn-warning">REJECT</button>
+                                        <button type="button" class="btn btn-warning">ACCEPT</button>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                     </div>
+                    </div>
+                  </div> -->
+                </div>
+                </div>
+                </div>
+                 <%})%> 
+                </div>
+           </div>
+       </div>
+   </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="./ckeditor/ckeditor.js"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <script>
+       $("#ViewA").on("click",function(){
+           $("#ViewA").removeClass("d-none");
+           $("#ViewC").addClass("d-none");
+           $("#ViewP").addClass("d-none");
+       });
+       $("#ViewC").on("click",function(){
+           $("#ViewC").removeClass("d-none");
+           $("#ViewA").addClass("d-none");
+           $("#ViewP").addClass("d-none");
+       });
+       $("#ViewP").on("click",function(){
+           $("#ViewP").removeClass("d-none");
+           $("#ViewC").addClass("d-none");
+           $("#ViewA").addClass("d-none");
+       });
+   </script>
+
+</body>
+</html>
+
+
+<!-- include("partials/footer") %>  -->

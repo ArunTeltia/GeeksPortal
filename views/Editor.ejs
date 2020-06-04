@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="language" content="english">
+<meta name="viewport" content="width=device-width">
+<link rel="canonical" href="https://quilljs.com/standalone/full/">
+<link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="Quill - Your powerful rich text editor" />
+<link rel="stylesheet" href="ajax/libs/KaTeX/0-7-1/katex.min.css" />
+<link rel="stylesheet" href="ajax/libs/highlight-js/9-12-0/styles/monokai-sublime.min.css" />
+<link rel="stylesheet" href="1-3-6/cdn_subdomain/quill.snow.css" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Computer Science</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <style type="text/css">
+        
+        
+        .cookie{
+            background-color: black;
+            color: white;border-radius: 10px;
+            padding-left:  20px;
+            padding-right: 20px;
+        }
+        
+  .img-replace {
+display: inline-block;
+overflow: hidden;
+text-indent: 100%; 
+color: transparent;
+white-space: nowrap;
+}
+  
+  .main-nav ul {
+position:fixed;
+width: 100%;
+top: 8%;
+
+}
+.main-nav li {
+list-style: none;
+float: left;
+}
+.main-nav a {
+display: block;
+height: 30px;
+padding: 2px 10px;
+text-decoration: none;
+color: #FFF;
+/* -webkit-transition: all 0.30s ease-in-out;
+-moz-transition: all 0.30s ease-in-out;
+-ms-transition: all 0.30s ease-in-out;
+-o-transition: all 0.30s ease-in-out; */
+}
+
+
+.user-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(1, 1, 2, 0.9);
+z-index: 3;
+overflow-y: auto;
+cursor: pointer;
+visibility: hidden;
+opacity: 0;
+transition: opacity 0.3s 0, visibility 0 0.3s;
+}
+.user-modal.is-visible {
+visibility: visible;
+opacity: 1;
+transition: opacity 0.3s 0, visibility 0 0;
+}
+.user-modal.is-visible .user-modal-container {
+-webkit-transform: translateY(0);
+transform: translateY(0);
+}
+
+.user-modal-container {
+position: relative;
+width: 90%;
+max-width: 600px;
+
+  background-image: url("https://i.pinimg.com/originals/65/20/7e/65207e416d092b13f2f079cdae2e58a5.gif");
+margin: 3em auto 4em;
+cursor: auto;
+border-radius: 0.25em;
+-webkit-transform: translateY(-30px);
+transform: translateY(-30px);
+transition-property: -webkit-transform;
+transition-property: transform;
+transition-property: transform, -webkit-transform;
+transition-duration: 0.3s;
+}
+.user-modal-container .switcher:after {
+content: "";
+display: table;
+clear: both;
+}
+.user-modal-container .switcher li {
+width: 50%;
+float: left;
+text-align: center;
+list-style:none;
+}
+.user-modal-container .switcher li:first-child a {
+border-radius: .25em 0 0 0;
+}
+.user-modal-container .switcher li:last-child a {
+border-radius: 0 .25em 0 0;
+}
+.user-modal-container .switcher a {
+display: block;
+width: 100%;
+height: 50px;
+line-height: 50px;
+background: #d2d8d8;
+color: #809191;
+text-decoration: none;
+}
+.user-modal-container .switcher a.selected {
+background: #FFF;
+color: #505260;
+}
+@media only screen and (min-width: 600px) {
+.user-modal-container {
+margin: 4em auto;
+}
+.user-modal-container .switcher a {
+height: 70px;
+line-height: 70px;
+}
+}
+
+.form {
+padding: 1.4em;
+}
+.form .fieldset {
+position: relative;
+margin: 1.4em 0;
+}
+.form .fieldset:first-child {
+margin-top: 0;
+}
+.form .fieldset:last-child {
+margin-bottom: 0;
+}
+.form label {
+font-size: 14px;
+font-size: 0.875rem;
+}
+.form label.image-replace {
+/* replace text with an icon */
+display: inline-block;
+position: absolute;
+left: 15px;
+top: 50%;
+bottom: auto;
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);
+height: 20px;
+width: 20px;
+overflow: hidden;
+text-indent: 100%;
+white-space: nowrap;
+color: transparent;
+text-shadow: none;
+background-repeat: no-repeat;
+background-position: 50% 0;
+}
+
+.form input {
+margin: 0;
+padding: 0;
+border-radius: 0.25em;
+}
+.form input.full-width {
+width: 100%;
+}
+.form input.has-padding {
+padding: 12px 20px 12px 50px;
+}
+.form input.has-border {
+border: 1px solid #d2d8d8;
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+-o-appearance: none;
+appearance: none;
+}
+.form input.has-border:focus {
+border-color: #343642;
+box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+outline: none;
+}
+
+
+#login, #signup, #reset-password {
+display: none;
+}
+
+#login.is-selected, #signup.is-selected, #reset-password.is-selected {
+display: block;
+}
+/* .sign-up {
+padding-top: 100px;
+.col-sm-8 {
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+display: block;
+margin: 0 auto;
+}
+.col-sm-6 {
+display: block;
+margin: 0 auto;
+h2 {
+  text-align: center;
+  padding: 30px;
+}
+&.col-sign-up {
+  background: $white;
+  form {
+    padding: 0px 15px 30px 15px;
+    input {
+      height: 40px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  button {
+    width: 100%;
+    background: $blue;
+    border: none;
+    height: 20px;
+  }
+}
+&.col-sign-in {
+  h2 {
+    color: $white;
+  }
+  button {
+    height: 40px;
+    color: $black;
+    background: $white;
+    margin-top: 25px !important;
+    display: block;
+    margin: 0 auto;
+  }
+}
+}
+} */
+#standalone-container {
+margin: 50px auto;
+max-width: 1700px;
+}
+#editor-container {
+height: 350px;
+}
+
+* {
+box-sizing: border-box;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+/* display: inline-block; */
+float: right;
+}
+
+input {
+border: 1px solid transparent;
+background-color: #f1f1f1;
+padding: 10px;
+font-size: 16px;
+}
+
+input[type=text] {
+background-color: #f1f1f1;
+width: 100%;
+}
+
+input[type=submit] {
+background-color: DodgerBlue;
+color: #fff;
+cursor: pointer;
+font-size: 14px;
+}
+
+.autocomplete-items {
+border: 1px solid #d4d4d4;
+border-bottom: none;
+border-top: none;
+z-index: 99;
+/*position the autocomplete items to be the same width as the container:*/
+top: 100%;
+left: 0;
+right: 0;
+font-size: 14px;
+}
+
+.autocomplete-items div {
+padding: 10px;
+cursor: pointer;
+background-color: #fff; 
+border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+background-color: DodgerBlue !important; 
+color: #ffffff; 
+}	
+.dropdown-backdrop {
+display:none;
+}
+.button {
+ border:black;
+ color: white;
+ padding: 10px 20px;
+ text-align: center;
+ text-decoration: none;
+ font-size: 10px;
+ margin: 1px 1px;
+ cursor: pointer;
+ }		
+    </style>
+    <!-- <script type="text/javascript">
+    function myFunction() {
+    
+    
+    $("#cookie").hide();
+    $("#get").hide();
+}
+  </script> -->
+<!-- <script>
+window.console = window.console || function(t) {};
+</script>
+<script>
+if (document.location.search.match(/type=embed/gi)) {
+window.parent.postMessage("resize", "*");
+}
+</script>   -->
+
+
+
+<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.js"></script> -->
+<link rel="stylesheet" href="/tagify/tagify.css">
+<script src="/tagify/tagify.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/tagify/jQuery.tagify.min.js"></script>
+<script src="ckeditor/ckeditor.js"></script>
+
+</head>
+<body>
+    <div id="navigation" >
+    <div id="header" style="padding: 0px;">
+        <div class="container">
+
+
+                    <!-- Mobile nav toggle-->
+                    <li class="nav-toggle">
+                        <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                    </li>
+                    <!-- / Mobile nav toggle -->
+            
+            </div>
+        
+        <!-- header -->
+    </div>
+    <!-- container -->
+    <div class="container" >
+        <div id="responsive-nav" >
+           
+
+            <!-- menu nav -->
+            <div class="menu-nav"  >
+                    
+            <ul class="menu-list"  >
+                <% if(user){ %>
+                    <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+                    <li style="float: right;font-weight: bold;"><a href="/profile">
+                      <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
+                      <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
+                      <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+                      <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+                    </a></li>
+               <% }else{ %>
+                <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
+
+                <% } %> 
+                      
+                  
+                  
+                        <li><a href="/home">Home</a></li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu" >
+                                <li><a href="algo.html">Analysis of algorithm</a></li>
+                                <li><a href="search.html">Searching and Sorting</a></li>
+                                <li><a href="ga.html">Greedy Algorithms</a></li>
+                                <li><a  href="dp.html">Dynamic Programming</a></li><li>
+                                        <a  href="sa.html">String Algorithms</a></li><li>   
+                                    
+                                    <a  href="backt.html">Backtracking</a></li><li>
+                                    <a  href="dc.html">Divide and Conquer</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li>
+                                    <a  href="ds.html">Data Structures</a></li><li>
+                                    <a  href="array.html">Array</a></li><li>
+                                    
+                                        <a href="list.html">Linked List</a></li><li>
+                                        <a href="stack.html">Stack</a></li><li>
+                                        <a  href="queue.html">Queue</a> </li><li>
+                                    
+                                    <a  href="bt.html">Binary Tree</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="c.html">C</a></li>
+                                <li><a href="cpp.html">C++</a></li>
+                                <li><a href="java.html">JAVA</a></li>
+                                <li><a href="py.html">Python</a></li>
+                                <li><a href="sql.html">SQL</a></li>
+                                <li><a href="php.html">PHP</a></li>
+                                <li><a href="js.html">Javascript</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="campus.html">Campus Programs</a></li>
+                                <li><a href="proj.html">Projects</a></li>
+                                <li><a href="place.html">Placemant cources</a></li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="gnote.html">Gate notes</a></li>
+                                <li><a href="gcs.html">Gate CS Corner</a></li>
+                                <li><a href="gpaper.html">Gate Papers</a></li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li><a href="fncode.html">Codes</a></li>
+                    <li><a href="fnpuzzle.html">Puzzles</a></li>
+          </ul>
+          
+       </div>
+       </div>
+       </div>
+       
+        <!-- /container -->
+    </div>
+    <!-- /NAVIGATION -->
+
+    <section>     
+      <main>
+      <!-- section -->
+      <div class="section" style="padding: 10px;">
+          <!-- container -->
+          <div class="container">
+              <div class="jumbotron static-slider" style="padding: 10px;">
+                              <h4 class="text-center">Editor</h4>
+                          </div>
+                      <!-- </div>  -->
+                      <form action="/compose" method="POST">
+                        <div class="form-group mt-3">
+                        <div class="row">
+                      <div class="col-12 d-flex justify-content-center text-center">
+                        <h4>Choose the theme for the editor use.</h4>
+                      </div>
+                        <div class="col-12 d-flex justify-content-center text-center">
+                          
+                          <select id="ty" name="theme">
+                      <option><button class="button2" value="Code" id="code" name="type">Code</button></option>
+                      <option> <button class="button1 " value="Puzzle" id="puz" name="type">Puzzle</button></option>
+                       <option><button class="button3 " value="Article" id="art" name="type">Article</button></option>
+                      </select>
+                     
+
+                        </div>
+                        </div>
+                        </div>
+                    <div class="form-group mt-3">
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-center text-center">
+                          <h4>Choose the language to be used and the difficulty level</h4>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center text-center" style="margin-bottom: 10px;">
+                          <div class="row">
+                            <div id="hide" class="d-block col-12">
+                              <h5>Programming language</h5>
+                              <select name="lang">
+                                <option> <button class="button1 "  id="t1" name="type">C++</button></option>
+                                 <option><button class="button2" id="t2" name="type">Java</button></option>
+                                 <option><button class="button3 " id="t3" name="type">C</button></option>
+                                 <option><button class="button3 " id="t4" name="type">Python</button></option>
+                                </select>
+                            </div>
+
+                           
+                          </div>
+                         </div>
+                         <div class="col-6 d-flex justify-content-center text-center">
+                          <div class="row">
+                            <div class="d-block col-12">
+                              <h5>Difficulty Level</h5>
+                                <select name="level">
+                                <option> <button class="button1 "  id="l1" >Easy</button></option>
+                                  <option><button class="button2" id="l2" >Medium</button></option>
+                                  <option><button class="button3 " id="l3" >Hard</button></option>
+                                  </select>
+                            </div>
+                          </div>
+                         </div>
+                       </div>
+                     </div>
+                    <div class="form-group">
+                      <!-- <label for="head">Blog Heading</label> -->
+                      <input type="text" name="head" class="form-control" placeholder="Enter article title here.." required id="head">
+                     </div>
+                    <div class="form-group">
+                      <!-- <label for="blog">Blog Body</label> -->
+                      <textarea  id="blog"  name="blog"></textarea>
+                      <script type="text/javascript">
+                        CKEDITOR.replace('blog',{
+                            "extraPlugins" : "imagebrowser",
+                            "imageBrowser_listUrl":"/files"
+                        });
+                        </script>
+                    </div>
+                    <div class="form-group">
+                      <style contenteditable>
+                        .tags-look .tagify__dropdown__item{
+                          display: inline-block;
+                          border-radius: 3px;
+                          padding: .3em .5em;
+                          border: 1px solid #CCC;
+                          background: #F3F3F3;
+                          margin: .2em;
+                          font-size: .85em;
+                          color: black;
+                          transition: 0s;
+                        }
+                        
+                        .tags-look .tagify__dropdown__item--active{
+                          color: black;
+                        }
+                        
+                        .tags-look .tagify__dropdown__item:hover{
+                          background: lightyellow;
+                          border-color: gold;
+                        }
+                        </style>
+                      <p style="text-align:right;">Choose the Appropriate Tags or type manually.</p>
+                      <!-- <label for="tags"style="text-align:right;">Choose the Appropriate Tags or type manually.</label> -->
+                      <input type="text" name="tags" class="form-control tagify--custom-dropdown" style="width: 300px;  float:right;" id="tags">
+                      <!-- <input name='input-custom-dropdown' class='tagify--custom-dropdown' placeholder='write some tags' value='css, html, javascript'> -->
+
+                    </div>
+                    <script data-name="dropdown-tags">
+                      (function(){
+                      
+                      var input = document.querySelector('input[name="tags"]'),
+                          // init Tagify script on the above inputs
+                          tagify = new Tagify(input, {
+                            whitelist: ["Data Structure","Algorithm","Operating System","Data Analysis","DBMS"],
+                            maxTags: 10,
+                            dropdown: {
+                              maxItems: 20,           // <- mixumum allowed rendered suggestions
+                              classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+                              enabled: 0,             // <- show suggestions on focus
+                              closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+                            }
+                          })
+                      })()
+                      </script>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>   
+              </div> 
+      <!-- <script>
+      var quill = new Quill('#editor-container', {
+      modules: {
+        syntax: true,
+        toolbar: '#toolbar-container'
+      },
+      placeholder: 'Start typing here....',
+      theme: 'snow'
+      
+      
+      });
+      
+      
+      const saveArticlesData = document.querySelector('.articlesubmit');
+      
+      const puzzlevar = document.querySelector(".puzzlebutton");
+      const articlevar = document.querySelector(".articlebutton");
+      const codevar = document.querySelector(".codebutton");
+      let langvar; let chooselevel;
+      
+      let value;
+      puzzlevar.addEventListener('click', (e) => {
+      e.preventDefault();
+      value = document.querySelector(".puzzlebutton").value;
+      });
+      articlevar.addEventListener('click', (e) => {
+      e.preventDefault();
+      value = document.querySelector(".articlebutton").value;
+      });
+      codevar.addEventListener('click', (e) => {
+      e.preventDefault();
+      value = document.querySelector(".codebutton").value;
+      });
+      saveArticlesData.addEventListener('click', (e) => {
+      
+      let cl = document.getElementById("difficultlevel");
+      chooselevel = cl.options[cl.selectedIndex].value;
+      let el = document.getElementById("selectlanguage");
+      langvar = el.options[el.selectedIndex].value;
+      let tagvalue = document.getElementById("tags").value;
+      let titlevalue = document.getElementById("enter-title").value;
+      let usereditor = firebase.auth().currentUser;
+      let userDisplayname = usereditor.displayName;
+      
+      
+      e.preventDefault();
+      
+      var delta = quill.getText();
+      let categoryvalue = value;
+      let levelvalue = chooselevel;
+      let languagevalue = langvar;
+      let tagval = tagvalue;
+      let titleval = titlevalue;
+      console.log("Submitting Text",delta);
+      
+       db.collection('articles').add({
+        category : categoryvalue,
+        article : delta,
+        level : levelvalue,
+        language : langvar,
+        username : userDisplayname,
+        title : titleval,
+        tag : tagval,
+      
+      }).then(function (docRef) {
+      
+        window.alert("Submit this article !" + delta);
+      }) 
+      
+      
+      });
+      
+      </script> -->
+<!--       
+      <script>
+      var count=0;
+      function deleteText() {
+      quill.deleteText(0, 500);
+      }
+      function draft() {
+      var delta = quill.getContents();
+      }
+      function submitt() {
+      var delta1 = quill.getContents();
+      uploadFile();
+      console.log(delta1);
+      }
+      function autocomplete(inp, arr) {
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+      }
+      function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+      }
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+      });
+      }
+      
+      </script>
+      <script>
+      
+      /*An array containing all the country names in the world:*/
+      var countries =["Data Structure","Algorithm","Operating System","Data Analysis","DBMS"];
+      
+      var split = function( val ) {
+      return val.split( "," );
+      };
+      
+      var extractLast = function(term) {
+      return split(term).pop();
+      };
+      
+      
+      
+      /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+      
+      
+      
+      $( "#tags" ).autocomplete({
+      source: function( request, response ) {
+          response( $.ui.autocomplete.filter(
+              countries, extractLast(request.term) ) );
+      },
+      focus: function() {
+          return false;
+      },
+      select: function( event, ui ) {
+          var terms = split( this.value );
+          terms.pop();
+          terms.push( ui.item.value );
+          terms.push( "" );
+          this.value = terms.join( "," );
+          return false;
+      }
+      });
+      </script> -->
+                  </main>
+                  </section>
+         
+]
+                     
+   <!-- FOOTER -->
+   <footer id="footer" class="section section-grey">
+       <!-- container -->
+       <div class="container">
+           <hr>
+           <div class="row">
+                   <div class="col-md-8 col-md-offset-2 text-center">
+                       <!-- footer copyright -->
+                       
+                       <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"style="padding-right:30px;">Terms and Conditions</a>
+                           <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a></p>
+                   </div>
+               </div>
+               <!-- /row -->
+           </div>
+
+                   <!-- Footer -->
+                   <div class="container-fluid footer-container">
+                       <footer class="footer">
+                           <div class="footer-lists">
+                              
+                                   <div class="col-sm">
+                                       
+                                       <p></p>
+
+                                       
+                                   </div>
+                               </div>
+                           </div>
+
+                         
+                          
+                       </footer>
+                   </div> 
+               </div>
+           </div>
+
+           <script src="js/jquery.min.js"></script>
+           <!-- <script src="./ckeditor/ckeditor.js"></script> -->
+       <script src="js/bootstrap.min.js"></script>
+       <script src="js/slick.min.js"></script>
+       <script src="js/nouislider.min.js"></script>
+       <script src="js/jquery.zoom.min.js"></script>
+       <script src="js/main.js"></script>
+       <script>
+     
+        $("#ty").change(function(){
+          var sel=$(this).children("option:selected").val();
+          // alert(sel);
+          if(sel==="Puzzle"){
+            $("#hide").hide();
+          }
+          else{
+            $("#hide").show();
+          }
+        });
+
+    </script>
+  
+    </body>
+</html>

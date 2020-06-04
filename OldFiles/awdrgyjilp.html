@@ -1,0 +1,1000 @@
+   <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <title>Admin</title>
+
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="css/slick.css" />
+        <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+        <!-- Custom stlylesheet -->
+        <link type="text/css" rel="stylesheet" href="css/style.css" />
+        <style type="text/css">
+            
+           
+            .cookie{
+                background-color: black;
+                color: white;border-radius: 10px;
+                padding-left:  20px;
+                padding-right: 20px;
+                opacity: 1;
+
+            }
+			 .button1 {
+     border:black;
+     color: white;
+     padding: 10px 20px;
+     text-align: center;
+     text-decoration: none;
+     font-size: 10px;
+     margin: 1px 1px;
+     cursor: pointer;
+     }
+			.bts-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+.bts-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.bts-popup-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 15em auto;
+  background:black;
+  border-radius: none; 
+  text-align: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-40px);
+  -moz-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  -o-transform: translateY(-40px);
+  transform: translateY(-40px);
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.bts-popup-container img {
+  padding: 20px 0 0 0;
+}
+.bts-popup-container p {
+	color: white;
+  padding: 10px 40px;
+}
+.bts-popup-container .bts-popup-button {
+  padding: 5px 25px;
+  border: 2px solid white;
+	display: inline-block;
+  margin-bottom: 10px;
+}
+
+.bts-popup-container a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.bts-popup-container .bts-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+.bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 3px;
+  background-color: white;
+}
+.bts-popup-container .bts-popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+.bts-popup-container .bts-popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 6px;
+  top: 13px;
+}
+.is-visible .bts-popup-container {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+@media only screen and (min-width: 1170px) {
+  .bts-popup-container {
+    margin: 8em auto;
+  }
+}
+.admin-panel {
+	width: 100%;
+	height: 100%;
+	max-height:1200px;
+  max-width:1800px;
+	margin: 40px 40px;
+  overflow: hidden;
+  background-color:#fff;
+  position:relative;
+}
+
+.slidebar {
+	width:15%;
+	float: left;
+	background-color:#623955;
+}
+.slidebar ul {
+  position:relative;
+  height:100%;
+}
+
+.slidebar a{
+  color: #bbb;
+  text-decoration:none;
+}
+.slidebar li{
+  text-align:center;
+  padding: 0x 0px;
+}
+
+ul {
+	padding: 0;
+	margin:0;
+}
+li {
+	list-style-type: none;
+	margin: 0;
+	position: relative;
+  text-align:center;
+  color:#B3B3B3
+}
+.slidebar i {
+  display:block;
+  text-align:center;
+  color:#B3B3B3;
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.slidebar ul a {
+  color:#B3B3B3;
+	text-decoration: none;
+	box-sizing:border-box;
+	display: block;
+	text-transform: capitalize;
+  padding: 20px;
+}
+.slidebar li:hover a, li#active{
+	background-color: #313131;
+}
+.slidebar li:hover i, li#active i{
+	color: #17BCE8;
+}
+.slidebar li:focus i {
+	color: #17BCE8;
+}
+			section {
+  display: none;
+}
+section:target {
+  display: block;
+}
+ .button {
+         background-color: #1c87c9;
+         border: none;
+         color: white;
+         padding: 20px 34px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+		
+/* CONTENT */
+.wrap-inputs {
+  width: 100%;
+  
+}
+.input-wrap input {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 20px;
+  transition: 0.3s;
+  color: black !important;
+  font-weight: bold;
+  box-shadow: 5px 5px 10px #eee;
+  margin:0 auto;
+  
+}
+
+.input-wrap button {
+	background: #bac7ff;
+	border: 2px solid #91a6ff;
+	border-radius: 5px;
+	padding: 5px 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	color: #627ae0;
+	font-weight: bold;
+	outline: none;
+  box-shadow: 5px 5px 10px #eee;
+  
+}
+.input-wrap button:hover {
+	background: #91a6ff;
+	color: #445dc4;
+	
+}
+
+.delete-row {
+  cursor: pointer;
+  color: #445dc4;
+}
+
+/*IGNORE THIS*/
+input:focus {
+  outline: 0;
+}
+
+#my-btn-contain {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0 0 20px 20px;
+}
+
+#more-btn {
+  border: 1px solid #6ddba8;
+  background-color: #6ddba8;
+  padding: 5px 10px 5px 10px;
+  font-weight: bold;
+  color: #319b6a;
+  display: inline;
+  outline: none;
+  box-shadow: 5px 5px #111;
+  
+}
+#more-btn:hover {
+  cursor: pointer;
+  background-color: #57aa84;
+  border: 1px solid #57aa84;
+  color: #257a53;
+}
+.profile {
+  color: #444;
+  display: inline;
+  font-weight: bold;
+  font-size: 19px;
+}
+.profile:hover {
+  cursor: pointer;
+  color: #333;
+}
+
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+		 <script>  
+      $(document).ready(function(){  
+           $('#search').keyup(function(){  
+                search_table($(this).val());  
+           });  
+           function search_table(value){  
+                $('#employee_table tr').each(function(){  
+                     var found = 'false';  
+                     $(this).each(function(){  
+                          if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                          {  
+                               found = 'true';  
+                          }  
+                     });  
+                     if(found == 'true')  
+                     {  
+                          $(this).show();  
+                     }  
+                     else  
+                     {  
+                          $(this).hide();  
+                     }  
+                });  
+           }  
+      });  
+ </script>   
+    </head>
+
+    <body>
+        
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
+       
+        <div id="navigation" >
+            <div id="header" style="padding: 0px;">
+                <div class="container">
+        
+
+                            <!-- Mobile nav toggle-->
+                            <li class="nav-toggle">
+                                <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                            </li>
+                            <!-- / Mobile nav toggle -->
+                    
+                    </div>
+                
+                <!-- header -->
+            </div>
+            <!-- container -->
+            <div class="container" >
+                <div id="responsive-nav" >
+                   
+
+                    <!-- menu nav -->
+                    <div class="menu-nav" >
+					<ul class="menu-list"  >
+                            <li><a href="adminlogin.html">LOG OUT</a></li>
+                        </ul>
+                    </div>
+                    <!-- menu nav -->
+                </div>
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /NAVIGATION -->
+
+        
+
+            
+                   <div class="content" style="padding-right: 30px;">
+        <!-- container -->
+        <div class="container">
+                    <!-- Jumbtron / Slider -->
+                   
+                        
+                            
+                                   
+                                        <div class="jumbotron" style="padding: 10px;">
+                                            
+                                            <p class="lead text-center">Admin Control Panel</p>
+                                            
+                                        </div>
+
+                                    </div>
+
+                                    
+
+                                    </div>
+                               
+                    <!-- Main content area -->
+                    <main >
+<div style="text-align:center;">
+<p style="text-align:center;">Choose one of Below</p>
+<a href="#a" class="button">General</a>
+<a href="#b" class="button">Articles</a>
+<a href="#c" class="button">Users</a>
+<a href="#d" class="button">Reviewers</a>
+<a href="#e" class="button">settings</a>
+</div>
+<br>
+<section class= "addAdminDetails" id="a" style="text-align:center;"><h2 class="header" style="text-align:center;">Dashboard</h2> 
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>NAME</h3></label>
+<input id="gta"  class="col-lg-3 col-form-label addname" type="text" name="dob"  placeholder="admin">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>USERNAME</h3></label>
+<input id="gta1" class="col-lg-3 col-form-label addadminname" type="text" name="dob" value="" placeholder="default-geek">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>D.O.B.</h3></label>
+<input id="gta2" class="col-lg-3 col-form-label addadmindob" type="date" name="dob" value="" placeholder="">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>PASSWORD</h3></label>
+<input id="gta3" class="col-lg-3 col-form-label addadminpass" type="password" name="dob" value="" placeholder="default-portal">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<button data-func="puzzle"  id="demo1" onclick="puzzl()" type="button" style="border-radius: 5px; margin: 2px 1px; cursor: pointer;"><h3>Edit</h3></button>
+<button data-func="puzzle" class="saveadmin" id="demo1" onclick="puzzl1()" type="button" style="border-radius: 5px; margin: 2px 1px; cursor: pointer;"><h3>Save</h3></button>
+<script>
+document.getElementById("gta").disabled = true;
+document.getElementById("gta1").disabled = true;
+document.getElementById("gta2").disabled = true;
+document.getElementById("gta3").disabled = true;
+function puzzl() {
+document.getElementById("gta").disabled = false;
+document.getElementById("gta1").disabled = false;
+document.getElementById("gta2").disabled = false;
+document.getElementById("gta3").disabled = false;
+}
+function puzzl1() {
+document.getElementById("gta").disabled = true;
+document.getElementById("gta1").disabled = true;
+document.getElementById("gta2").disabled = true;
+document.getElementById("gta3").disabled = true;
+}
+</script>
+</section>
+<section id="b" style="text-align:center;"><h2 class="header">Articles</h2>
+<div style="margin:0 auto; text-align:center;">
+<p>Search article by id of the article</p>
+<div class="row" style="text-align:center;">
+<p><h5></h5></p>
+<div style="margin:0 auto; text-align:center;">
+<div class="input-wrap" style="margin:0 auto; text-align:center;">
+<h5><input id="table-search" style="text-align:center;" placeholder="enter Id to search here..." type="text"></h5>
+<label class="input-clear" style="margin:0 auto; text-align:center;" for="table-search"></label>
+</div>
+</div>
+</div>
+<div class="row" style="padding: 25px 35px;">
+<div class="col-sm-16">
+<h4>
+<table class="table" border="1">
+<thead>
+<tr>
+<th class="col-7">Id</th>
+<th class="col-9">Category</th>
+<th class="col-9">Title</th>
+<th class="col-9">User</th>
+<th class="col-9">Reviewer</th>
+<th class="col-5">Remove</th>
+</tr>
+</thead>
+<tbody class="allArticles">
+<tr class="item1">
+<td class="col-7">a</td>
+<td class="col-6">b</td>
+<td class="col-6">b</td>
+<td class="col-5">c</td>
+<td class="col-7">d</td>
+<td class="col-5"><label class="delete-row"> Delete</label></td>
+</tr>
+<tr class="item2">
+<td class="col-7">e</td>
+<td class="col-6">f</td>
+<td class="col-6">g</td>
+<td class="col-5">g</td>
+<td class="col-7">h</td>
+<td class="col-5"><label class="delete-row"> Delete</label></td>
+</tr>
+</tbody>
+</table>
+</h4>
+</div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+</div>
+<div class="modal-body">
+</div>
+<div class="modal-footer">
+<button class="btn modal-cancel" data-dismiss="modal">Cancel</button>
+<button class="btn modal-save" type="button">Delete</button>
+</div>
+</div>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js'></script>
+<script id="rendered-js">
+$(function () {
+  var modal = $('.modal');
+  var modalHeader = modal.find('.modal-header');
+  var modalBody = modal.find('.modal-body');
+
+  $(document).on('click', '.add-row', function () {
+    var el = $(this).closest('.table-wrap').find('.row-name');
+    appendRow(el);
+  });
+  $(document).on('keydown', '.row-name', function (e) {
+    var el = $(this);
+    if (e.keyCode == 13) {
+      appendRow(el);
+    }
+  });
+  function appendRow(el) {
+    var table = el.closest('.table-wrap').find('table');
+    var input = el.closest('.table-wrap').find('.table-inputs');
+    if (input.val() != '') {
+      table.find('tbody').append('<tr class="' + input.val() + '"><td class="col-8">' + input.val() + '</td><td class="col-4"><label class="delete-row"> Delete</label></td></tr>');
+      $('.row-name').find('input').val('');
+    }
+  }
+  var row = null;
+  $(document).on('click', '.delete-row', function () {
+    row = $(this).closest('tr');
+    modal.show();
+    modalHeader.html('Delete ' + row.find('td:first').html() + '?');
+    modalBody.html('Are you sure you want to delete row "' + row.find('td:first').html() + '"?');
+    $(document).on('click', '.modal-save', function () {
+      row.remove();
+      modal.hide();
+    });
+    $(document).on('click', '.modal-cancel', function () {
+      modal.hide();
+    });
+  });
+  $(document).on('keyup', '#table-search', function () {
+    var searchText = $(this).val().toLowerCase();
+    var rows = $('table').find('tbody').find('tr');
+    rows.each(function () {
+      var row = this;
+      var td = $(row).find('td:first');
+      console.log(td.html());
+      console.log(searchText);
+      if (td.html().toLowerCase().indexOf(searchText) == -1) {
+        $(row).hide();
+      } else {
+        $(row).show();
+      }
+    });
+  });
+  $(document).on('click', '.input-clear', function () {
+    $(this).siblings('#table-search').val('');
+    var rows = $('table').find('tbody').find('tr');
+    rows.show();
+  });
+});
+//# sourceURL=pen.js
+    </script>
+	</div>
+</section>
+<section id="c" style="text-align:center;"><h2 class="header">Users</h2>
+<div>
+<p>Search User by Name of the User</p>
+<div class="row" style="text-align:center;">
+<p><h5></h5></p>
+<div class="input-wrap" style="margin:0 auto;">
+<h5><input id="table-search" class="table-inputs" style="text-align:center;" placeholder="enter Name to search here..." type="text"></h5>
+<label class="input-clear" for="table-search"></label>
+</div>
+</div>
+<div class="row" style="padding: 25px 35px;">
+<div class="col-sm-16">
+<h4>
+<table class="table" border="1">
+<thead>
+<tr>
+<th class="col-7">Name</th>
+<th class="col-9">Username</th>
+<th class="col-9">Email</th>
+<th class="col-8">Dob</th>
+<th class="col-5">Delete</th>
+<th class="col-4">Block</th>
+</tr>
+</thead>
+<tbody class="allUsers">
+
+<tr class="item2">
+<td class="col-7">e</td>
+<td class="col-9">f</td>
+<td class="col-9">g</td>
+<td class="col-8">h</td>
+<td class="col-5"><label class="delete-row"> Delete</label></td>
+<td class="col-4"><label class="delete-row">Block</label></td>
+</tr>
+</tbody>
+</table>
+</h4>
+</div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+</div>
+<div class="modal-body">
+</div>
+<div class="modal-footer">
+<button class="btn modal-cancel" data-dismiss="modal">Cancel</button>
+<button class="btn modal-save" type="button">Delete</button>
+</div>
+</div>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js'></script>
+<script id="rendered-js">
+$(function () {
+  var modal = $('.modal');
+  var modalHeader = modal.find('.modal-header');
+  var modalBody = modal.find('.modal-body');
+
+  $(document).on('click', '.add-row', function () {
+    var el = $(this).closest('.table-wrap').find('.row-name');
+    appendRow(el);
+  });
+  $(document).on('keydown', '.row-name', function (e) {
+    var el = $(this);
+    if (e.keyCode == 13) {
+      appendRow(el);
+    }
+  });
+  function appendRow(el) {
+    var table = el.closest('.table-wrap').find('table');
+    var input = el.closest('.table-wrap').find('.table-inputs');
+    if (input.val() != '') {
+      table.find('tbody').append('<tr class="' + input.val() + '"><td class="col-8">' + input.val() + '</td><td class="col-4"><label class="delete-row"> Delete</label></td></tr>');
+      $('.row-name').find('input').val('');
+    }
+  }
+  var row = null;
+  $(document).on('click', '.delete-row', function () {
+    row = $(this).closest('tr');
+    modal.show();
+    modalHeader.html('Delete ' + row.find('td:first').html() + '?');
+    modalBody.html('Are you sure you want to delete row "' + row.find('td:first').html() + '"?');
+    $(document).on('click', '.modal-save', function () {
+      row.remove();
+      modal.hide();
+    });
+    $(document).on('click', '.modal-cancel', function () {
+      modal.hide();
+    });
+  });
+  $(document).on('keyup', '#table-search', function () {
+    var searchText = $(this).val().toLowerCase();
+    var rows = $('table').find('tbody').find('tr');
+    rows.each(function () {
+      var row = this;
+      var td = $(row).find('td:first');
+      console.log(td.html());
+      console.log(searchText);
+      if (td.html().toLowerCase().indexOf(searchText) == -1) {
+        $(row).hide();
+      } else {
+        $(row).show();
+      }
+    });
+  });
+  $(document).on('click', '.input-clear', function () {
+    $(this).siblings('#table-search').val('');
+    var rows = $('table').find('tbody').find('tr');
+    rows.show();
+  });
+});
+
+//# sourceURL=pen.js
+    </script>
+	</div>
+</section>
+<section id="d" style="text-align:center;"><h2 class="header">Reviewers</h2>
+<div id="addNewReviewer">
+<p>Add a New Reviewer</p>
+<label class="col-lg-3 col-form-label form-control-label"><h3>NAME</h3></label>
+<input id="name"  class="col-lg-3 col-form-label" type="text" name="name" value="" placeholder="">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>USERNAME</h3></label>
+<input id="username" class="col-lg-3 col-form-label" type="text" name="username" value="" placeholder="">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>level</h3></label>
+<input id="level" class="col-lg-3 col-form-label" type="level" name="level" value="" placeholder="">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<label class="col-lg-3 col-form-label form-control-label"><h3>Reviewed(if any)</h3></label>
+<input id="articlereviewed" class="col-lg-3 col-form-label" type="text" name="review" value="" placeholder="">
+<br>
+<br>
+<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+<br>
+<button type="button" id="saveReviewerinfo" style="border-radius: 5px; margin: 2px 1px; cursor: pointer;"><h3>ADD</h3></button>
+<br>
+<br>
+<h4>All Reviewers</h4>
+<p>Search Reviewer by Name of the Reviewer</p>
+<div class="row" style="text-align:center;">
+<p><h5></h5></p>
+<div class="input-wrap" style="margin:0 auto;">
+<h5><input id="table-search" class="table-inputs" style="text-align:center;" placeholder="enter Name to search here..." type="text"></h5>
+<label class="input-clear" for="table-search"></label>
+</div>
+</div>
+<div class="row" style="padding: 25px 35px;">
+<div class="col-sm-16">
+<h4>
+<table class="table" border="1">
+<thead>
+<tr>
+<th class="col-7">Name</th>
+<th class="col-6">Username</th>
+<th class="col-5">level</th>
+<th class="col-7">Articles Reviewed</th>
+<th class="col-5">Delete an item</th>
+</tr>
+</thead>
+<tbody class="allReviewers">
+<tr class="item1">
+<td class="col-7">a</td>
+<td class="col-6">b</td>
+<td class="col-5">c</td>
+<td class="col-7">d</td>
+<td class="col-5"><label class="delete-row"> Delete</label></td>
+</tr>
+<tr class="item2">
+<td class="col-7">e</td>
+<td class="col-6">f</td>
+<td class="col-5">g</td>
+<td class="col-7">h</td>
+<td class="col-5"><label class="delete-row"> Delete</label></td>
+</tr>
+</tbody>
+</table>
+</h4>
+</div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+</div>
+<div class="modal-body">
+</div>
+<div class="modal-footer">
+<button class="btn modal-cancel" data-dismiss="modal">Cancel</button>
+<button class="btn modal-save" type="button">Delete</button>
+</div>
+</div>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js'></script>
+<script id="rendered-js">
+$(function () {
+  var modal = $('.modal');
+  var modalHeader = modal.find('.modal-header');
+  var modalBody = modal.find('.modal-body');
+
+  $(document).on('click', '.add-row', function () {
+    var el = $(this).closest('.table-wrap').find('.row-name');
+    appendRow(el);
+  });
+  $(document).on('keydown', '.row-name', function (e) {
+    var el = $(this);
+    if (e.keyCode == 13) {
+      appendRow(el);
+    }
+  });
+  function appendRow(el) {
+    var table = el.closest('.table-wrap').find('table');
+    var input = el.closest('.table-wrap').find('.table-inputs');
+    if (input.val() != '') {
+      table.find('tbody').append('<tr class="' + input.val() + '"><td class="col-8">' + input.val() + '</td><td class="col-4"><label class="delete-row"> Delete</label></td></tr>');
+      $('.row-name').find('input').val('');
+    }
+  }
+  var row = null;
+  $(document).on('click', '.delete-row', function () {
+    row = $(this).closest('tr');
+    modal.show();
+    modalHeader.html('Delete ' + row.find('td:first').html() + '?');
+    modalBody.html('Are you sure you want to delete row "' + row.find('td:first').html() + '"?');
+    $(document).on('click', '.modal-save', function () {
+      row.remove();
+      modal.hide();
+    });
+    $(document).on('click', '.modal-cancel', function () {
+      modal.hide();
+    });
+  });
+  $(document).on('keyup', '#table-search', function () {
+    var searchText = $(this).val().toLowerCase();
+    var rows = $('table').find('tbody').find('tr');
+    rows.each(function () {
+      var row = this;
+      var td = $(row).find('td:first');
+      console.log(td.html());
+      console.log(searchText);
+      if (td.html().toLowerCase().indexOf(searchText) == -1) {
+        $(row).hide();
+      } else {
+        $(row).show();
+      }
+    });
+  });
+  $(document).on('click', '.input-clear', function () {
+    $(this).siblings('#table-search').val('');
+    var rows = $('table').find('tbody').find('tr');
+    rows.show();
+  });
+});
+//# sourceURL=pen.js
+    </script>
+	</div>
+</section>
+<section id="e" style="text-align:center;"><h2 class="header">Settings</h2>
+<button data-func="puzzle" id="demo1" onclick="puz1()" type="button" style="border-radius: 5px; margin: 2px 1px; cursor: pointer;"><h3>DELETE ADMIN ACCOUNT</h3></button>
+<button data-func="puzzle" id="demo1" onclick="puz2()" type="button" style="border-radius: 5px; margin: 2px 1px; cursor: pointer;"><h3>GO TO MAIN SITE</h3></button>
+</section>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+                             
+                            </div>
+
+
+                                
+
+
+                        </div> 
+
+                    </main>
+    <div id="cookie" style="padding-left:  140px;padding-right: 140px;position:sticky;z-index: 999;top:80%; ">
+                            <div class="bts-popup" role="alert">
+<div class="bts-popup-container">
+<p>We use cookies to ensure you have the best browsing experience on our website.By using our site,you acknowledge that you read and understood our Cookie Policy &Privacy Policy. <a class="btn" onclick="return myFunction()" style="color: orange">Get It</a></p>
+</div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script id="rendered-js">
+jQuery(document).ready(function ($) {
+
+  window.onload = function () {
+    $(".bts-popup").delay(1000).addClass('is-visible');
+  };
+
+  //open popup
+  $('.bts-popup-trigger').on('click', function (event) {
+    event.preventDefault();
+    $('.bts-popup').addClass('is-visible');
+  });
+
+  //close popup
+  $('.bts-popup').on('click', function (event) {
+    if ($(event.target).is('.bts-popup-close') || $(event.target).is('.bts-popup')) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+    }
+  });
+  //close popup when clicking the esc keyboard button
+  $(document).keyup(function (event) {
+    if (event.which == '27') {
+      $('.bts-popup').removeClass('is-visible');
+    }
+  });
+});
+//# sourceURL=pen.js
+    </script>
+						
+                <!-- /row -->
+                
+                <!-- /row -->
+            </div>
+
+                    <!-- Footer -->
+                   
+                          
+                           
+                        </footer>
+                    </div> 
+                </div>
+            </div>
+
+ <a  id="backtotop" href="#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
+        <script src="JS/jquery.backtotop.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
+
+ 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCdIObAan0FFo2kp8Z3rOYjAa_7yGue0FM",
+    authDomain: "portal-50aff.firebaseapp.com",
+    databaseURL: "https://portal-50aff.firebaseio.com",
+    projectId: "portal-50aff",
+    storageBucket: "portal-50aff.appspot.com",
+    messagingSenderId: "504926273330",
+    appId: "1:504926273330:web:cb152d046a5f6c52c3612b"
+  };
+
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+ // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+</script>
+<script src="adminjs.js"></script>
+
+
+
+        </body>
+    </html>

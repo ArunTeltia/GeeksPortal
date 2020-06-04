@@ -1,0 +1,186 @@
+<%- include('partials/header.ejs') %>
+
+<body>
+  <div class="heading">
+    <h1>Editor</h1>
+  </div>
+
+  <!-- <div>
+<h4 class="theme">Choose the theme for the editor</h4>
+<button class="button1 "id="t1" name="type">Puzzle</button>
+<button class="button2" id="t2" name="type">Article</button>
+<button class="button3 " id="t3" name="type">Code</button>
+</div>
+
+<div class="lang">
+   <h4>Choose the language to be used and the difficulty level</h4>
+   <div class="dropdown">
+    <button class="button4">Programming Language</button>
+    <div class="dropdown-content">
+      <button role="button" class="btn btn-light" name="lang" id="p1">C++</p>
+        <button role="button" class="btn btn-light" name="lang" id="p2">Java</p>
+          <button role="button" class="btn btn-light" name="lang" id="p3">Python</p>
+            <button role="button" class="btn btn-light" name="lang" id="p4">C</p>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="button5">Difficulty Level</button>
+    <div class="dropdown-content">
+    <button role="button" class="btn btn-light" name="level" id="l1">Easy</p>
+      <button role="button" class="btn btn-light" name="level" id="l2">Medium</p>
+        <button role="button" class="btn btn-light" name="level" id="l3">Hard</p>
+   </div>
+  </div>
+  </div>
+  
+<div class="container">
+
+    <form action="/submit" method="POST">
+        <div class="form-group">
+          <label for="head">Blog Heading</label>
+          <input type="text" name="head" class="form-control" id="head">
+         </div>
+        <div class="form-group">
+          <label for="blog">Blog Body</label>
+          <input type="text" name="blog" class="form-control" id="blog">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div> -->
+  <div class="container">
+    <!-- <div class="row">
+    <div class="col-12 d-flex justify-content-center text-center mt-3">
+      <h4 class="theme">Choose the theme for the editor</h4>
+    </div> -->
+    <!-- <div class=" col-8 mt-3 ml-5  d-flex justify-content-center text-center">
+  
+      <button class="button1 "id="t1" name="type">Puzzle</button>
+      <button class="button2" id="t2" name="type">Article</button>
+      <button class="button3 " id="t3" name="type">Code</button>
+      </div> -->
+    <!-- </div> -->
+
+    <div class="mt-2">
+      <form action="/submit" method="POST">
+        <div class="row">
+          <!-- <div class=" col-8  ml-5  d-flex justify-content-center text-center">
+           
+            <div class="custom-control  custom-radio custom-control-inline">
+              <input type="radio" id="Radio1" name="Puzzle" class="custom-control-input">
+              <label class="custom-control-label" for="Radio1"><button class="btn btn-light btn-lg  btn-block "id="t1" disabled>Puzzle</button></label>
+            </div>
+            <div class="custom-control  custom-radio custom-control-inline">
+              <input type="radio" id="Radio2" name="Article" class="custom-control-input">
+              <label class="custom-control-label" for="Radio2"><button class="btn btn-light btn-lg  btn-block" id="t2" name="type"disabled>Article</button></label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="Radio3" name="Code" class="custom-control-input">
+              <label class="custom-control-label" for="Radio3"><button class=" btn btn-light btn-lg  btn-block" id="t3" name="type"disabled>Code</button></label>
+            </div>
+
+          </div> -->
+
+          <div class="col-12 d-flex justify-content-center text-center">
+            <h4>Choose the language to be used and the difficulty level</h4>
+          </div>
+          <div class="col-12 d-flex justify-content-center text-center">
+            <select name="theme">
+              <option>
+                <button class="button1" id="puz" name="type">
+                  Puzzle
+                </button></option
+              >
+              <option
+                ><button class="button2" id="code" name="type">
+                  Code
+                </button></option
+              >
+              <option
+                ><button class="button3" id="art" name="type">
+                  Article
+                </button></option
+              >
+            </select>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <div class="row">
+            <div class="col-6 d-flex justify-content-center text-center">
+              <div class="row">
+                <div class="d-block col-12">
+                  <h5>Programming language</h5>
+                  <select name="lang">
+                    <option>
+                      <button class="button1" id="t1" name="type">
+                        C++
+                      </button></option
+                    >
+                    <option
+                      ><button class="button2" id="t2" name="type">
+                        Java
+                      </button></option
+                    >
+                    <option
+                      ><button class="button3" id="t3" name="type">
+                        C
+                      </button></option
+                    >
+                    <option
+                      ><button class="button3" id="t4" name="type">
+                        Python
+                      </button></option
+                    >
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-center text-center">
+              <div class="row">
+                <div class="d-block col-12">
+                  <h5>Difficulty Level</h5>
+                  <select name="level">
+                    <option>
+                      <button class="button1" id="l1">Easy</button></option
+                    >
+                    <option
+                      ><button class="button2" id="l2">Medium</button></option
+                    >
+                    <option
+                      ><button class="button3" id="l3">Hard</button></option
+                    >
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="head">Blog Heading</label>
+          <input type="text" name="head" class="form-control" id="head" />
+        </div>
+        <div class="form-group">
+          <label for="blog">Blog Body</label>
+          <textarea id="blog" name="blog"></textarea>
+          <script type="text/javascript">
+            CKEDITOR.replace("blog", {
+              extraPlugins: "imagebrowser",
+              imageBrowser_listUrl: "/files",
+            });
+          </script>
+          <!-- <script>
+            var editor = new FroalaEditor("#blog")
+            </script> -->
+          <!-- <textarea class="form-control ckeditor" name="blog" id="blog" rows="3"></textarea> -->
+        </div>
+        <div class="form-group">
+          <label for="tags">Add tags</label>
+          <input type="text" name="tags" class="form-control" id="tags" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer.ejs') %>
+</body>

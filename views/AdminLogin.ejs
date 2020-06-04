@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Full-width input fields */
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
+
+    img.avatar {
+      width: 40%;
+      border-radius: 50%;
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      /* display: none;  Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s;
+    }
+
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0);
+      }
+
+      to {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes animatezoom {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="modal">
+    <form class="modal-content animate" action="/admin/login" method="POST">
+      <h2>Admin Login Form</h2>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input class="adminuser" type="text" placeholder="Enter Username" name="uname" required />
+
+        <label for="psw"><b>Password</b></label>
+        <input class="adminpassword" type="password" placeholder="Enter Password" name="psw" required />
+
+        <button class="adminlogin" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCdIObAan0FFo2kp8Z3rOYjAa_7yGue0FM",
+    authDomain: "portal-50aff.firebaseapp.com",
+    databaseURL: "https://portal-50aff.firebaseio.com",
+    projectId: "portal-50aff",
+    storageBucket: "portal-50aff.appspot.com",
+    messagingSenderId: "504926273330",
+    appId: "1:504926273330:web:cb152d046a5f6c52c3612b"
+  };
+
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+ // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+</script>
+
+<script>
+
+let adminlogger  = document.querySelector('.adminlogin');
+var adminname;
+var adminpass;
+db.collection('admin').doc('admindetails').get().then(snapshot => {   
+   adminname = snapshot.data().username;
+   adminpass = snapshot.data().password;
+});  
+
+adminlogger.addEventListener('click', (e) => {
+     
+   e.preventDefault();
+
+   var adminuserName = document.querySelector('.adminuser').value;
+   var adminpwd = document.querySelector('.adminpassword').value;
+ 
+    if((adminname.localeCompare(adminuserName) == 0 ) && (adminpass.localeCompare(adminpwd) == 0)){
+     window.location.replace("awdrgyjilp.html");
+    }
+  
+  });
+</script> -->
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Computer Science</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+       </head>
+    <body>
+        <h1 style="color:#623955; font-size:xx-large;margin: 40px; text-align: center;">Welcome to Geeks Portal...</h1>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+        
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCdIObAan0FFo2kp8Z3rOYjAa_7yGue0FM",
+    authDomain: "portal-50aff.firebaseapp.com",
+    databaseURL: "https://portal-50aff.firebaseio.com",
+    projectId: "portal-50aff",
+    storageBucket: "portal-50aff.appspot.com",
+    messagingSenderId: "504926273330",
+    appId: "1:504926273330:web:cb152d046a5f6c52c3612b"
+  };
+
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+ // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+</script>
+
+<script src="login.js"></script>    
+        
+
+        </body>
+    </html>

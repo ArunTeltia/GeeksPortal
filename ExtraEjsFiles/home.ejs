@@ -1,0 +1,72 @@
+<%- include('partials/header.ejs') %>
+
+<body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Home Page</h1>
+      <p class="lead">Here You get all Articles YOU want.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <% posts.forEach(function(post){ %> <% var Id="h"+post.Id %> <% var
+      Idd="ht"+post.Id %> <% var tags=[] %> <% if(post.Title){ %> <%
+      tags=post.Title.split(",")} %>
+
+      <div class="col-12 mb-5">
+        <div class="card CardArticle">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="card-title text-center"><%= post.Head %></h3>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-12" id="<%" ="Idd" %>
+                >
+                <div id="<%" ="Id" %>class="d-none"><%= post.Blog %></div>
+              </div>
+              <a
+                class="text-center"
+                href="/home/<%= post.Head %>-<%= post.Id %>  "
+                >...Read more</a
+              >
+              <!-- <div class="col-12">
+                        </div> -->
+              <script>
+                var a = "<%= Idd %>";
+                var b = "<%= Id %>";
+                var txt = document.getElementById(b).textContent;
+                var s = txt;
+                for (let i = 300; i < s.length; i++) {
+                  if (
+                    s.charAt(i) !== "<" &&
+                    s.charAt(i) !== ">" &&
+                    s.charAt(i) !== "/"
+                  ) {
+                    s = s.substring(0, i);
+                    break;
+                  }
+                }
+                document.getElementById(a).innerHTML = s;
+              </script>
+            </div>
+            <hr />
+            <div class="row">
+              <% tags.forEach(tag=>{ %>
+              <div class="col-2">
+                <a href="/home/tag/<%= tag %>"> <%= tag %> </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+  </div>
+
+  <%- include("partials/footer") %>
+</body>

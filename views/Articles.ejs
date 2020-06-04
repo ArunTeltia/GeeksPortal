@@ -1,0 +1,74 @@
+<%- include("partials/header") %>
+
+<body class="bg-light">
+  <header>
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+          <a href="/articles/Article"
+            ><button
+              role="button"
+              id="ViewArticle"
+              class="btn btn-warning mb-2"
+            >
+              VIEW ARTICLES
+            </button></a
+          >
+        </div>
+        <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+          <a href="/articles/Code">
+            <button role="button" id="ViewCode" class="btn btn-warning mb-2">
+              VIEW CODE
+            </button></a
+          >
+        </div>
+        <div class="col-sm-4 d-flex justify-content-center p-sm-1">
+          <a href="/articles/Puzzle">
+            <button role="button" id="ViewPuzzle" class="btn btn-warning mb-2">
+              VIEW PUZZLES
+            </button></a
+          >
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="" id="ViewA">
+        <div class="accordion" id="a1">
+          <% posts.forEach(function(post){ %>
+           <% var Id="b"+post.Id %>
+            <% var Idd="#b"+post.Id %>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header" id="h1">
+                  <div class="row">
+                    <div class="col-10">
+                      <p>Article : <%= post.Head %></p>
+                      <p></p>
+                    </div>
+                    <div class="col-2">
+                      <a href="/posts/<%= theme %>-<%= post.Head %>"
+                        ><button
+                          type="button"
+                          class="btn btn-danger"
+                          data-toggle="collapse"
+                          aria-expanded="false" >VIEW
+                        </button></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%})%>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%-include("partials/footer") %>
+</body>

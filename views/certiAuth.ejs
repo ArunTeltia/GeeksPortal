@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Certi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css "
+    />
+    <style>
+        .heading{
+            color:#623954 ;
+            padding: 20px;
+            background-color:#EEEEEE ;
+            margin: 50px;
+            font-weight: bold;
+        }
+        .btn-primary{
+            background-color:#623954 ;
+            border: 1px solid #623954;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4 class="heading">Certificate Verification</h4>
+               
+            </div>
+           
+            <div class="col-12 d-flex justify-content-center ">
+                <div class="card w-75 ">
+                    <% if(message){ %> 
+                        <div style="text-align:center;" role="alert" class="alert  alert-<%=message.type%>">
+                          <strong><%= message.intro %>  </strong><%= message.message %> 
+                      </div>
+                      <% } %>
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="/verify_certificate" method="POST"> 
+                                    <div class="form-group">
+                                        <input type="text" name="certiNum" value="<%=input%>" class="form-control" >
+                                      </div>
+                                      <button type="submit" class="btn btn-primary btn-block">VERIFY</button>
+                                </form>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <% if(details.length!==0){ %> 
+                                    <h6 class="text-success">Certificate number is valid </h6>
+                                    <div class="row" style="color: #999595;">
+                                        <div class="col-6">
+                                           <h6>Name</h6> 
+                                        </div>
+                                        <div class="col-6">
+                                            <h6><%= details.Name %> </h6> 
+                                         </div>
+                                    </div>
+                                    <div class="row" style="color: #999595;">
+                                        <div class="col-6">
+                                           <h6>Role</h6> 
+                                        </div>
+                                        <div class="col-6">
+                                            <h6><%= details.Role %> </h6> 
+                                         </div>
+                                    </div>
+                                    <div class="row" style="color: #999595;">
+                                        <div class="col-6">
+                                           <h6>Institute</h6> 
+                                        </div>
+                                        <div class="col-6">
+                                            <h6><%= details.InstituteName %> </h6> 
+                                         </div>
+                                    </div>
+                                    <div class="row" style="color: #999595;">
+                                        <div class="col-6">
+                                           <h6>Date of certification</h6> 
+                                        </div>
+                                        <div class="col-6">
+                                            <h6 id="date"></h6> 
+                                            <script>
+                                                var date=Date.parse("<%= details.EndDate %>");
+                                                var d=new Date(date);
+                                                document.querySelector("#date").textContent=d.getDate() + '-' + (d.getMonth()+1) + '-' + d.getFullYear();
+                                            </script>
+                                         </div>
+                                    </div>
+                              <%  } %> 
+                            </div>
+                        </div>
+                        
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
