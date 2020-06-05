@@ -11,10 +11,23 @@ var tg = [];
 contribute
   .route("/")
   .get(authCheck, (req, res) => {
-    res.render("E2", {
-      photo: req.user.Photo,
-      user: req.user,
+    var sql = "SELECT Title FROM `Tags`";
+    connection.query(sql, (err, results, fields) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      var a=results.map(r=>{
+        return r.Title;
+      })
+
+      console.log(a);
+      res.render("E2", {
+        photo: req.user.Photo,
+        user: req.user,
+        sugg:a
+      });
     });
+  
   })
   .post(authCheck, (req, res) => {
     let obj = JSON.parse(JSON.stringify(req.body));
@@ -123,6 +136,19 @@ contribute
     res.redirect("/compose");
   });
 
+  contribute.get('/tags',function(req,res){
+    var sql = "SELECT Title FROM `Tags`";
+    connection.query(sql, (err, results, fields) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      var a=results.map(r=>{
+        return r.Title;
+      })
+       
+          res.end(JSON.stringify(a));
+      });
+    });
   // contribute.post('/file_upload', function (req, res) {
 
   //   upload_file(req, function(err, data) {
