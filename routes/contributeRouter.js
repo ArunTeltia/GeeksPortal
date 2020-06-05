@@ -17,9 +17,13 @@ contribute
     });
   })
   .post(authCheck, (req, res) => {
-    // console.log(req.user);
     let obj = JSON.parse(JSON.stringify(req.body));
     console.log(obj);
+    // console.log(obj.blog.substring(0,1))
+    // console.log(obj.blog.substring(obj.blog.length-1,obj.blog.length));
+    // var Blog=obj.blog.toString();
+    // var Blog=JSON.stringify(obj.blog);
+    // console.log(Blog)
     let ArtTags = JSON.parse(obj.tags);
     // console.log(ArtTags);
     var tags = [];
@@ -27,7 +31,6 @@ contribute
       tags.push(e.value);
     });
 
-    // var tags = obj.tags.split(',');
 
     console.log(tags);
 
@@ -44,30 +47,11 @@ contribute
         tagArray.push(r.Title);
       });
 
-      if (obj.lang === "Puzzle") {
-        var sql =
-          "INSERT INTO `AllArticles` (Level,Head,Blog,Type,UserId) VALUES ('" +
-          obj.level +
-          "','" +
-          obj.head +
-          "','" +
-          obj.blog +
-          "','" +
-          obj.theme +
-          "','" +
-          req.user+
-          "')";
-        connection.query(sql, function (err, results) {
-          if (err) throw err;
+      console.log(tagArray);
 
-          console.log(results);
-          maxId = results.insertId;
-        });
-      } else {
+      if (obj.theme === "Puzzle") {
         var sql =
-          "INSERT INTO `AllArticles` (Lang,Level,Head,Blog,Type,UserId) VALUES ('" +
-          obj.lang +
-          "','" +
+          "INSERT INTO AllArticles (Level,Head,Blog,Type,UserId) VALUES ('" +
           obj.level +
           "','" +
           obj.head +
@@ -78,6 +62,15 @@ contribute
           "','" +
           req.user.ID+
           "')";
+        connection.query(sql, function (err, results) {
+          if (err) throw err;
+
+          console.log(results);
+          maxId = results.insertId;
+        });
+      } else {
+        var sql =
+          "INSERT INTO AllArticles (Lang,Level,Head,Blog,Type,UserId) VALUES ('" + obj.lang + "','" + obj.level + "','" + obj.head + "','" + obj.blog + "','" + obj.theme + "','" + req.user.ID + "')";
         connection.query(sql, function (err, results) {
           if (err) throw err;
 
