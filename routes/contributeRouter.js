@@ -11,7 +11,6 @@ var tg = [];
 contribute
   .route("/")
   .get(authCheck, (req, res) => {
-      console.log(a);
       res.render("E2", {
         photo: req.user.Photo,
         user: req.user
@@ -20,7 +19,7 @@ contribute
   })
   .post(authCheck, (req, res) => {
     let obj = JSON.parse(JSON.stringify(req.body));
-    
+
     console.log(obj);
     
     let ArtTags = JSON.parse(obj.tags);
