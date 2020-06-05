@@ -263,4 +263,15 @@ router
       });
     });
 
+    router.get('/:head-:postId/search',function(req,res){
+      connection.query('SELECT Head from AllArticles where Status="ACCEPTED" and Head like "%'+req.query.key+'%"', function(err, rows, fields) {
+          if (err) throw err;
+          var data=[];
+          for(i=0;i<rows.length;i++)
+            {
+              data.push(rows[i].Head);
+            }
+            res.end(JSON.stringify(data));
+        });
+      });
 module.exports = router;
