@@ -237,9 +237,17 @@
 						rows.each(function () {
 							var row = this;
 							var td = $(row).find('td:nth-child(2)');
+							var td1 = $(row).find('td:nth-child(3)');
+							var td2 = $(row).find('td:nth-child(4)');
+							var td3 = $(row).find('td:nth-child(5)');
+							var td4 = $(row).find('td:nth-child(6)');
+
 							console.log(td.html());
 							console.log(searchText);
-							if (td.html().toLowerCase().indexOf(searchText) == -1) {
+							if (td.html().toLowerCase().indexOf(searchText) == -1 && td1.html().toLowerCase().indexOf(
+									searchText) == -1 && td3.html().toLowerCase().indexOf(searchText) == -1 && td2.html()
+								.toLowerCase().indexOf(searchText) == -1 && td4.html().toLowerCase().indexOf(searchText) == -1
+							) {
 								$(row).hide();
 							} else {
 								$(row).show();
