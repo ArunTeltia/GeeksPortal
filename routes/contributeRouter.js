@@ -11,32 +11,18 @@ var tg = [];
 contribute
   .route("/")
   .get(authCheck, (req, res) => {
-    var sql = "SELECT Title FROM `Tags`";
-    connection.query(sql, (err, results, fields) => {
-      if (err) {
-        return console.error(err.message);
-      }
-      var a=results.map(r=>{
-        return r.Title;
-      })
-
       console.log(a);
       res.render("E2", {
         photo: req.user.Photo,
-        user: req.user,
-        sugg:a
+        user: req.user
       });
-    });
   
   })
   .post(authCheck, (req, res) => {
     let obj = JSON.parse(JSON.stringify(req.body));
+    
     console.log(obj);
-    // console.log(obj.blog.substring(0,1))
-    // console.log(obj.blog.substring(obj.blog.length-1,obj.blog.length));
-    // var Blog=obj.blog.toString();
-    // var Blog=JSON.stringify(obj.blog);
-    // console.log(Blog)
+    
     let ArtTags = JSON.parse(obj.tags);
     // console.log(ArtTags);
     var tags = [];
@@ -149,27 +135,5 @@ contribute
           res.end(JSON.stringify(a));
       });
     });
-  // contribute.post('/file_upload', function (req, res) {
-
-  //   upload_file(req, function(err, data) {
   
-  //     if (err) {
-  //       return res.status(404).end(JSON.stringify(err));
-  //     }
-  //     res.send(data);
-  //   });
-  // });
-  
-  // // Image POST handler.
-  // contribute.post('/image_upload', function (req, res) {
-  
-  //   upload_image(req, function(err, data) {
-  
-  //     if (err) {
-  //       return res.status(404).end(JSON.stringify(err));
-  //     }
-  //     res.send(data);
-  //   });
-  // });
-
 module.exports = contribute;
