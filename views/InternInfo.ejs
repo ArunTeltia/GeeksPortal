@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Intern Info</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<div style="position: center;">
+			<h1 style="text-align: center;">Fill The Interns Info</h1>
+		</div>
+		<form action="/intern/form" method="POST">
+			<div class="form-group">
+				<label>Name of Intern</label>
+				<input name="name" type="text" class="form-control" placeholder="Enter name">
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input name="email" type="email" class="form-control" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label>Role</label>
+				<input name="role" type="text" class="form-control" placeholder="Enter role">
+			</div>
+			<div class="form-group">
+				<label>Description of Work</label>
+				<input name="dow" type="text" class="form-control" placeholder="Enter description of work">
+			</div>
+			<div class="form-group">
+				<label>Start Date</label>
+				<input name="sdate" type="date" class="form-control" placeholder="Enter Starting date">
+			</div>
+			<div class="form-group">
+				<label>End Date</label>
+				<input name="edate" type="date" class="form-control" placeholder="Enter end date">
+			</div>
+			<div class="form-group">
+				<label>Name of Intern</label>
+				<input name="name" type="name" class="form-control" placeholder="Enter name">
+			</div>
+			<div class="form-group">
+				<label>Stipend Paid</label>
+				<input name="stipend" type="number" class="form-control" placeholder="Enter Stipend Paid">
+			</div>
+			<div class="form-group">
+				<label>Hired Via</label>
+				<input name="source" type="text" class="form-control" placeholder="Enter Source">
+			</div>
+			<div class="form-group">
+				<label>Certificate Number</label>
+				<input name="certi" type="text" class="form-control" placeholder="Enter Certificate Number">
+			</div>
+			<div class="form-group">
+				<label>Institute name</label>
+				<input name="institute" type="text" class="form-control" placeholder="Enter Institute Name">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+
+</html>
