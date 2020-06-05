@@ -3,18 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
 
     <title>Computer Science</title>
+    <base href="/">
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="css/slick.css" />
@@ -23,8 +22,11 @@
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
+  
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
@@ -38,15 +40,15 @@
             padding-right: 20px;
         }
         
-        .img-replace {
+  .img-replace {
 display: inline-block;
 overflow: hidden;
 text-indent: 100%; 
 color: transparent;
 white-space: nowrap;
 }
-        
-        .main-nav ul {
+  
+  .main-nav ul {
 position:fixed;
 width: 100%;
 top: 8%;
@@ -63,9 +65,9 @@ padding: 2px 10px;
 text-decoration: none;
 color: #FFF;
 /* -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out; */
+-moz-transition: all 0.30s ease-in-out;
+-ms-transition: all 0.30s ease-in-out;
+-o-transition: all 0.30s ease-in-out; */
 }
 
 
@@ -219,53 +221,7 @@ display: none;
 #login.is-selected, #signup.is-selected, #reset-password.is-selected {
 display: block;
 }
-/* /* /* .sign-up {
-padding-top: 100px;
-.col-sm-8 {
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-display: block;
-margin: 0 auto;
-}
-.col-sm-6 {
-display: block;
-margin: 0 auto;
-h2 {
-  text-align: center;
-  padding: 30px;
-}
-&.col-sign-up {
-  background: $white;
-  form {
-    padding: 0px 15px 30px 15px;
-    input {
-      height: 40px;
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-  button {
-    width: 100%;
-    background: $blue;
-    border: none;
-    height: 20px;
-  }
-}
-&.col-sign-in {
-  h2 {
-    color: $white;
-  }
-  button {
-    height: 40px;
-    color: $black;
-    background: $white;
-    margin-top: 25px !important;
-    display: block;
-    margin: 0 auto;
-  } */
-/* } 
-}
-}  */
+
 #standalone-container {
 margin: 50px auto;
 max-width: 1700px;
@@ -280,8 +236,8 @@ box-sizing: border-box;
 
 /*the container must be positioned relative:*/
 .autocomplete {
-display: inline-block;
-/* float: right; */
+/* display: inline-block; */
+float: right;
 }
 
 input {
@@ -346,30 +302,14 @@ display:none;
  cursor: pointer;
  }		
     </style>
-    <script type="text/javascript">
-    function myFunction() {
-    
-    
-    $("#cookie").hide();
-    $("#get").hide();
-}
-  </script>
-  <!-- <script>
-window.console = window.console || function(t) {};
-</script>
-<script>
-if (document.location.search.match(/type=embed/gi)) {
-window.parent.postMessage("resize", "*");
-}
-</script>   -->
+  
+<link rel="stylesheet" href="/tagify/tagify.css">
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<script src="/tagify/tagify.js"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="/tagify/jQuery.tagify.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
 
-
-
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.js"></script> -->
-
-<script src="ckeditor/ckeditor.js"></script>
 
 </head>
 <body>
@@ -395,18 +335,24 @@ window.parent.postMessage("resize", "*");
 
             <!-- menu nav -->
             <div class="menu-nav"  >
-                
-                <ul class="menu-list"  >
-                    <li style="float: right;font-weight: bold;"><a class="button" style="color:white" id="logout" >
-                        LOG OUT</a></li>
-                  
-                      <a href="sas.html"><li style="float: right;font-weight: normal;color:white" class="button" >
-                           <div id="profileviewer"></div>
-                        </li></a>
+                    
+            <ul class="menu-list"  >
+              <% if(user){ %>
+                <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+                <li style="float: right;font-weight: bold;"><a href="/profile">
+                  <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
+                  <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
+                  <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+                  <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+                </a></li>
+           <% }else{ %>
+            <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
+
+            <% } %> 
                       
                   
                   
-                        <li><a href="home.html">Home</a></li>
+                        <li><a href="/home">Home</a></li>
                         <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
                             <ul class="custom-menu" >
                                 <li><a href="algo.html">Analysis of algorithm</a></li>
@@ -463,187 +409,214 @@ window.parent.postMessage("resize", "*");
                         
                         <li><a href="fncode.html">Codes</a></li>
                     <li><a href="fnpuzzle.html">Puzzles</a></li>
-                        </ul>
-                        
-               </div>
-               </div>
-               </div>
-               
+          </ul>
+          
+       </div>
+       </div>
+       </div>
+       
         <!-- /container -->
     </div>
     <!-- /NAVIGATION -->
 
-<section>     
-<main>
-<!-- section -->
-<div class="section" style="padding: 10px;">
-    <!-- container -->
-    <div class="container">
-        <div class="jumbotron static-slider" style="padding: 10px;">
-                        <h4 class="text-center">Editor</h4>
-                    </div>
-                <!-- </div>  -->
-                <form action="/compose" method="POST">
-                  <div class="form-group mt-3">
-                  <div class="row">
-                <div class="col-12 d-flex justify-content-center text-center">
-                  <h4>Choose the theme for the editor use.</h4>
-                </div>
-                  <div class="col-12 d-flex justify-content-center text-center">
-                    <select name="theme">
-                      <option> <button class="button1 "  id="puz" name="type">Puzzle</button></option>
-                       <option><button class="button2" id="code" name="type">Code</button></option>
-                       <option><button class="button3 " id="art" name="type">Article</button></option>
+    <section>     
+      <main>
+      <!-- section -->
+      <div class="section" style="padding: 10px;">
+          <!-- container -->
+          <div class="container">
+              <div class="jumbotron static-slider" style="padding: 10px;">
+                              <h4 class="text-center">Editor</h4>
+                          </div>
+                      <!-- </div>  -->
+                      <form action="/compose" method="POST">
+                        <div class="form-group mt-3">
+                        <div class="row">
+                      <div class="col-12 d-flex justify-content-center text-center">
+                        <h4>Choose the theme for the editor use.</h4>
+                      </div>
+                        <div class="col-12 d-flex justify-content-center text-center">
+                          
+                          <select id="ty" name="theme">
+                      <option><button class="button2" value="Code" id="code" name="type">Code</button></option>
+                      <option> <button class="button1 " value="Puzzle" id="puz" name="type">Puzzle</button></option>
+                       <option><button class="button3 " value="Article" id="art" name="type">Article</button></option>
                       </select>
-                  </div>
-                  </div>
-                  </div>
-              <div class="form-group mt-3">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-center text-center">
-                    <h4>Choose the language to be used and the difficulty level</h4>
-                  </div>
-                  <div class="col-6 d-flex justify-content-center text-center" style="margin-bottom: 10px;">
-                    <div class="row">
-                      <div class="d-block col-12">
-                        <h5>Programming language</h5>
-                        <select name="lang">
-                          <option> <button class="button1 "  id="t1" name="type">C++</button></option>
-                           <option><button class="button2" id="t2" name="type">Java</button></option>
-                           <option><button class="button3 " id="t3" name="type">C</button></option>
-                           <option><button class="button3 " id="t4" name="type">Python</button></option>
-                          </select>
-                      </div>
-                    </div>
-                   </div>
-                   <div class="col-6 d-flex justify-content-center text-center">
-                    <div class="row">
-                      <div class="d-block col-12">
-                        <h5>Difficulty Level</h5>
-                          <select name="level">
-                          <option> <button class="button1 "  id="l1" >Easy</button></option>
-                            <option><button class="button2" id="l2" >Medium</button></option>
-                            <option><button class="button3 " id="l3" >Hard</button></option>
-                            </select>
-                      </div>
-                    </div>
-                   </div>
-                 </div>
-               </div>
-              <div class="form-group">
-                <!-- <label for="head">Blog Heading</label> -->
-                <input type="text" name="head" class="form-control" placeholder="Enter article title here.." required id="head">
-               </div>
-              <div class="form-group">
-                <!-- <label for="blog">Blog Body</label> -->
-                <textarea  id="blog"  name="blog"></textarea>
-     
-                
-                
-              </div>
-              <div class="form-group">
-                <p style="text-align:right;">Choose the Appropriate Tags or type manually.</p>
-                <!-- <label for="tags"style="text-align:right;">Choose the Appropriate Tags or type manually.</label> -->
-                <input type="text" name="tags" class="form-control" style="width: 300px;  float:right;" id="tags">
-              </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>   
-        </div> 
+                     
 
-            </main>
-            </section>
-            
-<div class="footer-bottom" style="float: right;padding-right: 10px;">
-                            
-                             <a  id="backtotop" href="#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
-                    </div> 
-        </div> 
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-]
-                  
-<!-- FOOTER -->
-<footer id="footer" class="section section-grey">
-    <!-- container -->
-    <div class="container">
-        <hr>
-        <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <!-- footer copyright -->
-                    
-                    <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"style="padding-right:30px;">Terms and Conditions</a>
-                        <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a></p>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-
-                <!-- Footer -->
-                <div class="container-fluid footer-container">
-                    <footer class="footer">
-                        <div class="footer-lists">
-                           
-                                <div class="col-sm">
-                                    
-                                    <p></p>
-
-                                    
-                                </div>
-                            </div>
                         </div>
+                        </div>
+                        </div>
+                    <div class="form-group mt-3">
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-center text-center">
+                          <h4>Choose the language to be used and the difficulty level</h4>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center text-center" style="margin-bottom: 10px;">
+                          <div class="row">
+                            <div id="hide" class="d-block col-12">
+                              <h5>Programming language</h5>
+                              <select name="lang">
+                                <option> <button class="button1 "  id="t1" name="type">C++</button></option>
+                                 <option><button class="button2" id="t2" name="type">Java</button></option>
+                                 <option><button class="button3 " id="t3" name="type">C</button></option>
+                                 <option><button class="button3 " id="t4" name="type">Python</button></option>
+                                </select>
+                            </div>
 
+                           
+                          </div>
+                         </div>
+                         <div class="col-6 d-flex justify-content-center text-center">
+                          <div class="row">
+                            <div class="d-block col-12">
+                              <h5>Difficulty Level</h5>
+                                <select name="level">
+                                <option> <button class="button1 "  id="l1" >Easy</button></option>
+                                  <option><button class="button2" id="l2" >Medium</button></option>
+                                  <option><button class="button3 " id="l3" >Hard</button></option>
+                                  </select>
+                            </div>
+                          </div>
+                         </div>
+                       </div>
+                     </div>
+                    <div class="form-group">
+                      <!-- <label for="head">Blog Heading</label> -->
+                      <input type="text" name="head" class="form-control" placeholder="Enter article title here.." required id="head">
+                     </div>
+                    <div class="form-group">
+                      <!-- <label for="blog">Blog Body</label> -->
+                      <textarea  id="blog"  name="blog"></textarea>
+
+                      <script>
+                        new FroalaEditor('#blog',{
+                       fileUploadURL: './e2/file_upload',
+                       fileUploadParams: {
+                         id: 'my_editor'
+                       },
+                       imageUploadURL: './e2/image_upload',
+                       imageUploadParams: {
+                         id: 'my_editor'
+                       },
+                     });
+                       </script>
+                     
+                    </div>
+                    <div class="form-group">
+                      <style contenteditable>
+                        .tags-look .tagify__dropdown__item{
+                          display: inline-block;
+                          border-radius: 3px;
+                          padding: .3em .5em;
+                          border: 1px solid #CCC;
+                          background: #F3F3F3;
+                          margin: .2em;
+                          font-size: .85em;
+                          color: black;
+                          transition: 0s;
+                        }
+                        
+                        .tags-look .tagify__dropdown__item--active{
+                          color: black;
+                        }
+                        
+                        .tags-look .tagify__dropdown__item:hover{
+                          background: lightyellow;
+                          border-color: gold;
+                        }
+                        </style>
+                      <p style="text-align:right;">Choose the Appropriate Tags or type manually.</p>
+                      <!-- <label for="tags"style="text-align:right;">Choose the Appropriate Tags or type manually.</label> -->
+                      <input type="text" name="tags" class="form-control tagify--custom-dropdown" style="width: 300px;  float:right;" id="tags">
+                      <!-- <input name='input-custom-dropdown' class='tagify--custom-dropdown' placeholder='write some tags' value='css, html, javascript'> -->
+
+                    </div>
+                    <script data-name="dropdown-tags">
+                      (function(){
                       
-                       
-                    </footer>
-                </div> 
-            </div>
-        </div>
-
-        <!-- <script src="js/jquery.min.js"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
-  
-     <script src="js/bootstrap.min.js"></script>
-     <!-- <script type="text/javascript">
-        CKEDITOR.replace('blog',{
-            "extraPlugins" : "imagebrowser",
-            "imageBrowser_listUrl":"/files"
-        });
-        </script> -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/nouislider.min.js"></script>
-    <script src="js/jquery.zoom.min.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-      CKEDITOR.replace( 'blog', {
-          filebrowserBrowseUrl: '/ckeditor/plugins/imagebrowser/browser/browser.html',
-          filebrowserUploadUrl: '/upload_url?Type=File',
-          filebrowserImageUploadUrl: '/upload_url?Type=Image',
-          filebrowserFlashUploadUrl: '/upload_url?Type=Flash'
-      });
-      
-         
-      var description=CKEDITOR.instances.editor1.getData();
-        console.log(description);
-              var data = {description:description};
-              $.ajax({
-                url: "/backend/api/v1/savedata",
-                method:'post',
-                data:data,
-                success:function(data){
+                      var input = document.querySelector('input[name="tags"]'),
+                          // init Tagify script on the above inputs
+                          tagify = new Tagify(input, {
+                            whitelist: ["Data Structure","Algorithm","Operating System","Data Analysis","DBMS"],
+                            maxTags: 10,
+                            dropdown: {
+                              maxItems: 20,           // <- mixumum allowed rendered suggestions
+                              classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+                              enabled: 0,             // <- show suggestions on focus
+                              closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+                            }
+                          })
+                      })()
+                      </script>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
                  
-               alert("send data");
+              </div>   
+              </div> 
       
-                }
-            });
-           
+                  </main>
+                  </section>
+         
+]
+                     
+   <!-- FOOTER -->
+   <footer id="footer" class="section section-grey">
+       <!-- container -->
+       <div class="container">
+           <hr>
+           <div class="row">
+                   <div class="col-md-8 col-md-offset-2 text-center">
+                       <!-- footer copyright -->
+                       
+                       <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"style="padding-right:30px;">Terms and Conditions</a>
+                           <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a></p>
+                   </div>
+               </div>
+               <!-- /row -->
+           </div>
+
+                   <!-- Footer -->
+                   <div class="container-fluid footer-container">
+                       <footer class="footer">
+                           <div class="footer-lists">
+                              
+                                   <div class="col-sm">
+                                       
+                                       <p></p>
+
+                                       
+                                   </div>
+                               </div>
+                           </div>
+
+                         
+                          
+                       </footer>
+                   </div> 
+               </div>
+           </div>
+
+           <script src="js/jquery.min.js"></script>
+       <script src="js/bootstrap.min.js"></script>
+       <script src="js/slick.min.js"></script>
+       <script src="js/nouislider.min.js"></script>
+       <script src="js/jquery.zoom.min.js"></script>
+       <script src="js/main.js"></script>
+       <script>
+     
+        $("#ty").change(function(){
+          var sel=$(this).children("option:selected").val();
+          // alert(sel);
+          if(sel==="Puzzle"){
+            $("#hide").hide();
+          }
+          else{
+            $("#hide").show();
+          }
         });
-      
-            </script>
+
+    </script>
+  
     </body>
 </html>
