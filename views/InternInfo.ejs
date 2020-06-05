@@ -10,10 +10,18 @@
 </head>
 
 <body>
+
 	<div class="container">
 		<div style="position: center;">
 			<h1 style="text-align: center;">Fill The Interns Info</h1>
 		</div>
+		<% if(errors.length!=0){ %>
+		<%errors.array().map((err)=>{ %>
+		<div class="alert alert-danger" role="alert">
+			<%=err.msg %>
+		</div>
+		<%})%>
+		<%}%>
 		<form action="/intern/form" method="POST">
 			<div class="form-group">
 				<label>Name of Intern</label>
@@ -38,10 +46,6 @@
 			<div class="form-group">
 				<label>End Date</label>
 				<input name="edate" type="date" class="form-control" placeholder="Enter end date">
-			</div>
-			<div class="form-group">
-				<label>Name of Intern</label>
-				<input name="name" type="name" class="form-control" placeholder="Enter name">
 			</div>
 			<div class="form-group">
 				<label>Stipend Paid</label>
