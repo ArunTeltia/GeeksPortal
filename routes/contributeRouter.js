@@ -11,15 +11,17 @@ var tg = [];
 contribute
   .route("/")
   .get(authCheck, (req, res) => {
-    res.render("E2", {
-      photo: req.user.Photo,
-      user: req.user,
-    });
+      res.render("E2", {
+        photo: req.user.Photo,
+        user: req.user
+      });
+  
   })
   .post(authCheck, (req, res) => {
-    // console.log(req.user);
     let obj = JSON.parse(JSON.stringify(req.body));
+
     console.log(obj);
+    
     let ArtTags = JSON.parse(obj.tags);
     // console.log(ArtTags);
     var tags = [];
@@ -27,7 +29,6 @@ contribute
       tags.push(e.value);
     });
 
-    // var tags = obj.tags.split(',');
 
     console.log(tags);
 
@@ -44,30 +45,11 @@ contribute
         tagArray.push(r.Title);
       });
 
-      if (obj.lang === "Puzzle") {
-        var sql =
-          "INSERT INTO `AllArticles` (Level,Head,Blog,Type,UserId) VALUES ('" +
-          obj.level +
-          "','" +
-          obj.head +
-          "','" +
-          obj.blog +
-          "','" +
-          obj.theme +
-          "','" +
-          req.user+
-          "')";
-        connection.query(sql, function (err, results) {
-          if (err) throw err;
+      console.log(tagArray);
 
-          console.log(results);
-          maxId = results.insertId;
-        });
-      } else {
+      if (obj.theme === "Puzzle") {
         var sql =
-          "INSERT INTO `AllArticles` (Lang,Level,Head,Blog,Type,UserId) VALUES ('" +
-          obj.lang +
-          "','" +
+          "INSERT INTO AllArticles (Level,Head,Blog,Type,UserId) VALUES ('" +
           obj.level +
           "','" +
           obj.head +
@@ -78,6 +60,15 @@ contribute
           "','" +
           req.user.ID+
           "')";
+        connection.query(sql, function (err, results) {
+          if (err) throw err;
+
+          console.log(results);
+          maxId = results.insertId;
+        });
+      } else {
+        var sql =
+          "INSERT INTO AllArticles (Lang,Level,Head,Blog,Type,UserId) VALUES ('" + obj.lang + "','" + obj.level + "','" + obj.head + "','" + obj.blog + "','" + obj.theme + "','" + req.user.ID + "')";
         connection.query(sql, function (err, results) {
           if (err) throw err;
 
@@ -130,27 +121,18 @@ contribute
     res.redirect("/compose");
   });
 
-  // contribute.post('/file_upload', function (req, res) {
-
-  //   upload_file(req, function(err, data) {
+  contribute.get('/tags',function(req,res){
+    var sql = "SELECT Title FROM `Tags`";
+    connection.query(sql, (err, results, fields) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      var a=results.map(r=>{
+        return r.Title;
+      })
+       
+          res.end(JSON.stringify(a));
+      });
+    });
   
-  //     if (err) {
-  //       return res.status(404).end(JSON.stringify(err));
-  //     }
-  //     res.send(data);
-  //   });
-  // });
-  
-  // // Image POST handler.
-  // contribute.post('/image_upload', function (req, res) {
-  
-  //   upload_image(req, function(err, data) {
-  
-  //     if (err) {
-  //       return res.status(404).end(JSON.stringify(err));
-  //     }
-  //     res.send(data);
-  //   });
-  // });
-
 module.exports = contribute;

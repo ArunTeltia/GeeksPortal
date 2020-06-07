@@ -345,13 +345,13 @@ $(document).ready(function(){
                               var a="<%= Idd %>";
                               var b="<%= Id %>";
                               var txt=document.getElementById(b).textContent;
-                              var s=txt;
-                                  for(let i=300;i<s.length;i++){
-                                  if(s.charAt(i)!=='<' && s.charAt(i)!=='>' && s.charAt(i)!=='/' ){
-                                      s=s.substring(0,i);
-                                      break;
-                                  }
-                              }
+                              var s=txt.substring(0,1000);
+                            //       for(let i=1000;i<s.length;i++){
+                            //       if(s.charAt(i)!=='<' && s.charAt(i)!=='>' && s.charAt(i)!=='/' ){
+                            //           s=s.substring(0,i);
+                            //           break;
+                            //       }
+                            //   }
                               document.getElementById(a).innerHTML=s;
                           </script>
                       </div>
