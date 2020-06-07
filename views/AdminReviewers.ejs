@@ -218,20 +218,20 @@
 									<td class="col-6"><%=result[1]%></td>
 									<td class="col-5"><%=result[2]%></td>
 									<td class="col-7"><%=result[3]%></td>
-									<th id="startdate" class="col-5">
+									<td id="startdate" class="col-5">
 										<script type="text/javascript">
 											var date = Date.parse("<%= result[4] %>");
 											var d = new Date(date);
 											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
 										</script>
-									</th>
-									<th id="enddate" class="col-5">
+									</td>
+									<td id="enddate" class="col-5">
 										<script type="text/javascript">
 											var date = Date.parse("<%= result[5] %>");
 											var d = new Date(date);
 											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
 										</script>
-									</th>
+									</td>
 									<td class="col-5"><label class="delete-row"> Delete</label></td>
 								</tr>
 							</tbody>

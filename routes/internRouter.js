@@ -65,7 +65,7 @@ router.post(
   }
 );
 
-router.get("/data", async (req, res) => {
+router.get("/data", AauthCheck, async (req, res) => {
   const limit = 5;
   const page = +req.query.page || 1;
   const offset = (page - 1) * limit;
@@ -93,6 +93,9 @@ router.get("/data", async (req, res) => {
     internData.push(obj);
   }
   // console.log(internData)
+  if (page > Math.ceil(totalIntern / limit)) {
+    res.render("404");
+  }
   res.render("InternsData", {
     results: internData,
     currentPage: page,
