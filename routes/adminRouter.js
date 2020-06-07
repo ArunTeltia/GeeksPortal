@@ -17,7 +17,7 @@ router.get("/general", AauthCheck, async (req, res) => {
     admin.push("Hello");
     admin.push(results4[0].Password);
   } catch (err) {
-    console.log("admin");
+    // console.log("admin");
     // console.error(err.message);
   }
   res.render("AdminGeneral", {
@@ -26,16 +26,17 @@ router.get("/general", AauthCheck, async (req, res) => {
 });
 router.post("/general", AauthCheck, async (req, res) => {
   var obj = JSON.parse(JSON.stringify(req.body));
-  var sql =
-    "update `Admin` set Name = '" +
-    obj.name +
-    "',UserName='" +
-    obj.username +
-    "',Password='" +
-    obj.password +
-    "',`D.O.B`='" +
-    obj.dob +
-    "'";
+  if (obj.name && obj.password && obj.username && obj.dob)
+    var sql =
+      "update `Admin` set Name = '" +
+      obj.name +
+      "',UserName='" +
+      obj.username +
+      "',Password='" +
+      obj.password +
+      "',`D.O.B`='" +
+      obj.dob +
+      "'";
 
   await connection.query(sql, (err, results, fields) => {
     if (err) throw err;
@@ -112,7 +113,7 @@ router.get("/Reviewers", AauthCheck, async (req, res) => {
   try {
     var sql3 = "select * from Reviewers";
     const results3 = await db.query(sql3);
-
+    console.log(results3);
     for (let i = 0; i < results3.length; i++) {
       let obj = [];
       obj.push(results3[i].Name);
@@ -133,7 +134,9 @@ router.get("/Reviewers", AauthCheck, async (req, res) => {
 });
 router.post("/Reviewers", AauthCheck, (req, res) => {
   var obj = JSON.parse(JSON.stringify(req.body));
-  if (obj.password && obj.name && obj.level && obj.email) {
+  // consol.log(obj);
+  console.log(req.body);
+  if (obj.password && obj.name && obj.level && obj.email && obj.sdate && obj.edate) {
     var post = {
       // ID = uuidv4(),
       Name: obj.name,
@@ -147,7 +150,8 @@ router.post("/Reviewers", AauthCheck, (req, res) => {
     var qry = "INSERT into Reviewers SET ?";
     connection.query(qry, post, (err, results, fields) => {
       if (err) throw err;
-      console.log(results);
+      // console.log(results);
+      res.redirect("/admin/home");
       // alert("Reviewers are added");
     });
   } else {
@@ -166,9 +170,9 @@ router.get("/home", AauthCheck, async (req, res) => {
 
 router.post("/login", AauthCheck, (req, res) => {
   let obj = JSON.parse(JSON.stringify(req.body));
-  console.log(obj);
-  console.log(obj.uname);
-  console.log(obj.psw);
+  // console.log(obj);
+  // console.log(obj.uname);
+  // console.log(obj.psw);
 
   var sql =
     "select UserName,Password from Admin where UserName='" +

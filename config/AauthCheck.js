@@ -6,13 +6,13 @@ const loggedIn = (req, res, next) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log(results);
-    console.log(req.user);
+    // console.log(results);
+    // console.log(req.user);
     if (req.user) {
       var found = results.find((r) => {
         return r.ID === req.user.ID;
       });
-      console.log(found);
+      // console.log(found);
       if (found) {
         next();
       } else {
