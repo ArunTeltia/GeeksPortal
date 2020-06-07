@@ -4,7 +4,7 @@ const {
   check,
   validationResult
 } = require("express-validator");
-const AauthCheck = require("./config/AauthCheck")
+const AauthCheck = require("../config/AauthCheck")
 const db = require("../config/makeDB");
 
 router.get("/form",AauthCheck, (req, res) => {
