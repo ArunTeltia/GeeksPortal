@@ -21,6 +21,7 @@ const connection = require("./config/DBconnection");
 const authRouter = require("./routes/authRouter");
 const passportSetup = require("./config/passport-setup");
 const ReviewersPassport = require("./config/Reviewer-passport");
+const AdminPassport = require("./config/Admin-passport");
 const upload = require("./imageUpload");
 // const authCheck = require("./config/authCheck");
 // const RauthCheck=require("./config/RauthCheck");

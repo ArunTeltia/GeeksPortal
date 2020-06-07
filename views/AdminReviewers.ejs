@@ -78,7 +78,7 @@
 				<!-- menu nav -->
 				<div class="menu-nav">
 					<ul class="menu-list">
-						<li><a href="/admin/login">LOG OUT</a></li>
+						<li><a href="auth/admin/logout">LOG OUT</a></li>
 					</ul>
 				</div>
 				<!-- menu nav -->
@@ -114,7 +114,8 @@
 					<label class="col-lg-3 col-form-label form-control-label">
 						<h3>NAME</h3>
 					</label>
-					<input id="name" class="col-lg-3 col-form-label" type="text" name="name" value="" placeholder="">
+					<input id="name" class="col-lg-3 col-form-label" type="text" name="name" value=""
+						placeholder="Please Enter a Unique name for user">
 					<br>
 					<br>
 					<label class="col-lg-3 col-form-label form-control-label"></label>
@@ -123,7 +124,8 @@
 					<label class="col-lg-3 col-form-label form-control-label">
 						<h3>Password</h3>
 					</label>
-					<input id="username" class="col-lg-3 col-form-label" type="text" name="password" value="" placeholder="">
+					<input id="username" class="col-lg-3 col-form-label" type="text" name="password" value=""
+						placeholder="">
 					<br>
 					<br>
 					<label class="col-lg-3 col-form-label form-control-label"></label>
@@ -139,17 +141,36 @@
 					<!-- /ignore this used for spacing -->
 					<br>
 					<label class="col-lg-3 col-form-label form-control-label">
-						<h3>Email</h3>
+						<h3>Starting Date</h3>
 					</label>
-					<input id="articlereviewed" class="col-lg-3 col-form-label" type="text" name="email" value="" placeholder="">
+					<input id="sdate" class="col-lg-3 col-form-label" type="date" name="sdate" value="" placeholder="">
 					<br>
 					<br>
 					<label class="col-lg-3 col-form-label form-control-label"></label>
 					<!-- /ignore this used for spacing -->
 					<br>
-					<button class="saveadmin" id="demo1" onclick="getAlert" type="submit"
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>EndingDate</h3>
+					</label>
+					<input id="edate" class="col-lg-3 col-form-label" type="date" name="edate" value="" placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>Email</h3>
+					</label>
+					<input id="articlereviewed" class="col-lg-3 col-form-label" type="text" name="email" value=""
+						placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<button id="onSub" class="saveadmin" id="demo1" onclick="" type="submit"
 						style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
-						<h3>Save</h3>
+						<h3><a href="/admin/home">Save</a></h3>
 					</button>
 					<!-- <button type="button" onClick="getAlert()" type="submit" id="saveReviewerinfo"
                   style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
@@ -183,6 +204,7 @@
 									<th class="col-5">Password</th>
 									<th class="col-7">Level</th>
 									<th class="col-5">StartDate</th>
+
 									<th class="col-5">EndDate</th>
 									<th class="col-5" style="text-align: center">Delete</th>
 								</tr>
@@ -196,8 +218,20 @@
 									<td class="col-6"><%=result[1]%></td>
 									<td class="col-5"><%=result[2]%></td>
 									<td class="col-7"><%=result[3]%></td>
-									<th class="col-5"><%=result[4]%></th>
-									<th class="col-5"><%=result[5]%></th>
+									<th id="startdate" class="col-5">
+										<script type="text/javascript">
+											var date = Date.parse("<%= result[4] %>");
+											var d = new Date(date);
+											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
+										</script>
+									</th>
+									<th id="enddate" class="col-5">
+										<script type="text/javascript">
+											var date = Date.parse("<%= result[5] %>");
+											var d = new Date(date);
+											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
+										</script>
+									</th>
 									<td class="col-5"><label class="delete-row"> Delete</label></td>
 								</tr>
 							</tbody>
@@ -293,8 +327,10 @@
 
 						console.log(td.html());
 						console.log(searchText);
-						if (td.html().toLowerCase().indexOf(searchText) == -1 && td1.html().toLowerCase().indexOf(
-								searchText) == -1 && td2.html().toLowerCase().indexOf(searchText) == -1 && td3.html()
+						if (td.html().toLowerCase().indexOf(searchText) == -1 && td1.html().toLowerCase()
+							.indexOf(
+								searchText) == -1 && td2.html().toLowerCase().indexOf(searchText) == -
+							1 && td3.html()
 							.toLowerCase().indexOf(searchText) == -1
 						) {
 							$(row).hide();

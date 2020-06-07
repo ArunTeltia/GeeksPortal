@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const connection = require("../config/DBconnection");
 const db = require("../config/makeDB");
+const {
+  v4: uuidv4
+} = require("uuid");
+const AauthCheck = require("../config/AauthCheck");
 
-router.get("/login", (req, res) => {
-  res.render("AdminLogin");
-});
-router.get("/general", async (req, res) => {
+
+router.get("/general", AauthCheck, async (req, res) => {
   let admin = [];
   try {
     var sql4 = "select Name,UserName,`D.O.B`,Password from Admin";
@@ -15,14 +17,14 @@ router.get("/general", async (req, res) => {
     admin.push("Hello");
     admin.push(results4[0].Password);
   } catch (err) {
-    console.log("admin")
+    console.log("admin");
     // console.error(err.message);
   }
   res.render("AdminGeneral", {
-    results4: admin
+    results4: admin,
   });
 });
-router.post("/general", async (req, res) => {
+router.post("/general", AauthCheck, async (req, res) => {
   var obj = JSON.parse(JSON.stringify(req.body));
   var sql =
     "update `Admin` set Name = '" +
@@ -42,7 +44,7 @@ router.post("/general", async (req, res) => {
   res.render("adminHome");
 });
 
-router.get("/Articles", async (req, res) => {
+router.get("/Articles", AauthCheck, async (req, res) => {
   let articles = [];
   try {
     var sql2 = "select * from AllArticles A left join Users U on A.UserId=U.ID";
@@ -61,20 +63,20 @@ router.get("/Articles", async (req, res) => {
     console.log("All articles");
   }
   res.render("AdminArticles", {
-    results2: articles
+    results2: articles,
   });
 });
-router.post("/Articles", async (req, res) => {
-  var sql = 'UPDATE `AllArticles` set Status="REJECTED" ,Reviewed="TRUE" WHERE Id=' +
+router.post("/Articles", AauthCheck, async (req, res) => {
+  var sql =
+    'UPDATE `AllArticles` set Status="REJECTED" ,Reviewed="TRUE" WHERE Id=' +
     req.body.Query;
   connection.query(sql, (err, results, fields) => {
     if (err) throw err;
     console.log(results);
   });
   res.render("adminHome");
-
-})
-router.get("/Users", async (req, res) => {
+});
+router.get("/Users", AauthCheck, async (req, res) => {
   let users = [];
   try {
     var sql = "select * from Users";
@@ -90,29 +92,26 @@ router.get("/Users", async (req, res) => {
       users.push(obj);
     }
   } catch (err) {
-    console.log("users")
+    console.log("users");
     // console.error(err.message);
   }
   res.render("AdminUsers", {
-    results: users
-  })
-
+    results: users,
+  });
 });
 
-router.post("/Users", (req, res) => {
+router.post("/Users", AauthCheck, (req, res) => {
   var sql = "delete from Users where FirstName='" + req.body.Query + "'";
   connection.query(sql, (err, results, fields) => {
     if (err) throw err;
     console.log(results);
   });
-
 });
-router.get("/Reviewers", async (req, res) => {
+router.get("/Reviewers", AauthCheck, async (req, res) => {
   let reviewers = [];
   try {
     var sql3 = "select * from Reviewers";
     const results3 = await db.query(sql3);
-
 
     for (let i = 0; i < results3.length; i++) {
       let obj = [];
@@ -129,16 +128,19 @@ router.get("/Reviewers", async (req, res) => {
     // console.error(err.message);
   }
   res.render("AdminReviewers", {
-    results3: reviewers
-  })
-})
-router.post("/Reviewers", (req, res) => {
+    results3: reviewers,
+  });
+});
+router.post("/Reviewers", AauthCheck, (req, res) => {
   var obj = JSON.parse(JSON.stringify(req.body));
   if (obj.password && obj.name && obj.level && obj.email) {
     var post = {
+      // ID = uuidv4(),
       Name: obj.name,
       Password: obj.password,
       Level: obj.level,
+      StartDate: obj.sdate,
+      EndDate: obj.edate,
       Email: obj.email,
     };
 
@@ -156,13 +158,13 @@ router.post("/Reviewers", (req, res) => {
       // console.log(results);
     });
   }
-})
+});
 
-router.get("/home", async (req, res) => {
+router.get("/home", AauthCheck, async (req, res) => {
   res.render("adminHome");
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", AauthCheck, (req, res) => {
   let obj = JSON.parse(JSON.stringify(req.body));
   console.log(obj);
   console.log(obj.uname);
