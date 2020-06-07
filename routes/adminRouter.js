@@ -26,23 +26,33 @@ router.get("/general", AauthCheck, async (req, res) => {
 });
 router.post("/general", AauthCheck, async (req, res) => {
   var obj = JSON.parse(JSON.stringify(req.body));
-  if (obj.name && obj.password && obj.username && obj.dob)
-    var sql =
-      "update `Admin` set Name = '" +
-      obj.name +
-      "',UserName='" +
-      obj.username +
-      "',Password='" +
-      obj.password +
-      "',`D.O.B`='" +
-      obj.dob +
-      "'";
+  try {
+    if (obj.name && obj.password && obj.username && obj.dob) {
+      var sql =
+        "update `Admin` set Name = '" +
+        obj.name +
+        "',UserName='" +
+        obj.username +
+        "',Password='" +
+        obj.password +
+        "',`D.O.B`='" +
+        obj.dob +
+        "'";
 
-  await connection.query(sql, (err, results, fields) => {
-    if (err) throw err;
-    console.log(results);
-  });
-  res.render("adminHome");
+      await connection.query(sql, (err, results, fields) => {
+        if (err) throw err;
+        console.log(results);
+      });
+      res.redirect("/admin/home");
+    } else {
+      res.redirect("/admin/home")
+    }
+
+  } catch (err) {
+    res.redirect("/admin/genral");
+  }
+
+
 });
 
 router.get("/Articles", AauthCheck, async (req, res) => {
