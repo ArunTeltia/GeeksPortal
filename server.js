@@ -31,7 +31,7 @@ const ReviewArticlesRouter = require("./routes/ReviewArticlesRouter");
 const contributeRouter = require("./routes/contributeRouter");
 const adminRouter = require("./routes/adminRouter");
 const certiAuthRouter =require("./routes/certiAuthRouter");
-const InternRouter = require("./routes/InternRouter");
+const InternRouter = require("./routes/internRouter");
 
 
 var upload_file = require('./froalaEditorFiles/file_upload.js');

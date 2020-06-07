@@ -4,9 +4,10 @@ const {
   check,
   validationResult
 } = require("express-validator");
+const AauthCheck = require("./config/AauthCheck")
 const db = require("../config/makeDB");
 
-router.get("/form", (req, res) => {
+router.get("/form",AauthCheck, (req, res) => {
   res.render("InternInfo", {
     errors: []
   });
