@@ -1,0 +1,18 @@
+<!-- <div class="row">
+        <section id="page" class="text-center">
+            <% if(currentPage!=1 && previousPage!=1){ %>
+            <a href="/intern/data?page=1">1</a>
+            <%  } %>
+            <% if(hasPreviousPage){ %>
+            <a href="?page=<%= previousPage %>"><%= previousPage %> </a>
+            <%} %>
+            <a href="/intern/data?page=<%= currentPage %>" class="active"><%= currentPage %> </a>
+            <% if(hasNextPage){ %>
+            <a href="/intern/data?page=<%= nextPage %>"><%= nextPage %> </a>
+            <%} %>
+            <% if(lastPage!==currentPage && lastPage!==nextPage){ %>
+            <a href="/intern/data?page=<%= lastPage %>"><%= lastPage %> </a>
+            <%} %>
+
+        </section>
+    </div> -->

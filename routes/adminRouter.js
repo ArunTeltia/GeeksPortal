@@ -10,11 +10,11 @@ const AauthCheck = require("../config/AauthCheck");
 router.get("/general", AauthCheck, async (req, res) => {
   let admin = [];
   try {
-    var sql4 = "select Name,UserName,`D.O.B`,Password from Admin";
+    var sql4 = "select Name,UserName,DOB,Password from Admin";
     const results4 = await db.query(sql4);
     admin.push(results4[0].Name);
     admin.push(results4[0].UserName);
-    admin.push("Hello");
+    admin.push(results4[0].DOB);
     admin.push(results4[0].Password);
   } catch (err) {
     // console.log("admin");

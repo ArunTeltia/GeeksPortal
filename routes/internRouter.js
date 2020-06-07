@@ -7,7 +7,7 @@ const {
 const AauthCheck = require("../config/AauthCheck")
 const db = require("../config/makeDB");
 
-router.get("/form",AauthCheck, (req, res) => {
+router.get("/form", AauthCheck, (req, res) => {
   res.render("InternInfo", {
     errors: []
   });
@@ -65,6 +65,45 @@ router.post(
   }
 );
 
-router.get("/data", (req, res) => {});
+router.get("/data", async (req, res) => {
+  const limit = 5;
+  const page = +req.query.page || 1;
+  const offset = (page - 1) * limit;
+  const internQuery = "select * from Intern limit " + limit + " OFFSET " + offset;
+  let totalIntern = 0;
+  var sql = "select count(*) as count from Intern"
+  const result = await db.query(sql);
+  totalIntern = result[0].count;
+  console.log(totalIntern);
+  const results2 = await db.query(internQuery);
+
+  var internData = [];
+  for (let i = 0; i < results2.length; i++) {
+    let obj = [];
+    obj.push(results2[i].Name);
+    obj.push(results2[i].Email);
+    obj.push(results2[i].Role);
+    obj.push(results2[i].DescriptionOfWork);
+    obj.push(results2[i].StartDate);
+    obj.push(results2[i].EndDate);
+    obj.push(results2[i].StipendPaid);
+    obj.push(results2[i].HiredVia);
+    obj.push(results2[i].CertiNum);
+    obj.push(results2[i].InstituteName);
+    internData.push(obj);
+  }
+  // console.log(internData)
+  res.render("InternsData", {
+    results: internData,
+    currentPage: page,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    hasNextPage: limit * page < totalIntern,
+    hasPreviousPage: page > 1,
+    lastPage: Math.ceil(totalIntern / limit)
+  })
+
+
+});
 
 module.exports = router;
