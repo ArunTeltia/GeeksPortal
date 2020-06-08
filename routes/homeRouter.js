@@ -60,7 +60,7 @@ router.get("/",(req, res) => {
       res.render("homearticle", {
         posts: ar,
         head: t,
-        photo: "#",
+        photo: req.user.Photo,
         user: req.user,
         currentPage:page,
         hasNextPage:limit*page<totalArticles,
