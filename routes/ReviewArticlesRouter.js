@@ -217,9 +217,11 @@ router.get("/save/:type-:postId-:Revlevel", RauthCheck, (req, res) => {
   }
 });
 
-router.get("/delete/:type-:postId", RauthCheck, (req, res) => {
+router.post("/delete/:type-:postId", RauthCheck, (req, res) => {
   let typ = req.params.type;
   let id = req.params.postId;
+  let reason=JSON.parse(JSON.stringify(req.body.reason));
+  console.log(reason);
 
   var sql="Insert into ItemReviewers (ArticleId,ReviewerId) values ('" + id + "','" + req.user.ID + "');"
   connection.query(sql, (err, results, fields) => {
@@ -229,7 +231,7 @@ router.get("/delete/:type-:postId", RauthCheck, (req, res) => {
   });
 
   var sql =
-    'UPDATE  `AllArticles` set Status="REJECTED" ,Reviewed="TRUE" WHERE Id=' +
+    "UPDATE  `AllArticles` set Status='REJECTED' ,Reviewed='TRUE',RejectReason='" + reason + "'  WHERE Id=" +
     id;
   connection.query(sql, (err, result) => {
     res.redirect("/articles/" + req.params.type);
