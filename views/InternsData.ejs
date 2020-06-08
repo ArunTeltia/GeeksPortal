@@ -119,7 +119,11 @@
 <body>
 
 	<nav class="navbar navbar-light bg-light">
-		<span class="navbar-brand mb-0 h1"><a href="/intern/form">Add Intern</a></span>
+	<form class="form-inline">
+		<span class="navbar-brand mb-0 h1"><a href="#">Add Intern</a></span>
+		<span id="downloadExcelLink" download="../sample.xlsx" class="navbar-brand mb-0 h1"><a href="/intern/download">Download Table</a></span>
+		<script type="text/javascript" src="../public/js/download.js"></script>
+	</form>
 	</nav>
 	<table>
 		<h1 style="text-align:center;">Interns Data</h1>
@@ -139,28 +143,28 @@
 		<tbody>
 			<% results.forEach(function(result){ %>
 			<tr>
-				<td class="col-5"><%=result[0]%></td>
-				<td class="col-9"><%=result[1]%></td>
-				<td class="col-4"><%=result[2]%></td>
-				<td class="col-4"><%=result[3]%></td>
+				<td><%=result[0]%></td>
+				<td><%=result[1]%></td>
+				<td><%=result[2]%></td>
+				<td><%=result[3]%></td>
 
-				<td class="col-5" id="enddate">
+				<td>
 					<script type="text/javascript">
 						var date = Date.parse("<%= result[4] %>");
 						var d = new Date(date);
 						document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
 					</script>
 				</td>
-				<td class="col-5" id="enddate">
+				<td>
 					<script type="text/javascript">
 						var date = Date.parse("<%= result[5] %>");
 						var d = new Date(date);
 						document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
 					</script>
 				</td>
-				<td class="col-3"><%=result[6]%></td>
-				<td class="col-3"><%=result[7]%></td>
-				<td class="col-3"><%=result[8]%></td>
+				<td><%=result[6]%></td>
+				<td><%=result[7]%></td>
+				<td><%=result[8]%></td>
 			</tr>
 			<%})%>
 		</tbody>
@@ -186,8 +190,5 @@
 			</div>
 		</div>
 	</div>
-
-
 </body>
-
 </html>

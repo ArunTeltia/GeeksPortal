@@ -6,6 +6,9 @@ const {
 } = require("express-validator");
 const AauthCheck = require("../config/AauthCheck")
 const db = require("../config/makeDB");
+const fs = require('fs');
+const json2xls = require('json2xls');
+const path = require('path');
 
 router.get("/form", AauthCheck, (req, res) => {
   res.render("InternInfo", {
@@ -108,5 +111,28 @@ router.get("/data", AauthCheck, async (req, res) => {
 
 
 });
+router.get("/download", (req, res) => {
+
+  var sql = "select * from Intern";
+  // query data from MySQL
+  connection.query(sql, function (error, data, fields) {
+    if (error) throw error;
+
+    const jsonData = JSON.parse(JSON.stringify(data));
+    // console.log("jsonData", jsonData);
+
+    // TODO: export to CSV file
+    const xls = json2xls(jsonData);
+    fs.writeFileSync('sample.xlsx', xls, 'binary', (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
+    const excelFilePath = path.join(__dirname, '../sample.xlsx');
+    res.sendFile(excelFilePath, (err) => {
+      if (err) console.log(err);
+    });
+
+  });
+})
 
 module.exports = router;
