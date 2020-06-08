@@ -24,14 +24,14 @@ router.route("/")
         port: 465,
         secure: true,
         auth: {
-          user: 'rhythm03rhythm@gmail.com',
-          pass: 'netflix&chill'
+          user: 'contactgeeksportal@gmail.com',
+          pass: '9318572416'
         }
       })
 
       const mailOpts = {
         from: obj.email, // This is ignored by Gmail
-        to: 'rhythm03rhythm@gmail.com',
+        to: 'contactgeeksportal@gmail.com',
         subject: 'New message from contact form at geekspotal',
         text: `${obj.name} (${obj.email}) says: ${obj.message}`
       }
