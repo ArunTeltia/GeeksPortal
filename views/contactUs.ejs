@@ -224,7 +224,62 @@ input[type=text] {
     <!-- /container -->
 </div>
 <!-- /NAVIGATION -->
+<style>
+     #contact {
+    background-color: #623954;
+    width: 100%;
+  }
 
+  #contact h2 {
+    color: #ffffff;
+  }
+
+  #contact .section-title {
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  #contact h2 > small,
+  #contact p,
+  #contact a {
+    color: #f9f9f9;
+    font-size: 14px !important;
+  }
+
+  #contact-form {
+    padding: 1em 10;
+  }
+
+  #contact-form .col-md-12,
+  #contact-form .col-md-4 {
+    padding-left: 10;
+  }
+
+  #contact-form .form-control {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: none;
+    margin: 10px 0;
+  }
+
+  #contact-form input {
+    height: 50px;
+    width: 100%;
+  }
+
+  #contact-form input[type='submit'] {
+    border-radius: 50px;
+    border: 1px solid transparent;
+    width: 100%;
+  }
+
+  #contact-form input[type='submit']:hover {
+    background: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+ 
+</style>
 
 
     
@@ -233,34 +288,40 @@ input[type=text] {
            
  <!-- section -->
  <div class="section" style="padding: 10px;">
-    <!-- container -->
-    <div class="container">
-        <div class="jumbotron static-slider" style="padding: 10px;">
-                        <h4 class="text-center">Contact Us</h4>
-                        
+
+                <div class="container">
+                    <div class="row">
+                    <div class="col-6 text-center" style="margin-top: 100px;">
+                        <h3>You can alternatively reach us via email at<a style="color: #623954; text-decoration:underline;" href="mailto: contactgeeksportal@gmail.com."> hello@geeksportal.com </a></h3>
                     </div>
-                    <div class="col-sm-8">
-                        <article style="padding: 30px;padding-left: 60px;padding-bottom: 60px;font-size: 18px;">
-                            
-                            
-                            <h4>Address:</h4><br>
-
-                            <ul style="list-style-type: circle;font-size: 17px;font-weight: bold;" >
-                                
-
-
-
-
-                                </ul>
-<h4>For feedback and queries :</h4>
-                        </article>
+                      
                     </div>
-
-
-                    
-
-                </div> 
-            </main>
+                    <div class="row text-center" style="margin-top: 20px; background-color: #623954; padding: 30px; border-radius: 50px;">
+                         <div class="col-md-12 col-sm-12">
+                              <form id="contact-form" role="form" action="/contactus" method="post">
+                                   
+                                   <div class="section-title"  >
+                                        <h2 style="color: #FFFFFF;">Contact us <small style="color: #FFFFFF;">We always love hearing from you!</small></h2>
+                                   </div>
+                                   <div class="col-md-12 col-sm-12" >
+                                    <div class="col-md-12 col-sm-12" >
+                                        <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
+     
+                                        <input type="email" class="form-control" placeholder="Enter email address" name="email" required="">
+     
+                                        <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>     
+                                   </div>
+     
+                                   <div class="col-md-4 col-sm-12 ">
+                                        <input type="submit" class="form-control" name="submit" value="Send Message">
+                                   </div>
+                                   </div>
+                                   
+                                </form>
+                         </div>
+     
+                    </div>
+               </div>
 
         
            <div class="footer-bottom" style="float: right;padding-right: 10px;">
