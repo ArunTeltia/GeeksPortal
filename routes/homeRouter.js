@@ -260,7 +260,7 @@ router.get("/:head-:postId", (req, res) => {
   async function Render() {
     try {
       const r = await db.query(
-        "select A.Id as Id, A.Type as Type, A.Lang as Lang,A.Level as Level , A.Head as Head, A.Blog as Blog,U.UserName as User, GROUP_CONCAT(T.Title) as Title From AllArticles A Left Join ItemTags I on A.Id = I.ArticleId Left Join Tags T On T.TagId = I.TagId Left join Users U on A.UserId=U.ID where A.Status = 'Accepted' and A.Id='" +
+        "select A.Id as Id, A.Type as Type, A.Lang as Lang,A.Level as Level , A.Head as Head, A.Blog as Blog,A.PuzzleSolution as Solution,U.UserName as User, GROUP_CONCAT(T.Title) as Title From AllArticles A Left Join ItemTags I on A.Id = I.ArticleId Left Join Tags T On T.TagId = I.TagId Left join Users U on A.UserId=U.ID where A.Status = 'Accepted' and A.Id='" +
           req.params.postId +
           "' GROUP BY A.Id,A.Lang,A.Level,A.Blog,A.Head"
       );
