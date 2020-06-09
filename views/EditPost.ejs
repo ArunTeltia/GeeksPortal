@@ -102,6 +102,14 @@
                      });
                 </script>
             </div>
+            <div class="form-group" id="sol">
+              <textarea name="sol" class="form-control " value=" " rows="5" style="width: 100%;" ><%= post.Solution %></textarea>
+            </div>
+            <script>
+              if(post.Type!=="Puzzle"){
+                $("#sol").hide();
+              }
+            </script>
             <div class="form-group">
               <style contenteditable>
                 .tags-look .tagify__dropdown__item{

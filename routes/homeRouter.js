@@ -37,7 +37,7 @@ router.get("/",(req, res) => {
   const offset = (page - 1) * limit;
   let totalArticles=0;
 
-  var sql="select count(*) as count from `AllArticles`;"
+  var sql="select count(*) as count from `AllArticles` where Status='ACCEPTED';"
   connection.query(sql, (err, results, fields) => {
     if (err) {
       return console.error(err.message);

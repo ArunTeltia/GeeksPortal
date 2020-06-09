@@ -503,6 +503,9 @@ display:none;
                        </script>
                      
                     </div>
+                    <div class="form-group" id="sol">
+                      <textarea name="sol" class="form-control " placeholder="Type solution here.." rows="5" style="width: 100%;" ></textarea>
+                    </div>
                     <div class="form-group">
                       <style contenteditable>
                         .tags-look .tagify__dropdown__item{
@@ -575,6 +578,8 @@ display:none;
                       })
                   }
                       </script>
+                      
+
                 <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
                  
@@ -630,15 +635,21 @@ display:none;
        <script src="js/jquery.zoom.min.js"></script>
        <script src="js/main.js"></script>
        <script>
-     
+                 $("#sol").hide();
         $("#ty").change(function(){
           var sel=$(this).children("option:selected").val();
           // alert(sel);
           if(sel==="Puzzle"){
             $("#hide").hide();
+            $("#sol").show();
+
+
           }
           else{
             $("#hide").show();
+            $("#sol").hide();
+
+
           }
         });
 

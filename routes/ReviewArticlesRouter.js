@@ -57,6 +57,7 @@ router.get("/posts/:type-:postName", RauthCheck, (req, res) => {
         Lvl: post.Level,
         type: theme,
         postId: post.Id,
+        sol:post.PuzzleSolution,
         ReviewerLevel: req.user.Level,
       });
     }
@@ -66,10 +67,20 @@ router.get("/posts/:type-:postName", RauthCheck, (req, res) => {
 router.get("/edit/:type-:postId", RauthCheck, (req, res) => {
   let t = req.params.type;
   let id = req.params.postId;
-  var sql =
+
+  if(t==="Puzzle"){
+    var sql =
+    "select A.Id as Id,A.Type as Type, A.Lang as Lang,A.Level as Level , A.Head as Head, A.Blog as Blog,A.PuzzleSolution as Solution, GROUP_CONCAT(T.Title) as Title From AllArticles A Left Join ItemTags I on A.Id = I.ArticleId Left Join Tags T On T.TagId = I.TagId where A.Id='" +
+    id +
+    "'GROUP BY A.Id,A.Lang,A.Level,A.Blog,A.Head;";
+  }
+  else{
+    var sql =
     "select A.Id as Id,A.Type as Type, A.Lang as Lang,A.Level as Level , A.Head as Head, A.Blog as Blog, GROUP_CONCAT(T.Title) as Title From AllArticles A Left Join ItemTags I on A.Id = I.ArticleId Left Join Tags T On T.TagId = I.TagId where A.Id='" +
     id +
     "'GROUP BY A.Id,A.Lang,A.Level,A.Blog,A.Head;";
+  }
+
 
   connection.query(sql, (err, results, fields) => {
     if (err) {
@@ -106,7 +117,21 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
       tagArray.push(r.Title);
     });
 
-    var sql =
+    if(t==="Puzzle"){
+      var sql =
+      "Update `AllArticles` set Level='" +
+      obj.level +
+      "',Head='" +
+      obj.head +
+      "',Blog='" +
+      obj.blog +
+      "',PuzzleSolution='" +
+      obj.sol +
+      "' where Id=" +
+      id;
+    }
+    else{
+      var sql =
       "Update `AllArticles` set Lang='" +
       obj.lang +
       "',Level='" +
@@ -117,6 +142,8 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
       obj.blog +
       "' where Id=" +
       id;
+    }
+    
     connection.query(sql, function (err, results) {
       if (err) throw err;
 

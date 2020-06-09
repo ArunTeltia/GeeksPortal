@@ -49,7 +49,7 @@ contribute
 
       if (obj.theme === "Puzzle") {
         var sql =
-          "INSERT INTO AllArticles (Level,Head,Blog,Type,UserId) VALUES ('" +
+          "INSERT INTO AllArticles (Level,Head,Blog,Type,UserId,PuzzleSolution) VALUES ('" +
           obj.level +
           "','" +
           obj.head +
@@ -59,6 +59,8 @@ contribute
           obj.theme +
           "','" +
           req.user.ID+
+          "','" +
+          obj.sol+
           "')";
         connection.query(sql, function (err, results) {
           if (err) throw err;
