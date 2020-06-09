@@ -24,7 +24,7 @@
   <link type="text/css" rel="stylesheet" href="css/adminhome.css">
 
   <script>
-    window.console = window.console || function (t) {};
+    window.console = window.console || function (t) { };
   </script>
   <script>
     if (document.location.search.match(/type=embed/gi)) {
@@ -79,6 +79,9 @@
         <div class="menu-nav">
           <ul class="menu-list">
             <li><a href="auth/admin/logout">LOG OUT</a></li>
+            <li id="downloadExcelLink" download="../admin.xlsx"><a
+                href="/admin/download">Download Table</a></li>
+            <script type="text/javascript" src="../public/js/download.js"></script>
           </ul>
         </div>
         <!-- menu nav -->
@@ -108,7 +111,7 @@
     </div>
     <br>
   </main>
-  
+
   <a id="backtotop" href="#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
   <script src="js/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
