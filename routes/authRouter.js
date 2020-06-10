@@ -40,7 +40,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/auth/login" }),
   (req, res) => {
     // console.log(req.user);
-    var sql = "select UserName from Users where ID=" + req.user.ID;
+    var sql = "select UserName from Users where ID='" + req.user.ID +"' ";
     connection.query(sql, (err, results, fields) => {
       if (err) {
         return console.error(err.message);
@@ -65,7 +65,7 @@ router.get(
   passport.authenticate("facebook", { failureRedirect: "/auth/login" }),
   (req, res) => {
     // console.log(req.user);
-    var sql = "select UserName from Users where ID=" + req.user.ID;
+    var sql = "select UserName from Users where ID='" + req.user.ID +"' ";
     connection.query(sql, (err, results, fields) => {
       if (err) {
         return console.error(err.message);
