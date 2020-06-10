@@ -1,7 +1,54 @@
 const router = require("express").Router();
 const nodemailer = require('nodemailer')
 
-router.route("/")
+
+
+
+router.get("/aboutus",(req,res)=>{
+  let photo="#";
+    if(req.user){
+      photo=req.user.Photo
+    }
+    res.render("aboutUs",{
+      photo: photo,
+        user: req.user
+    });
+  });
+  
+  router.get("/tc",(req,res)=>{
+    let photo="#";
+    if(req.user){
+      photo=req.user.Photo
+    }
+    res.render("tc",{
+      photo: photo,
+        user: req.user
+    });
+  });
+  
+  router.get("/cookie",(req,res)=>{
+    let photo="#";
+    if(req.user){
+      photo=req.user.Photo
+    }
+    res.render("privacyPolicy",{
+      photo: photo,
+        user: req.user
+    });
+  });
+  router.get("/internships",(req,res)=>{
+    let photo="#";
+    if(req.user){
+      photo=req.user.Photo
+    }
+    res.render("internships",{
+      photo: photo,
+        user: req.user
+    });
+  });
+
+
+router.route("/contactus")
 .get((req,res)=>{
     if (req.user) {
         res.render("contactUs", {
