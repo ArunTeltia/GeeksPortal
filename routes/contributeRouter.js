@@ -1,6 +1,8 @@
 const contribute = require("express").Router();
 const connection = require("../config/DBconnection");
 const authCheck = require("../config/authCheck");
+const shortid = require('shortid');
+
 
 // var upload_file = require('../froalaEditorFiles/file_upload');
 // var upload_image = require('../froalaEditorFiles/image_upload.js');
@@ -19,6 +21,7 @@ contribute
   })
   .post(authCheck, (req, res) => {
     let obj = JSON.parse(JSON.stringify(req.body));
+    var ArticleId=shortid.generate();
 
     console.log(obj);
     
@@ -49,7 +52,9 @@ contribute
 
       if (obj.theme === "Puzzle") {
         var sql =
-          "INSERT INTO AllArticles (Level,Head,Blog,Type,UserId,PuzzleSolution) VALUES ('" +
+          "INSERT INTO AllArticles (Id,Level,Head,Blog,Type,UserId,PuzzleSolution) VALUES ('" +
+          ArticleId +
+          "','" +
           obj.level +
           "','" +
           obj.head +
@@ -70,12 +75,12 @@ contribute
         });
       } else {
         var sql =
-          "INSERT INTO AllArticles (Lang,Level,Head,Blog,Type,UserId) VALUES ('" + obj.lang + "','" + obj.level + "','" + obj.head + "','" + obj.blog + "','" + obj.theme + "','" + req.user.ID + "')";
+          "INSERT INTO AllArticles (Id,Lang,Level,Head,Blog,Type,UserId) VALUES ('" + ArticleId + "','" + obj.lang + "','" + obj.level + "','" + obj.head + "','" + obj.blog + "','" + obj.theme + "','" + req.user.ID + "')";
         connection.query(sql, function (err, results) {
           if (err) throw err;
 
           console.log(results);
-          maxId = results.insertId;
+          maxId = ArticleId;
         });
       }
 
@@ -89,10 +94,12 @@ contribute
             if (err) {
               return console.error(err.message);
             }
-
+             var ItemTagId=shortid.generate();
             results.forEach((r) => {
               var sql =
-                "INSERT INTO `ItemTags`(ArticleId,tagId) VALUES ('" +
+                "INSERT INTO `ItemTags`(ID,ArticleId,tagId) VALUES ('" +
+                ItemTagId +
+                "','" +
                 maxId +
                 "','" +
                 r.TagId +
@@ -103,15 +110,19 @@ contribute
             });
           });
         } else {
-          var sql = "INSERT INTO `Tags` (Title) VALUES ('" + tag + "')";
+          var TagId=shortid.generate();
+          var sql = "INSERT INTO `Tags` (TagId,Title) VALUES ('" + TagId + "','" + tag + "')";
           connection.query(sql, function (err, result) {
             if (err) throw err;
 
+            var ItemTagId=shortid.generate();
             var sql =
-              "INSERT INTO `ItemTags`(ArticleId,tagId) VALUES ('" +
+              "INSERT INTO `ItemTags`(ID,ArticleId,tagId) VALUES ('" +
+              ItemTagId +
+              "','" +
               maxId +
               "','" +
-              result.insertId +
+              TagId +
               "')";
             connection.query(sql, function (err) {
               if (err) throw err;
