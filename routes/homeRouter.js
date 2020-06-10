@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const connection = require("../config/DBconnection");
 const db = require("../config/makeDB");
+const shortid = require('shortid');
+
 
 // router.get("/",(req, res) => {
 //     var t = "All Articles";
@@ -336,8 +338,11 @@ router
         message: "please enter valid Article Name",
       };
     } else {
+      var articleId=shortid.generate();
       let sql =
-        "insert into RequestedArticles (Title) values('" +
+        "insert into RequestedArticles (ID,Title) values('" +
+        articleId +
+        "','" +
         obj.ReqArticle +
         "') ";
       connection.query(sql, (err, results, fields) => {
