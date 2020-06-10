@@ -223,5 +223,50 @@ router.get("/download", (req, res) => {
 
   });
 })
+router.get("/userdownload", (req, res) => {
 
+  var sql = "select * from Users";
+  // query data from MySQL
+  connection.query(sql, function (error, data, fields) {
+    if (error) throw error;
+
+    const jsonData = JSON.parse(JSON.stringify(data));
+    // console.log("jsonData", jsonData);
+
+    // TODO: export to CSV file
+    const xls = json2xls(jsonData);
+    fs.writeFileSync('users.xlsx', xls, 'binary', (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
+    const excelFilePath = path.join(__dirname, '../users.xlsx');
+    res.sendFile(excelFilePath, (err) => {
+      if (err) console.log(err);
+    });
+
+  });
+})
+router.get("/reviewerdownload", (req, res) => {
+
+  var sql = "select * from Reviewers";
+  // query data from MySQL
+  connection.query(sql, function (error, data, fields) {
+    if (error) throw error;
+
+    const jsonData = JSON.parse(JSON.stringify(data));
+    // console.log("jsonData", jsonData);
+
+    // TODO: export to CSV file
+    const xls = json2xls(jsonData);
+    fs.writeFileSync('reviewers.xlsx', xls, 'binary', (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
+    const excelFilePath = path.join(__dirname, '../reviewers.xlsx');
+    res.sendFile(excelFilePath, (err) => {
+      if (err) console.log(err);
+    });
+
+  });
+})
 module.exports = router;
