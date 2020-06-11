@@ -2,6 +2,16 @@ const router = require("express").Router();
 const passport = require("passport");
 const connection = require("../config/DBconnection");
 
+const nodemailer = require('nodemailer')
+const sendgridTransport=require("nodemailer-sendgrid-transport");
+
+const smtpTrans = nodemailer.createTransport(sendgridTransport({
+ 
+  auth: {
+    api_key:"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"
+  }
+}));
+
 router.get("/login", (req, res) => {
   res.render("login");
 });
@@ -47,7 +57,21 @@ router.get(
       }
       // console.log(results);
       if (results[0].UserName === null) {
-        res.redirect("/profile");
+
+          res.redirect("/profile");
+        const mailOpts = {
+          to: req.user.Email,
+          from:"contactgeeksportal@gmail.com",
+          subject: 'Sign Up successfully',
+          html:"<h1>You successfully signed UP!!</h1>"
+        }
+
+        smtpTrans.sendMail(mailOpts, (error, response) => {
+          if (error) {
+            console.log(error);
+             // Show a page indicating failure
+          }
+        })
       } else {
         res.redirect("/home");
       }
@@ -73,6 +97,19 @@ router.get(
       // console.log(results);
       if (results[0].UserName === null) {
         res.redirect("/profile");
+        const mailOpts = {
+          to: req.user.Email,
+          from:"contactgeeksportal@gmail.com",
+          subject: 'Sign Up successfully',
+          html:"<h1>You successfully signed UP!!</h1>"
+        }
+
+        smtpTrans.sendMail(mailOpts, (error, response) => {
+          if (error) {
+            console.log(error);
+             // Show a page indicating failure
+          }
+        });
       } else {
         res.redirect("/home");
       }
