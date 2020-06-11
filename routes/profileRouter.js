@@ -90,48 +90,42 @@ profile
             var c2 = await db.query(
               "UPDATE  `Users` set UserName='" +
                 usr +
-                "' where ID=" +
-                req.user.ID
+                "' where ID='" + req.user.ID + "'"
             );
 
             if (req.body.email !== "") {
               var c3 = await db.query(
                 "UPDATE  `Users` set Email='" +
                   req.body.email +
-                  "' where ID=" +
-                  req.user.ID
+                  "' where ID='" + req.user.ID + "'"
               );
             }
             if (req.body.Name !== "") {
               var c4 = await db.query(
                 "UPDATE  `Users` set DisplayName='" +
                   req.body.Name +
-                  "' where ID=" +
-                  req.user.ID
+                  "' where ID='" + req.user.ID + "'"
               );
             }
             if (req.body.ins !== "") {
               var c5 = await db.query(
                 "UPDATE  `Users` set Institute='" +
                   req.body.ins +
-                  "' where ID=" +
-                  req.user.ID
+                  "' where ID='" + req.user.ID + "'"
               );
             }
             if (req.body.cntry !== "") {
               var c7 = await db.query(
                 "UPDATE  `Users` set Country='" +
                   req.body.cntry +
-                  "' where ID=" +
-                  req.user.ID
+                  "' where ID='" + req.user.ID + "'"
               );
             }
             if (req.body.dob !== "") {
               var c6 = await db.query(
                 "UPDATE  `Users` set DOB='" +
                   req.body.dob +
-                  "' where ID=" +
-                  req.user.ID
+                  "' where ID='" + req.user.ID + "'"
               );
             }
             if (req.body.phone !== "") {
@@ -139,8 +133,7 @@ profile
                 var c7 = await db.query(
                   "UPDATE  `Users` set PhoneNo='" +
                     req.body.phone +
-                    "' where ID=" +
-                    req.user.ID
+                    "' where ID='" + req.user.ID + "'"
                 );
               else if (req.body.phone.length !== 10) {
                 f = 2;
