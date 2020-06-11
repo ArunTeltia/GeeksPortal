@@ -9,6 +9,7 @@ const db = require("../config/makeDB");
 const fs = require('fs');
 const json2xls = require('json2xls');
 const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 router.get("/form", AauthCheck, (req, res) => {
   res.render("InternInfo", {
@@ -51,6 +52,7 @@ router.post(
     const result3 = await db.query(sql12);
     console.log(obj);
     var post = {
+      Id: uuidv4(),
       Name: obj.name,
       Email: obj.email,
       Role: obj.role,

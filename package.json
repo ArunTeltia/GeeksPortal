@@ -36,7 +36,8 @@
     "promisify": "0.0.3",
     "sha1": "^1.1.1",
     "then-busboy": "^4.4.0",
-    "util": "^0.12.3"
+    "util": "^0.12.3",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
