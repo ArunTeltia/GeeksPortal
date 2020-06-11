@@ -12,7 +12,8 @@ const path = require('path');
 
 router.get("/form", AauthCheck, (req, res) => {
   res.render("InternInfo", {
-    errors: []
+    errors: [],
+    results: ["", "", "", "", "", "", "", "", "", ""],
   });
 });
 
@@ -34,17 +35,20 @@ router.post(
     check("institute", "Enter the name of Institute").not().isEmpty(),
   ],
   async (req, res) => {
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       console.log(errors);
       res.render("InternInfo", {
-        errors: errors
+        errors: errors,
+        results: ["", "", "", "", "", "", "", "", "", ""]
         // errors:[]
+
       });
     }
-
-    // console.log(req.body);
     let obj = JSON.parse(JSON.stringify(req.body));
+    const sql12 = "Select * from Intern where Email ='" + obj.email + "'";
+    const result3 = await db.query(sql12);
     console.log(obj);
     var post = {
       Name: obj.name,
@@ -58,13 +62,46 @@ router.post(
       CertiNum: obj.certi,
       InstituteName: obj.institute,
     };
+    if (!result3) {
+      var qry = "INSERT into Intern SET ?";
+      connection.query(qry, post, (err, results, fields) => {
+        if (err) throw err;
+        console.log(results);
+        // alert("Reviewers are added");
+      });
+    } else {
+      var qry = "Update `Intern` set Name='" +
+        obj.name +
+        "',Email='" +
+        obj.email +
+        "',Role='" +
+        obj.role +
+        "',DescriptionOfWork='" +
+        obj.dow +
+        "',StartDate='" +
+        obj.sdate +
+        "',EndDate='" +
+        obj.edate +
+        "',StipendPaid='" +
+        obj.stipend +
+        "',HiredVia='" +
+        obj.source +
+        "',CertiNum='" +
+        obj.certi +
+        "',InstituteName='" +
+        obj.institute +
+        "' where CertiNum='" +
+        obj.certi + "'";
+      connection.query(qry, post, (err, results, fields) => {
+        if (err) throw err;
+        console.log(results);
+        // alert("Reviewers are added");
+      });
+    }
 
-    var qry = "INSERT into Intern SET ?";
-    connection.query(qry, post, (err, results, fields) => {
-      if (err) throw err;
-      console.log(results);
-      // alert("Reviewers are added");
-    });
+    // console.log(req.body);
+
+
   }
 );
 
@@ -132,6 +169,26 @@ router.get("/download", (req, res) => {
       if (err) console.log(err);
     });
 
+  });
+})
+router.get("/update-:internemail", async (req, res) => {
+  const sql = "select * from Intern where Email = '" + req.params.internemail + "'";
+  const result = await db.query(sql);
+  console.log(result);
+  let obj = [];
+  obj.push(result[0].Name);
+  obj.push(result[0].Email);
+  obj.push(result[0].Role);
+  obj.push(result[0].DescriptionOfWork);
+  obj.push(result[0].StartDate);
+  obj.push(result[0].EndDate);
+  obj.push(result[0].StipendPaid);
+  obj.push(result[0].HiredVia);
+  obj.push(result[0].CertiNum);
+  obj.push(result[0].InstituteName);
+  res.render("InternInfo", {
+    errors: [],
+    results: obj,
   });
 })
 
