@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 const connection = require("../config/DBconnection");
+const Keys =require("../config/keys")
 
 const nodemailer = require('nodemailer')
 const sendgridTransport=require("nodemailer-sendgrid-transport");
@@ -8,7 +9,7 @@ const sendgridTransport=require("nodemailer-sendgrid-transport");
 const smtpTrans = nodemailer.createTransport(sendgridTransport({
  
   auth: {
-    api_key:"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"
+    api_key:Keys.sendgridKey
   }
 }));
 

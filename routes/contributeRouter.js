@@ -2,6 +2,10 @@ const contribute = require("express").Router();
 const connection = require("../config/DBconnection");
 const authCheck = require("../config/authCheck");
 const shortid = require('shortid');
+const Keys=require("../config/keys")
+
+const nodemailer = require('nodemailer')
+const sendgridTransport=require("nodemailer-sendgrid-transport");
 
 
 // var upload_file = require('../froalaEditorFiles/file_upload');
@@ -9,6 +13,13 @@ const shortid = require('shortid');
 
 var ar = [];
 var tg = [];
+
+const smtpTrans = nodemailer.createTransport(sendgridTransport({
+ 
+  auth: {
+    api_key:Keys.sendgridKey
+  }
+}));
 
 contribute
   .route("/")
@@ -131,7 +142,19 @@ contribute
         }
       });
     });
-    res.redirect("/compose");
+  res.redirect("/compose");
+  const mailOpts = {
+    to: req.user.Email,
+    from:"contactgeeksportal@gmail.com",
+    subject: 'Your Post submitted successfully',
+    html:"<h1>You successfully submiited your post!!</h1>"
+  }
+
+  smtpTrans.sendMail(mailOpts, (error, response) => {
+    if (error) {
+      console.log(error);
+    }
+  })
   });
 
   contribute.get('/tags',function(req,res){
