@@ -255,6 +255,11 @@ router.get("/tag/:title", (req, res) => {
 //     });
 //   });
 // });
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
 
 router.get("/:head-:postId", (req, res) => {
   let moreArt = [];
@@ -279,8 +284,12 @@ router.get("/:head-:postId", (req, res) => {
           var MoreArtForTitle = await db.query(
             "select * from (select A.Id as Id, A.Lang as Lang,A.Level as Level , A.Head as Head, A.Blog as Blog From Tags T Left Join  ItemTags I on T.TagId=I.TagId Left Join AllArticles A on I.ArticleId = A.Id where T.Title ='" + ele + "' and A.Status='Accepted'  group by A.Id,A.Lang,A.Level,A.Blog,A.Head ) AA left join (select A.Id as Id, GROUP_CONCAT(T.Title) as Title From AllArticles A Left Join ItemTags I on A.Id = I.ArticleId Left Join Tags T On T.TagId = I.TagId where A.Status = 'Accepted'   GROUP BY A.Id,A.Lang,A.Level,A.Blog,A.Head) as BB on AA.Id = BB.Id;"
           );
-          moreArt = [...MoreArtForTitle];
-           console.log(moreArt);
+          // console.log(MoreArtForTitle);
+          await asyncForEach(MoreArtForTitle,async(n)=>{
+            moreArt.push(n);
+          })
+          // moreArt = [...MoreArtForTitle];
+          //  console.log(moreArt);
         })
       );
       //  console.log(moreArt);
@@ -294,7 +303,7 @@ router.get("/:head-:postId", (req, res) => {
     // console.log(Art);
     if(result.length!==0)
     result = result.filter((r) => r.Head !== Art[0].Head);
-    // console.log(result);
+    console.log(result);
 
     if (req.user) {
       res.render("homePost", {
