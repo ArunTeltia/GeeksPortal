@@ -34,7 +34,7 @@ const shortid = require('shortid');
 //   });
 router.get("/",(req, res) => {
   var t = "All Articles";
-  const limit = 1;
+  const limit = 3;
   const page = +req.query.page || 1;
   const offset = (page - 1) * limit;
   let totalArticles=0;

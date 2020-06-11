@@ -2,6 +2,9 @@ const router = require("express").Router();
 const connection = require("../config/DBconnection");
 const RauthCheck = require("../config/RauthCheck");
 
+const shortid = require('shortid');
+
+
 let ar = [];
 router.get("/articles/:type", RauthCheck, (req, res, next) => {
   let t = req.params.type;
@@ -127,8 +130,9 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
       obj.blog +
       "',PuzzleSolution='" +
       obj.sol +
-      "' where Id=" +
-      id;
+      "' where Id='" +
+      id +
+      "'";
     }
     else{
       var sql =
@@ -140,8 +144,9 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
       obj.head +
       "',Blog='" +
       obj.blog +
-      "' where Id=" +
-      id;
+      "' where Id='" +
+      id +
+      "'";
     }
     
     connection.query(sql, function (err, results) {
@@ -150,7 +155,7 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
       console.log(results);
     });
 
-    var sql = "DELETE from `ItemTags` where ArticleId=" + id;
+    var sql = "DELETE from `ItemTags` where ArticleId='" + id + "'";
     connection.query(sql, function (err, results) {
       if (err) throw err;
 
@@ -169,8 +174,12 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
           }
 
           results.forEach((r) => {
+            var ItemTagId=shortid.generate();
+
             var sql =
-              "INSERT INTO `ItemTags`(ArticleId,tagId) VALUES ('" +
+              "INSERT INTO `ItemTags`(ID,ArticleId,tagId) VALUES ('" +
+              ItemTagId +
+              "','" +
               id +
               "','" +
               r.TagId +
@@ -181,15 +190,21 @@ router.post("/edit/:type-:postId", RauthCheck, (req, res) => {
           });
         });
       } else {
-        var sql = "INSERT INTO `Tags` (Title) VALUES ('" + tag + "')";
+        var TagId=shortid.generate();
+
+        var sql = "INSERT INTO `Tags` (TagId,Title) VALUES ('" + TagId + "','" + tag + "')";
         connection.query(sql, function (err, result) {
           if (err) throw err;
 
+          var ItemTagId=shortid.generate();
+
           var sql =
-            "INSERT INTO `ItemTags`(ArticleId,tagId) VALUES ('" +
+            "INSERT INTO `ItemTags`(ID,ArticleId,tagId) VALUES ('" +
+            ItemTagId +
+            "','" +
             id +
             "','" +
-            result.insertId +
+            TagId +
             "')";
           connection.query(sql, function (err) {
             if (err) throw err;
@@ -217,8 +232,7 @@ router.get("/save/:type-:postId-:Revlevel", RauthCheck, (req, res) => {
     console.log("00");
 
     var sql =
-      "UPDATE `AllArticles`set Reviewed='P_TRUE',Status='PROMOTED' where Id=" +
-      id;
+      "UPDATE `AllArticles`set Reviewed='P_TRUE',Status='PROMOTED' where Id='" + id + "'";
     connection.query(sql, (err, results, fields) => {
       if (err) {
         return console.error(err.message);
@@ -230,8 +244,7 @@ router.get("/save/:type-:postId-:Revlevel", RauthCheck, (req, res) => {
     });
   } else {
     var sql =
-      "UPDATE `AllArticles`set Reviewed='TRUE',Status='ACCEPTED' where Id=" +
-      id;
+      "UPDATE `AllArticles`set Reviewed='TRUE',Status='ACCEPTED' where Id='" + id + "'";
     connection.query(sql, (err, results, fields) => {
       if (err) {
         return console.error(err.message);
@@ -258,8 +271,7 @@ router.post("/delete/:type-:postId", RauthCheck, (req, res) => {
   });
 
   var sql =
-    "UPDATE  `AllArticles` set Status='REJECTED' ,Reviewed='TRUE',RejectReason='" + reason + "'  WHERE Id=" +
-    id;
+    "UPDATE  `AllArticles` set Status='REJECTED' ,Reviewed='TRUE',RejectReason='" + reason + "'  WHERE Id='" + id + "'";
   connection.query(sql, (err, result) => {
     res.redirect("/articles/" + req.params.type);
   });
