@@ -193,5 +193,11 @@ router.get("/update-:internemail", async (req, res) => {
     results: obj,
   });
 })
+router.get("/delete-:internemail", async (req, res) => {
+  const sql = "Delete from Intern where Email = '" + req.params.internemail + "'";
+  const result = await db.query(sql);
+  console.log(result);
+  res.redirect('/intern/data');
+})
 
 module.exports = router;
