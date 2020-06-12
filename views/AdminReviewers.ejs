@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Admin</title>
+	<base href="/">
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/adminhome.css" />
+
+	<script>
+		window.console = window.console || function (t) {};
+	</script>
+	<script>
+		if (document.location.search.match(/type=embed/gi)) {
+			window.parent.postMessage("resize", "*");
+		}
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#search').keyup(function () {
+				search_table($(this).val());
+			});
+
+			function search_table(value) {
+				$('#employee_table tr').each(function () {
+					var found = 'false';
+					$(this).each(function () {
+						if ($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+							found = 'true';
+						}
+					});
+					if (found == 'true') {
+						$(this).show();
+					} else {
+						$(this).hide();
+					}
+				});
+			}
+		});
+	</script>
+</head>
+
+<body>
+	<!-- /HEADER -->
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<div id="header" style="padding: 0px;">
+			<div class="container">
+				<!-- Mobile nav toggle-->
+				<li class="nav-toggle">
+					<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+				</li>
+				<!-- / Mobile nav toggle -->
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<ul class="menu-list">
+						<li><a href="auth/admin/logout">LOG OUT</a></li>
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->
+	<div class="content" style="padding-right: 30px;">
+		<!-- container -->
+		<div class="container">
+			<!-- Jumbtron / Slider -->
+			<div class="jumbotron" style="padding: 10px;">
+				<p class="lead text-center">Admin Control Panel</p>
+			</div>
+		</div>
+	</div>
+	<!-- Main content area -->
+	<main>
+		<div style="text-align:center;">
+			<p style="text-align:center;">Choose one of Below</p>
+			<a href="/admin/general" class="button">General</a>
+			<a href="/admin/Articles" class="button">Articles</a>
+			<a href="/admin/Users" class="button">Users</a>
+			<a href="/admin/Reviewers" class="button">Reviewers</a>
+			<a href="/intern/data" class="button">Intern</a>
+		</div>
+		<div style="text-align:center;">
+			<form action="/admin/Reviewers" method="POST">
+				<h2 class="header">Reviewers</h2>
+				<div id="addNewReviewer">
+					<p>Add a New Reviewer</p>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>NAME</h3>
+					</label>
+					<input id="name" class="col-lg-3 col-form-label" type="text" name="name" value=""
+						placeholder="Please Enter a Unique name for user">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>Password</h3>
+					</label>
+					<input id="username" class="col-lg-3 col-form-label" type="text" name="password" value=""
+						placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>level</h3>
+					</label>
+					<input id="level" class="col-lg-3 col-form-label" type="level" name="level" value="" placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>Starting Date</h3>
+					</label>
+					<input id="sdate" class="col-lg-3 col-form-label" type="date" name="sdate" value="" placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>EndingDate</h3>
+					</label>
+					<input id="edate" class="col-lg-3 col-form-label" type="date" name="edate" value="" placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label">
+						<h3>Email</h3>
+					</label>
+					<input id="articlereviewed" class="col-lg-3 col-form-label" type="text" name="email" value=""
+						placeholder="">
+					<br>
+					<br>
+					<label class="col-lg-3 col-form-label form-control-label"></label>
+					<!-- /ignore this used for spacing -->
+					<br>
+					<button id="onSub" class="saveadmin" id="demo1" onclick="" type="submit"
+						style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
+						<h3>Save</h3>
+					</button>
+					<!-- <button type="button" onClick="getAlert()" type="submit" id="saveReviewerinfo"
+                  style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
+                  <h3>ADD</h3>
+                </button> -->
+			</form>
+
+			<br>
+			<br>
+			<h4>All Reviewers</h4>
+			<p>Search Reviewer by Id of the Reviewer</p>
+			<div class="row" style="text-align:center;">
+				<p>
+					<h5></h5>
+				</p>
+				<div class="input-wrap" style="margin:0 auto;">
+					<h5><input id="table-search" class="table-inputs" style="text-align:center;"
+							placeholder="enter Name to search here..." type="text"></h5>
+					<label class="input-clear" for="table-search"></label>
+				</div>
+			</div>
+			<div class="row" style="padding: 25px 35px;">
+				<div class="col-sm-16">
+					<h4>
+						<table style="position: center;" class="table" border="1">
+							<thead>
+								<tr>
+									<th style='visibility:collapse; width: 1px;'>Reviewers</th>
+									<th class="col-7">Name</th>
+									<th class="col-6">Email</th>
+									<th class="col-5">Password</th>
+									<th class="col-7">Level</th>
+									<th class="col-5">StartDate</th>
+
+									<th class="col-5">EndDate</th>
+									<th class="col-5" style="text-align: center">Delete</th>
+								</tr>
+
+							</thead>
+							<% results3.forEach(function(result){ %>
+							<tbody class="allReviewers">
+								<tr class="item1">
+									<td style='visibility:collapse'>Reviewers</td>
+									<td class="col-7"><%=result[0]%></td>
+									<td class="col-6"><%=result[1]%></td>
+									<td class="col-5"><%=result[2]%></td>
+									<td class="col-7"><%=result[3]%></td>
+									<td id="startdate" class="col-5">
+										<script type="text/javascript">
+											var date = Date.parse("<%= result[4] %>");
+											var d = new Date(date);
+											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
+										</script>
+									</td>
+									<td id="enddate" class="col-5">
+										<script type="text/javascript">
+											var date = Date.parse("<%= result[5] %>");
+											var d = new Date(date);
+											document.write(d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear());
+										</script>
+									</td>
+									<td class="col-5"><label class="delete-row"> Delete</label></td>
+								</tr>
+							</tbody>
+							<%})%>
+						</table>
+					</h4>
+				</div>
+			</div>
+
+			<div class="modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+							<button class="btn modal-cancel" data-dismiss="modal">Cancel</button>
+							<button class="btn modal-save" type="button">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js'>
+			</script>
+		</div>
+		</section>
+
+		<script id="rendered-js">
+			$(function () {
+				var modal = $('.modal');
+				var modalHeader = modal.find('.modal-header');
+				var modalBody = modal.find('.modal-body');
+				$(document).on('click', '.add-row', function () {
+					var el = $(this).closest('.table-wrap').find('.row-name');
+					appendRow(el);
+				});
+				$(document).on('keydown', '.row-name', function (e) {
+					var el = $(this);
+					if (e.keyCode == 13) {
+						appendRow(el);
+					}
+				});
+
+				function appendRow(el) {
+					var table = el.closest('.table-wrap').find('table');
+					var input = el.closest('.table-wrap').find('.table-inputs');
+					if (input.val() != '') {
+						table.find('tbody').append('<tr class="' + input.val() + '"><td class="col-8">' + input
+							.val() +
+							'</td><td class="col-4"><label class="delete-row"> Delete</label></td></tr>');
+						$('.row-name').find('input').val('');
+					}
+				}
+				var row = null;
+				var buttonid = $("button").click(function () {
+					// return this.id; // or alert($(this).attr('id'));
+					return this.id
+				});
+				$(document).on('click', '.delete-row', function () {
+					row = $(this).closest('tr');
+					modal.show();
+					modalHeader.html('Delete ' + row.find('td:first').html() + '?');
+					modalBody.html('Are you sure you want to delete row "' + row.find('td:first')
+						.html() + '"?');
+					$(document).on('click', '.modal-save', function () {
+						row.remove();
+						$.ajax({
+							type: 'POST',
+							url: '/admin/Reviewers',
+							data: {
+								ID: row.find('td:first').html(),
+								Query: row.find('td:nth-child(2)').html()
+							}
+						});
+						modal.hide();
+					});
+					$(document).on('click', '.modal-cancel', function () {
+						modal.hide();
+					});
+				});
+				$(document).on('keyup', '#table-search', function () {
+					var searchText = $(this).val().toLowerCase();
+					var rows = $('table').find('tbody').find('tr');
+					rows.each(function () {
+						var row = this;
+						var td = $(row).find('td:nth-child(2)');
+						var td1 = $(row).find('td:nth-child(3)');
+						var td2 = $(row).find('td:nth-child(4)');
+						var td3 = $(row).find('td:nth-child(5)');
+
+						console.log(td.html());
+						console.log(searchText);
+						if (td.html().toLowerCase().indexOf(searchText) == -1 && td1.html().toLowerCase()
+							.indexOf(
+								searchText) == -1 && td2.html().toLowerCase().indexOf(searchText) == -
+							1 && td3.html()
+							.toLowerCase().indexOf(searchText) == -1
+						) {
+							$(row).hide();
+						} else {
+							$(row).show();
+						}
+					});
+				});
+				$(document).on('click', '.input-clear', function () {
+					$(this).siblings('#table-search').val('');
+					var rows = $('table').find('tbody').find('tr');
+					rows.show();
+				});
+			});
+			//# sourceURL=pen.js
+		</script>
+
+
+	</main>
+
+
+	<a id="backtotop" href="#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
+	<script src="js/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/jquery.backtotop.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+
+</body>
+
+</html>

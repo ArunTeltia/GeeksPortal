@@ -34,9 +34,26 @@ router.post(
   })
 );
 
-router.get("/reviewer/logout", (req, res) => {
+router.get("/admin/logout", (req, res) => {
   req.logout();
-  res.redirect("/auth/reviewer/login");
+  res.redirect("/auth/admin/login");
+});
+router.get("/admin/login", (req, res) => {
+  res.render("AdminLogin");
+});
+
+router.post(
+  "/admin/login",
+  passport.authenticate("local", {
+    successRedirect: "/admin/home",
+    failureRedirect: "/auth/admin/login",
+  })
+);
+
+
+router.get("/admin/logout", (req, res) => {
+  req.logout();
+  res.redirect("/auth/admin/login");
 });
 
 router.get(
@@ -48,7 +65,9 @@ router.get(
 
 router.get(
   "/google/geeksportal",
-  passport.authenticate("google", { failureRedirect: "/auth/login" }),
+  passport.authenticate("google", {
+    failureRedirect: "/auth/login"
+  }),
   (req, res) => {
     // console.log(req.user);
     var sql = "select UserName from Users where ID='" + req.user.ID +"' ";
@@ -82,12 +101,16 @@ router.get(
 
 router.get(
   "/facebook",
-  passport.authenticate("facebook", { scope: ["email"] })
+  passport.authenticate("facebook", {
+    scope: ["email"]
+  })
 );
 
 router.get(
   "/facebook/geeksportal",
-  passport.authenticate("facebook", { failureRedirect: "/auth/login" }),
+  passport.authenticate("facebook", {
+    failureRedirect: "/auth/login"
+  }),
   (req, res) => {
     // console.log(req.user);
     var sql = "select UserName from Users where ID='" + req.user.ID +"' ";

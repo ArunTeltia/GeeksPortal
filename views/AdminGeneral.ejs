@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Admin</title>
+	<base href="/">
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/adminhome.css">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<!-- /HEADER -->
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<div id="header" style="padding: 0px;">
+			<div class="container">
+				<!-- Mobile nav toggle-->
+				<li class="nav-toggle">
+					<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+				</li>
+				<!-- / Mobile nav toggle -->
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<ul class="menu-list">
+						<li><a href="auth/admin/logout">LOG OUT</a></li>
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->
+	<div class="content" style="padding-right: 30px;">
+		<!-- container -->
+		<div class="container">
+			<!-- Jumbtron / Slider -->
+			<div class="jumbotron" style="padding: 10px;">
+				<p class="lead text-center">Admin Control Panel</p>
+			</div>
+		</div>
+	</div>
+	<!-- Main content area -->
+	<main>
+		<div style="text-align:center;">
+			<p style="text-align:center;">Choose one of Below</p>
+			<a href="/admin/general" class="button">General</a>
+			<a href="/admin/Articles" class="button">Articles</a>
+			<a href="/admin/Users" class="button">Users</a>
+			<a href="/admin/Reviewers" class="button">Reviewers</a>
+			<a href="/intern/data" class="button">Intern</a>
+		</div>
+		<br>
+		<div class="addAdminDetails" id="a" style="text-align:center;">
+			<h2 class="header" style="text-align:center;">Dashboard</h2>
+			<br>
+			<form action="/admin/general" method="POST">
+				<label class="col-lg-3 col-form-label form-control-label">
+					<h3>NAME</h3>
+				</label>
+				<input class="col-lg-3 col-form-label addname gta" type="text" name="name" placeholder=""
+					value="<%=results4[0]%>">
+				<br>
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label">
+					<h3>USERNAME</h3>
+				</label>
+				<input class="col-lg-3 col-form-label addadminname gta1" type="text" name="username"
+					value="<%=results4[1]%>" placeholder="">
+				<br>
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label">
+					<h3>D.O.B.</h3>
+				</label>
+				<input class="col-lg-3 col-form-label addadmindob gta2" type="date" name="dob" value="<%=results4[2]%>"
+					placeholder="">
+				<br>
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label">
+					<h3>PASSWORD</h3>
+				</label>
+				<input class="col-lg-3 col-form-label addadminpass gta3" type="password" name="password"
+					value="<%=results4[3]%>" placeholder="">
+				<br>
+				<br>
+				<label class="col-lg-3 col-form-label form-control-label"></label><!-- /ignore this used for spacing -->
+				<br>
+				<button data-func="puzzle" id="demo1" onclick="puzzl()" type="button"
+					style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
+					<h3>Edit</h3>
+				</button>
+				<button class="saveadmin" id="demo1" onclick="puzzl1" type="submit"
+					style="border-radius: 5px; margin: 2px 1px; cursor: pointer;">
+					<h3>Save</h3>
+				</button>
+			</form>
+			<script>
+				document.querySelector(".gta").disabled = true;
+				document.querySelector(".gta1").disabled = true;
+				document.querySelector(".gta2").disabled = true;
+				document.querySelector(".gta3").disabled = true;
+
+				function puzzl() {
+					document.querySelector(".gta").disabled = false;
+					document.querySelector(".gta1").disabled = false;
+					document.querySelector(".gta2").disabled = false;
+					document.querySelector(".gta3").disabled = false;
+
+				}
+
+				function puzzl1() {
+					document.querySelector(".gta").disabled = true;
+					document.querySelector(".gta1").disabled = true;
+					document.querySelector(".gta2").disabled = true;
+					document.querySelector(".gta3").disabled = true;
+				}
+			</script>
+		</div>
+
+	</main>
+	</footer>
+	</div>
+	</div>
+	</div>
+	<a id="backtotop" href="#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
+	<script src="js/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/jquery.backtotop.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+
+</body>
+
+</html>

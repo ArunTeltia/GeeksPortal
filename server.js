@@ -21,6 +21,7 @@ const connection = require("./config/DBconnection");
 const authRouter = require("./routes/authRouter");
 const passportSetup = require("./config/passport-setup");
 const ReviewersPassport = require("./config/Reviewer-passport");
+const AdminPassport = require("./config/Admin-passport");
 const upload = require("./imageUpload");
 // const authCheck = require("./config/authCheck");
 // const RauthCheck=require("./config/RauthCheck");
@@ -30,7 +31,11 @@ const ReviewArticlesRouter = require("./routes/ReviewArticlesRouter");
 const contributeRouter = require("./routes/contributeRouter");
 const adminRouter = require("./routes/adminRouter");
 const certiAuthRouter =require("./routes/certiAuthRouter");
+// <<<<<<< b3
+const InternRouter = require("./routes/internRouter");
+// =======
 const footerRouter=require("./routes/footerRouter");
+// >>>>>>> master
 
 
 var upload_file = require('./froalaEditorFiles/file_upload.js');
@@ -161,9 +166,17 @@ app.use("/", ReviewArticlesRouter);
 
 app.use("/",certiAuthRouter);
 
+app.use("/intern",InternRouter);
+
 app.use("/compose", contributeRouter);
 
 app.use("/admin", adminRouter);
+
+
+
+
+
+
 
 app.use("/", (req, res) => {
   res.render("404");
