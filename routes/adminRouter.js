@@ -75,8 +75,8 @@ router.get("/Articles", AauthCheck, async (req, res) => {
 });
 router.post("/Articles", AauthCheck, async (req, res) => {
   var sql =
-    'UPDATE `AllArticles` set Status="REJECTED" ,Reviewed="TRUE" WHERE Id=' +
-    req.body.Query;
+    'UPDATE `AllArticles` set Status="REJECTED" ,Reviewed="TRUE" WHERE Id="' +
+    req.body.Query + '"';
   connection.query(sql, (err, results, fields) => {
     if (err) throw err;
     console.log(results);
