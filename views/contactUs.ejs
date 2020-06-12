@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Computer Science</title>
+    <base href="/">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="styles/theme.css"/>
+  
+    <script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous">
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script  type="text/javascript" src="typeahead/typeahead.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('input.typeahead').typeahead({
+    name: 'countries',
+    remote: 'http://localhost:3000/home/search?key=%QUERY',
+    limit: 10
+});
+});
+</script>
+<style type="text/css">
+
+.typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 396px;
+}
+.typeahead {
+    background-color: #FFFFFF;
+}
+.typeahead:focus {
+    border: 2px solid #0097CF;
+}
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 422px;
+}
+.tt-suggestion {
+    font-size: 15px;
+    line-height: 15px;
+    padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+    background-color: #0097CF;
+    color: #FFFFFF;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+input[type=text] {
+            width: 100%;
+            padding:7px 7px;
+            margin-bottom: 10px;
+            margin-top: 7px;
+            margin-left: 5px;
+            box-sizing: border-box;
+            border: 2px solid #623954;
+            border-radius: 4px;
+            height: 40px;
+            
+            }
+</style>
+
+   
+</head>
+
+<body>
+    
+    <!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<div id="navigation" >
+    <div id="header" style="padding: 0px;">
+        <div class="container">
+
+
+                    <!-- Mobile nav toggle-->
+                    <li class="nav-toggle">
+                        <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                    </li>
+                    <!-- / Mobile nav toggle -->
+            
+            </div>
+        
+        <!-- header -->
+    </div>
+
+    <!-- container -->
+    <div class="container" >
+        <div id="responsive-nav" >
+           
+
+            <!-- menu nav -->
+            <div class="menu-nav"  >
+                
+                <ul class="menu-list"  >
+                    <% if(user){ %>
+                        <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+                        <li style="float: right;font-weight: bold;"><a href="/profile">
+                            <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
+                            <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
+                            <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+
+                            <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+                          </a></li>                       <% }else{ %>
+                    <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
+
+                    <% } %> 
+                   
+                
+                 
+                 
+
+                  <li><a href="/home">Home</a></li>
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu" >
+                            <li><a href="algo.html">Analysis of algorithm</a></li>
+                            <li><a href="search.html">Searching and Sorting</a></li>
+                            <li><a href="ga.html">Greedy Algorithms</a></li>
+                            <li><a href="dp.html">Dynamic Programming</a></li><li>
+                                    <a  href="sa.html">String Algorithms</a></li><li>   
+                                
+                                <a  href="backt.html">Backtracking</a></li><li>
+                                <a  href="dc.html">Divide and Conquer</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu">
+                            <li>
+                                <a  href="ds.html">Data Structures</a></li><li>
+                                <a  href="array.html">Array</a></li><li>
+                                
+                                    <a href="list.html">Linked List</a></li><li>
+                                    <a href="stack.html">Stack</a></li><li>
+                                    <a  href="queue.html">Queue</a> </li><li>
+                                
+                                <a  href="bt.html">Binary Tree</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu">
+                            <li><a href="c.html">C</a></li>
+                            <li><a href="cpp.html">C++</a></li>
+                            <li><a href="java.html">JAVA</a></li>
+                            <li><a href="py.html">Python</a></li>
+                            <li><a href="sql.html">SQL</a></li>
+                            <li><a href="php.html">PHP</a></li>
+                            <li><a href="js.html">Javascript</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu">
+                            <li><a href="campus.html">Campus Programs</a></li>
+                            <li><a href="proj.html">Projects</a></li>
+                            <li><a href="place.html">Placemant cources</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu">
+                            <li><a href="gnote.html">Gate notes</a></li>
+                            <li><a href="gcs.html">Gate CS Corner</a></li>
+                            <li><a href="gpaper.html">Gate Papers</a></li>
+                            
+                        </ul>
+                    </li>
+                   
+                    <li><a href="fncode.html">Codes</a></li>
+                    <li><a href="fnpuzzle.html">Puzzles</a></li>
+                    <li><a href="/compose">Contribute</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- menu nav -->
+        </div>
+    </div>
+    <!-- /container -->
+</div>
+<!-- /NAVIGATION -->
+<style>
+     #contact {
+    background-color: #623954;
+    width: 100%;
+  }
+
+  #contact h2 {
+    color: #ffffff;
+  }
+
+  #contact .section-title {
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  #contact h2 > small,
+  #contact p,
+  #contact a {
+    color: #f9f9f9;
+    font-size: 14px !important;
+  }
+
+  #contact-form {
+    padding: 1em 10;
+  }
+
+  #contact-form .col-md-12,
+  #contact-form .col-md-4 {
+    padding-left: 10;
+  }
+
+  #contact-form .form-control {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: none;
+    margin: 10px 0;
+  }
+
+  #contact-form input {
+    height: 50px;
+    width: 100%;
+  }
+
+  #contact-form input[type='submit'] {
+    border-radius: 50px;
+    border: 1px solid transparent;
+    width: 100%;
+  }
+
+  #contact-form input[type='submit']:hover {
+    background: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+ 
+</style>
+
+
+    
+
+
+           
+ <!-- section -->
+ <div class="section" style="padding: 10px;">
+
+                <div class="container">
+                    <div class="row">
+                    <div class="col-6 text-center" style="margin-top: 100px;">
+                        <h3>You can alternatively reach us via email at<a style="color: #623954; text-decoration:underline;" href="mailto: contactgeeksportal@gmail.com."> hello@geeksportal.com </a></h3>
+                    </div>
+                      
+                    </div>
+                    <div class="row text-center" style="margin-top: 20px; background-color: #623954; padding: 30px; border-radius: 50px;">
+                         <div class="col-md-12 col-sm-12">
+                              <form id="contact-form" role="form" action="/contactus" method="post">
+                                   
+                                   <div class="section-title"  >
+                                        <h2 style="color: #FFFFFF;">Contact us <small style="color: #FFFFFF;">We always love hearing from you!</small></h2>
+                                   </div>
+                                   <div class="col-md-12 col-sm-12" >
+                                    <div class="col-md-12 col-sm-12" >
+                                        <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
+     
+                                        <input type="email" class="form-control" placeholder="Enter email address" name="email" required="">
+     
+                                        <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>     
+                                   </div>
+     
+                                   <div class="col-md-12 col-sm-12 ">
+                                        <input type="submit" class="form-control" name="submit" value="Send Message">
+                                   </div>
+                                   </div>
+                                   
+                                </form>
+                         </div>
+     
+                    </div>
+               </div>
+
+        
+           <div class="footer-bottom" style="float: right;padding-right: 10px;">
+                            
+                             <a  id="backtotop" href="#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
+                    </div> 
+        </div> 
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+<!-- Sidebar -->
+               
+ 
+<%-include('includes/footerLinks.ejs') %> 

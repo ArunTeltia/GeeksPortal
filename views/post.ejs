@@ -21,12 +21,21 @@
                     <div id="HTML">
                         <div id="h" class="d-none"><%= Body %></div>
                     </div>
+                    <% if(type==="Puzzle"){%>
+                        <div class="row" style="margin-top: 100px;">
+                            <div class="col-12">
+                                <h5>Solution:</h5>
+                                <p><%=sol %> </p>
+                            </div>
+                        </div>
+                        <% } %> 
+                    
                   </div>
                   <div class="card-footer">
                     <div class="col-4 ml-auto">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="/edit/<%= type %>-<%= postId %>"><button type="button" class="btn btn-warning">EDIT</button></a> 
-                            <a href="/delete/<%= type %>-<%= postId %>"><button type="button" class="btn btn-warning">REJECT</button></a>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">REJECT</button>
                             <% if(ReviewerLevel===0){ %>
                                 <a href="/save/<%= type %>-<%= postId %>-<%= ReviewerLevel %> "> <button type="button" class="btn btn-warning">PROMOTE</button></a>
                                 <%  } else{%> 
@@ -35,6 +44,29 @@
                           </div>
                     </div>
                   </div>
+              </div>
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Please provide reason of rejection</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/delete/<%= type %>-<%= postId %>" method="POST">
+                            <div class="form-group">
+                                <textarea class="form-control" name="reason" placeholder="write here..." rows="5" required></textarea>                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                              </div>                         
+                             </form>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
               </div>
         </div>
     </div>

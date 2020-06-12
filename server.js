@@ -31,7 +31,11 @@ const ReviewArticlesRouter = require("./routes/ReviewArticlesRouter");
 const contributeRouter = require("./routes/contributeRouter");
 const adminRouter = require("./routes/adminRouter");
 const certiAuthRouter =require("./routes/certiAuthRouter");
+// <<<<<<< b3
 const InternRouter = require("./routes/internRouter");
+// =======
+const footerRouter=require("./routes/footerRouter");
+// >>>>>>> master
 
 
 var upload_file = require('./froalaEditorFiles/file_upload.js');
@@ -149,11 +153,14 @@ app.get("/reviewer", (req, res) => {
   res.redirect("/auth/reviewer/login");
 });
 
+
 app.use("/auth", authRouter);
 
 app.use("/profile", profileRouter);
 
 app.use("/home", homeRouter);
+
+app.use("/",footerRouter);
 
 app.use("/", ReviewArticlesRouter);
 

@@ -150,14 +150,15 @@ $(document).ready(function(){
                     
                     <ul class="menu-list"  >
                         <% if(user){ %>
-                            <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+                            <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" class="button" style="color:white">LOGOUT</a></li>
                             <li style="float: right;font-weight: bold;"><a href="/profile">
                                 <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
                                 <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
                                 <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
 
                                 <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
-                              </a></li>                       <% }else{ %>
+                              </a></li>                       
+                              <% }else{ %>
                         <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
 
                         <% } %> 
@@ -378,7 +379,44 @@ $(document).ready(function(){
           </div>
           <%})%> 
       </div>
-      <!-- </ul> -->
+      <style>
+          #page a{
+                margin-left: 5px;
+                padding: 5px;
+                border:1px solid #623954;
+                text-align: center;
+                font-weight: bold;
+                text-decoration: #623954;
+          }
+          #page a:hover
+          {
+              color: aliceblue;
+              background-color: #623954;
+          }
+          .active{
+            color: aliceblue;
+              background-color: #623954;
+          }
+      </style>
+      <div class="row">
+          <section id="page" class="text-center">
+              <% if(currentPage!=1 && previousPage!=1){ %>
+                  <a href="/home?page=1" >1</a>
+                <%  } %> 
+                <% if(hasPreviousPage){ %>
+                    <a href="/home?page=<%= previousPage %>"><%= previousPage %> </a>
+                 <%} %> 
+                <a href="/home?page=<%= currentPage %>" class="active"><%= currentPage %> </a>
+                
+                <% if(hasNextPage){ %>
+                    <a href="/home?page=<%= nextPage %>"><%= nextPage %> </a>
+                 <%} %> 
+                 <% if(lastPage!==currentPage && lastPage!==nextPage){ %>
+                    <a href="/home?page=<%= lastPage %>"><%= lastPage %> </a>
+                 <%} %> 
+
+          </section>
+      </div>
     </div>
  
  

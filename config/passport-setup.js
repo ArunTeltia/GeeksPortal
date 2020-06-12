@@ -6,14 +6,18 @@ const FacebookStrategy = require("passport-facebook").Strategy;
 const keys = require("./keys");
 const connection = require("./DBconnection");
 
+const shortid = require('shortid');
+
+
 passport.serializeUser((user, done) => {
   done(null, user.ID);
 });
 
 passport.deserializeUser((ID, done) => {
-  var sql = "select * from Users where ID=" + ID;
+  var sql = "select * from Users where ID='" + ID + "'";
   connection.query(sql, (err, results, fields) => {
     if (err) {
+      console.log("heyy1")
       return console.error(err.message);
     }
     done(null, results[0]);
@@ -45,8 +49,11 @@ passport.use(
           console.log("user exists");
           done(null, results[0]);
         } else {
+          var UserId=shortid.generate();
           var sql =
-            "INSERT into Users (ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
+            "INSERT into Users (ID,ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
+            UserId +
+            "','" +
             profile.id +
             "','" +
             profile.displayName +
@@ -64,9 +71,10 @@ passport.use(
 
             console.log("new user created");
             var sql =
-              "select * from Users where ID=( select MAX(ID) from Users)";
+              "select * from Users where ID='"+ UserId +"' ";
             connection.query(sql, (err, results, fields) => {
               if (err) {
+                console.log("heyy3")
                 return console.error(err.message);
               }
               done(null, results[0]);
@@ -112,8 +120,11 @@ passport.use(
           console.log("user exists");
           done(null, results[0]);
         } else {
+          var UserId=shortid.generate();
           var sql =
-            "INSERT into Users (ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
+            "INSERT into Users (ID,ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
+            UserId +
+            "','" +
             profile.id +
             "','" +
             profile.displayName +
@@ -131,9 +142,10 @@ passport.use(
 
             console.log("new user created");
             var sql =
-              "select * from Users where ID=( select MAX(ID) from Users)";
+            "select * from Users where ID='"+ UserId +"' ";
             connection.query(sql, (err, results, fields) => {
               if (err) {
+                console.log("heyy2")
                 return console.error(err.message);
               }
               done(null, results[0]);

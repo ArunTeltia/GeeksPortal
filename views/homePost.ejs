@@ -334,6 +334,30 @@ $(document).ready(function(){
                             document.getElementById("HTML").innerHTML=txt;
                     </script>
                   </div>
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Solution</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%= post.Solution %> </p>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <% if(post.Type==="Puzzle"){ %>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <button type="button" class="btn " style="color: #DCE7F2; background-color: #623954;" data-toggle="modal" data-target="#myModal">View Solution</button>
+                        </div>
+                    </div>
+                    <%} %> 
+                 
                   <hr>
                   <div class="row">
                       <div class="col-2">
@@ -346,6 +370,14 @@ $(document).ready(function(){
                     
                     <% }) %>
                   </div>
+                    </div>
+                    <div class="row text-center" style="margin-top: 20px;">
+                        <div class="col-10">
+                            <h5>Difficulty: <span style="color: #623954;"><%= post.Level %></span> </h5>
+                            <h4>Contributed By: <span style="color: #623954;"><%= post.User %></span> </h4>
+                        </div>
+                        <!-- <div class="col-8">
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -375,6 +407,7 @@ $(document).ready(function(){
         </div>
 
       </div>
+      
       </div>
       
   </div>
