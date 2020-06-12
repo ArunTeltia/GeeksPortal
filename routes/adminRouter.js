@@ -35,7 +35,7 @@ router.post("/general", AauthCheck, async (req, res) => {
       obj.username +
       "',Password='" +
       obj.password +
-      "',`D.O.B`='" +
+      "',`DOB`='" +
       obj.dob +
       "'";
 
