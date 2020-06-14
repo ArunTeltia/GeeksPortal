@@ -127,7 +127,7 @@ app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     // keys: [keys.session.cookieKey]
-    keys: [process.env.COOKIE_KEY],
+    keys: [process.env.COOKIE_KEY||keys.session.cookieKey],
   })
 );
 app.use((req, res, next) => {

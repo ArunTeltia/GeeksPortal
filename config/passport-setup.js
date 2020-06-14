@@ -22,15 +22,18 @@ passport.deserializeUser((ID, done) => {
     }
     done(null, results[0]);
   });
+  console.log(keys.google);
+  console.log(keys.google.clientID);
+
 });
 
 passport.use(
   new GoogleStrategy(
     {
       // clientID:keys.google.clientID,
-      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientID: process.env.GOOGLE_CLIENT_ID||keys.google.clientID,
       // clientSecret:keys.google.clientSecret,
-      clientSecret: process.env.GOOGLE_CLIENT_SECERT,
+      clientSecret: process.env.GOOGLE_CLIENT_SECERT||keys.google.clientSecret,
       callbackURL: "/auth/google/geeksportal",
       //   userProfileURL:"https://www.googleapis.com/oauth/v3/userinfo"
     },
@@ -49,7 +52,7 @@ passport.use(
           console.log("user exists");
           done(null, results[0]);
         } else {
-          var UserId=shortid.generate();
+          var UserId = shortid.generate();
           var sql =
             "INSERT into Users (ID,ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
             UserId +
@@ -71,7 +74,7 @@ passport.use(
 
             console.log("new user created");
             var sql =
-              "select * from Users where ID='"+ UserId +"' ";
+              "select * from Users where ID='" + UserId + "' ";
             connection.query(sql, (err, results, fields) => {
               if (err) {
                 console.log("heyy3")
@@ -90,9 +93,9 @@ passport.use(
   new FacebookStrategy(
     {
       // clientID:keys.facebook.appID,
-      clientID: process.env.FACEBOOK_APP_ID,
+      clientID: process.env.FACEBOOK_APP_ID||keys.facebook.clientID,
       // clientSecret: keys.facebook.appSecret,
-      clientSecret: process.env.FACEBOOK_APP_SECERT,
+      clientSecret: process.env.FACEBOOK_APP_SECERT||keys.facebook.clientSecret,
       callbackURL: "http://localhost:3000/auth/facebook/geeksportal",
       profileFields: [
         "id",
@@ -120,7 +123,7 @@ passport.use(
           console.log("user exists");
           done(null, results[0]);
         } else {
-          var UserId=shortid.generate();
+          var UserId = shortid.generate();
           var sql =
             "INSERT into Users (ID,ExtId,DisplayName,Firstname,LastName,Photo,Email) values ('" +
             UserId +
@@ -142,7 +145,7 @@ passport.use(
 
             console.log("new user created");
             var sql =
-            "select * from Users where ID='"+ UserId +"' ";
+              "select * from Users where ID='" + UserId + "' ";
             connection.query(sql, (err, results, fields) => {
               if (err) {
                 console.log("heyy2")
