@@ -34,9 +34,9 @@ router.post(
   })
 );
 
-router.get("/admin/logout", (req, res) => {
+router.get("/reviewer/logout", (req, res) => {
   req.logout();
-  res.redirect("/auth/admin/login");
+  res.redirect("/auth/reviewer/login");
 });
 router.get("/admin/login", (req, res) => {
   res.render("AdminLogin");

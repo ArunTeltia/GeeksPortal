@@ -106,7 +106,9 @@
               <textarea name="sol" class="form-control " value=" " rows="5" style="width: 100%;" ><%= post.Solution %></textarea>
             </div>
             <script>
-              if(post.Type!=="Puzzle"){
+              var type="<%=post.Type%>"
+              $("#sol").show();
+              if(type!=="Puzzle"){
                 $("#sol").hide();
               }
             </script>

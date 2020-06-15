@@ -25,10 +25,12 @@ passport.use(
     },
     function (req, email, password, done) {
       connection.query(
-        "SELECT * FROM `Reviewers` WHERE `email` = '" + email + "'",
+        "SELECT * FROM `Reviewers` WHERE Email='" + email + "'",
         function (err, rows) {
           if (err) return done(err);
 
+          console.log(rows);
+          
           if (!rows.length) {
             return done(
               null,

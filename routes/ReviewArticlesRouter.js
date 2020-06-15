@@ -90,7 +90,7 @@ router.get("/edit/:type-:postId", RauthCheck, (req, res) => {
       return console.error(err.message);
     }
     console.log(results[0]);
-    res.render("EditPost", { post: results[0] });
+    res.render("EditPost",{post:results[0]});
   });
 });
 
