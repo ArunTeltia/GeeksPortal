@@ -7,7 +7,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((ID, done) => {
-  var sql = "select * from Reviewers where ID=" + ID;
+  var sql = "select * from Reviewers where ID='" + ID + "'";
   connection.query(sql, (err, results, fields) => {
     if (err) {
       return console.error(err.message);

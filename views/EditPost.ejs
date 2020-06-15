@@ -172,8 +172,8 @@
 
                     // show loading animation and hide the suggestions dropdown
                     tagify.loading(true).dropdown.hide.call(tagify)
-
-                    fetch('http://localhost:3000/compose/tags?value=' + value, {signal:controller.signal})
+                    var url='http://localhost:3000/compose/tags?value=' + value || 'https://geeksportal.org/compose/tags?value=' + value || 'http://geeksportal.org/compose/tags?value=' + value
+                    fetch(url, {signal:controller.signal})
                       .then(RES => RES.json())
                       .then(function(whitelist){
                         // update inwhitelist Array in-place

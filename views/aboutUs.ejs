@@ -210,6 +210,8 @@ display:none;
                         <% if(user){ %>
                             <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
                             <li style="float: right;font-weight: bold;"><a href="/profile">
+                                <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+                                <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
                                 <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
                                 <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
                                 <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
@@ -219,7 +221,7 @@ display:none;
                         <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
     
                         <% } %> 
-                        <li><a href="home.html">Home</a></li>
+                        <li><a href="/home">Home</a></li>
                         <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
                             <ul class="custom-menu" >
                                 <li><a href="algo.html">Analysis of algorithm</a></li>
@@ -276,7 +278,7 @@ display:none;
                         
                         <li><a href="fncode.html">Codes</a></li>
                     <li><a href="fnpuzzle.html">Puzzles</a></li>
-                    <li><a href="editor.html">Contribute</a></li>
+                    <li><a href="/compose">Contribute</a></li>
                     </ul>
                 </div>
                 <!-- menu nav -->

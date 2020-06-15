@@ -1,7 +1,7 @@
 const connection = require("./DBconnection");
 
 const loggedIn = (req, res, next) => {
-  let sql = "select ID from Admin where ID>0";
+  let sql = "select ID from Admin";
   connection.query(sql, (err, results, fields) => {
     if (err) {
       return console.error(err.message);
