@@ -42,7 +42,7 @@ crossorigin="anonymous">
 $(document).ready(function(){
 $('input.typeahead').typeahead({
     name: 'countries',
-    remote: 'http://localhost:3000/home/search?key=%QUERY',
+    remote: '/home/search?key=%QUERY',
     limit: 10
 });
 });
@@ -142,9 +142,9 @@ input[type=text] {
                     <% if(user){ %>
                         <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
                         <li style="float: right;font-weight: bold;"><a href="/profile">
-                            <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
-                            <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
-                            <img  src="http://localhost:3000/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+                            <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+                            <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+                            <img  src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
                             <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
                             <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
 

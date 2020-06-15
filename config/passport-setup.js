@@ -31,10 +31,11 @@ passport.use(
   new GoogleStrategy(
     {
       // clientID:keys.google.clientID,
-      clientID: process.env.GOOGLE_CLIENT_ID||keys.google.clientID,
+      clientID: process.env.GOOGLE_CLIENT_ID || keys.google.clientID,
       // clientSecret:keys.google.clientSecret,
-      clientSecret: process.env.GOOGLE_CLIENT_SECERT||keys.google.clientSecret,
-      callbackURL: "https://geeksportal.org/auth/google/geeksportal" || "http://geeksportal.org/auth/google/geeksportal" || "http://localhost:3000/auth/google/geeksportal",
+      clientSecret: process.env.GOOGLE_CLIENT_SECERT || keys.google.clientSecret,
+      callbackURL: "/auth/google/geeksportal",
+      // callbackURL: "https://geeksportal.org/auth/google/geeksportal" || "http://geeksportal.org/auth/google/geeksportal" || "http://localhost:3000/auth/google/geeksportal",
       //   userProfileURL:"https://www.googleapis.com/oauth/v3/userinfo"
     },
     (accessToken, refreshToken, profile, done) => {
@@ -93,10 +94,11 @@ passport.use(
   new FacebookStrategy(
     {
       // clientID:keys.facebook.appID,
-      clientID: process.env.FACEBOOK_APP_ID||keys.facebook.clientID,
+      clientID: process.env.FACEBOOK_APP_ID || keys.facebook.clientID,
       // clientSecret: keys.facebook.appSecret,
-      clientSecret: process.env.FACEBOOK_APP_SECERT||keys.facebook.clientSecret,
-      callbackURL: "https://geeksportal.org/auth/facebook/geeksportal" || "http://geeksportal.org/auth/facebook/geeksportal" || "http://localhost:3000/auth/facebook/geeksportal",
+      clientSecret: process.env.FACEBOOK_APP_SECERT || keys.facebook.clientSecret,
+      callbackURL: "/auth/facebook/geeksportal",
+      // callbackURL: "https://geeksportal.org/auth/facebook/geeksportal" || "http://geeksportal.org/auth/facebook/geeksportal" || "http://localhost:3000/auth/facebook/geeksportal",
       profileFields: [
         "id",
         "displayName",

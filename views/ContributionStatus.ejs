@@ -193,9 +193,9 @@
                      <% if(details){ %>
                      <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
                      <li style="float: right;font-weight: bold;"><a href="/profile">
-                        <img  src="https://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
-                        <img  src="http://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
-                         <img  src="http://localhost:3000/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
+                        <!-- <img  src="https://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
+                        <!-- <img  src="http://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
+                         <img  src="/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
                          <img  src="<%=details.Photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
 
                     </a></li>
