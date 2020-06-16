@@ -34,7 +34,7 @@ passport.use("reviewer-local",
         function (err, rows) {
           if (err) return done(err);
 
-          console.log(rows);
+          // console.log(rows);
           
           if (!rows.length) {
             return done(

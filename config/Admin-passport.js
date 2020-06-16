@@ -12,7 +12,7 @@ passport.deserializeUser((ID, done) => {
         if (err) {
             return console.error(err.message);
         }
-        console.log(results);
+        // console.log(results);
         done(null, results[0]);
     });
 });

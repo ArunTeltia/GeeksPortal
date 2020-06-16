@@ -50,9 +50,10 @@ router.post(
     let obj = JSON.parse(JSON.stringify(req.body));
     const sql12 = "Select * from Intern where Email ='" + obj.email + "'";
     const result3 = await db.query(sql12);
-    console.log(obj);
+    // console.log(obj);
+    console.log(result3)
     var post = {
-      Id: uuidv4(),
+      // Id: uuidv4(),
       Name: obj.name,
       Email: obj.email,
       Role: obj.role,
@@ -64,14 +65,16 @@ router.post(
       CertiNum: obj.certi,
       InstituteName: obj.institute,
     };
-    if (!result3) {
+    if (result3 === []) {
+      console.log(post);
       var qry = "INSERT into Intern SET ?";
       connection.query(qry, post, (err, results, fields) => {
         if (err) throw err;
-        console.log(results);
-        // alert("Reviewers are added");
+        // console.log(results);
+
       });
     } else {
+      console.log(obj)
       var qry = "Update `Intern` set Name='" +
         obj.name +
         "',Email='" +
@@ -94,7 +97,7 @@ router.post(
         obj.institute +
         "' where CertiNum='" +
         obj.certi + "'";
-      connection.query(qry, post, (err, results, fields) => {
+      connection.query(qry, (err, results, fields) => {
         if (err) throw err;
         console.log(results);
         // alert("Reviewers are added");
@@ -102,6 +105,7 @@ router.post(
     }
 
     // console.log(req.body);
+    res.redirect("/intern/form")
 
 
   }
