@@ -20,13 +20,17 @@ const keys = require("./config/keys");
 const connection = require("./config/DBconnection");
 const authRouter = require("./routes/authRouter");
 const passportSetup = require("./config/passport-setup");
-const AdminPassport = require("./config/Admin-passport");
 
-const upload = require("./imageUpload");
+
+const AdminPassport = require("./config/Admin-passport");
 const ReviewersPassport = require("./config/Reviewer-passport");
 
-const authCheck = require("./config/authCheck");
-const RauthCheck=require("./config/RauthCheck");
+// const upload = require("./imageUpload");
+
+
+
+// const authCheck = require("./config/authCheck");
+// const RauthCheck=require("./config/RauthCheck");
 const profileRouter = require("./routes/profileRouter");
 const homeRouter = require("./routes/homeRouter");
 const ReviewArticlesRouter = require("./routes/ReviewArticlesRouter");

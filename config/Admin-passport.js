@@ -17,7 +17,7 @@ passport.deserializeUser((ID, done) => {
     });
 });
 
-passport.use(
+passport.use("admin-local",
     new LocalStrategy({
             usernameField: "username",
             passwordField: "password",

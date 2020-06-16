@@ -3,7 +3,12 @@ const LocalStrategy = require("passport-local").Strategy;
 const connection = require("./DBconnection");
 
 passport.serializeUser((user, done) => {
+  if(isUser(user))
   done(null, user.ID);
+
+  else if(isSponsor(user))
+  done(null, user.ID);
+
 });
 
 passport.deserializeUser((ID, done) => {
@@ -16,7 +21,7 @@ passport.deserializeUser((ID, done) => {
   });
 });
 
-passport.use(
+passport.use("reviewer-local",
   new LocalStrategy(
     {
       usernameField: "email",

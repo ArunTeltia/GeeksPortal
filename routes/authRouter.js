@@ -28,7 +28,7 @@ router.get("/reviewer/login", (req, res) => {
 
 router.post(
   "/reviewer/login",
-  passport.authenticate("local", {
+  passport.authenticate("reviewer-local", {
     successRedirect: "/articles/Article",
     failureRedirect: "/auth/reviewer/login",
   })
@@ -44,7 +44,7 @@ router.get("/admin/login", (req, res) => {
 
 router.post(
   "/admin/login",
-  passport.authenticate("local", {
+  passport.authenticate("admin-local", {
     successRedirect: "/admin/home",
     failureRedirect: "/auth/admin/login",
   })
