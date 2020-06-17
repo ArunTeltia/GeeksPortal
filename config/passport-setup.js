@@ -22,8 +22,8 @@ passport.deserializeUser((ID, done) => {
     }
     done(null, results[0]);
   });
-  console.log(keys.google);
-  console.log(keys.google.clientID);
+  // console.log(keys.google);
+  // console.log(keys.google.clientID);
 
 });
 
@@ -111,7 +111,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       // process.nextTick(function(){
-      console.log(profile);
+      // console.log(profile);
 
       var sql = "SELECT * from Users where ExtId='" + profile.id + "'";
       connection.query(sql, (err, results, fields) => {
@@ -119,7 +119,7 @@ passport.use(
           return console.error(err.message);
         }
 
-        console.log(results);
+        // console.log(results);
 
         if (Array.isArray(results) && results.length) {
           console.log("user exists");
