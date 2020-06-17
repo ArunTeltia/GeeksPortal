@@ -3,22 +3,26 @@ const LocalStrategy = require("passport-local").Strategy;
 const connection = require("./DBconnection");
 
 passport.serializeUser((user, done) => {
-  if(isUser(user))
-  done(null, user.ID);
+  if (isUser(user))
+    done(null, user.ID);
 
-  else if(isSponsor(user))
-  done(null, user.ID);
+  else if (isSponsor(user))
+    done(null, user.ID);
 
 });
 
 passport.deserializeUser((ID, done) => {
-  var sql = "select * from Reviewers where ID='" + ID + "'";
-  connection.query(sql, (err, results, fields) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    done(null, results[0]);
-  });
+  try {
+    var sql = "select * from Reviewers where ID='" + ID + "'";
+    connection.query(sql, (err, results, fields) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      done(null, results[0]);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 passport.use("reviewer-local",
@@ -29,38 +33,43 @@ passport.use("reviewer-local",
       passReqToCallback: true,
     },
     function (req, email, password, done) {
-      connection.query(
-        "SELECT * FROM `Reviewers` WHERE Email='" + email + "'",
-        function (err, rows) {
-          if (err) return done(err);
+      try {
+        connection.query(
+          "SELECT * FROM `Reviewers` WHERE Email='" + email + "'",
+          function (err, rows) {
+            if (err) return done(err);
 
-          // console.log(rows);
-          
-          if (!rows.length) {
-            return done(
-              null,
-              false,
-              (req.session.message = {
-                type: "danger",
-                intro: "User doesnt exist",
-                message: "please enter valid email",
-              })
-            );
-          } else if (!(rows[0].Password == password)) {
-            return done(
-              null,
-              false,
-              (req.session.message = {
-                type: "danger",
-                intro: "Invalid Password",
-                message: "please enter correct Password",
-              })
-            );
+            // console.log(rows);
+
+            if (!rows.length) {
+              return done(
+                null,
+                false,
+                (req.session.message = {
+                  type: "danger",
+                  intro: "User doesnt exist",
+                  message: "please enter valid email",
+                })
+              );
+            } else if (!(rows[0].Password == password)) {
+              return done(
+                null,
+                false,
+                (req.session.message = {
+                  type: "danger",
+                  intro: "Invalid Password",
+                  message: "please enter correct Password",
+                })
+              );
+            }
+
+            return done(null, rows[0]);
           }
-
-          return done(null, rows[0]);
-        }
-      );
+        );
+      } catch (err) {
+        console.log(err);
+      }
     }
+
   )
 );

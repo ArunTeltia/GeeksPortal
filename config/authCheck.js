@@ -1,8 +1,12 @@
 const authCheck = (req, res, next) => {
-  if (!req.user) {
-    res.redirect("/auth/login");
-  } else {
-    next();
+  try {
+    if (!req.user) {
+      res.redirect("/auth/login");
+    } else {
+      next();
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
