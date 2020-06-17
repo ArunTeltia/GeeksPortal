@@ -4,57 +4,74 @@ const nodemailer = require('nodemailer')
 
 
 
-router.get("/aboutus",(req,res)=>{
-  let photo="#";
-    if(req.user){
-      photo=req.user.Photo
+router.get("/aboutus", (req, res) => {
+  try {
+    let photo = "#";
+    if (req.user) {
+      photo = req.user.Photo
     }
-    res.render("aboutUs",{
+    res.render("aboutUs", {
       photo: photo,
-        user: req.user
+      user: req.user
     });
-  });
-  
-  router.get("/tc",(req,res)=>{
-    let photo="#";
-    if(req.user){
-      photo=req.user.Photo
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/tc", (req, res) => {
+  try {
+    let photo = "#";
+    if (req.user) {
+      photo = req.user.Photo
     }
-    res.render("tc",{
+    res.render("tc", {
       photo: photo,
-        user: req.user
+      user: req.user
     });
-  });
-  
-  router.get("/cookie",(req,res)=>{
-    let photo="#";
-    if(req.user){
-      photo=req.user.Photo
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/cookie", (req, res) => {
+  try {
+    let photo = "#";
+    if (req.user) {
+      photo = req.user.Photo
     }
-    res.render("privacyPolicy",{
+    res.render("privacyPolicy", {
       photo: photo,
-        user: req.user
+      user: req.user
     });
-  });
-  router.get("/internships",(req,res)=>{
-    let photo="#";
-    if(req.user){
-      photo=req.user.Photo
+  } catch (err) {
+    console.log(err);
+  }
+});
+router.get("/internships", (req, res) => {
+  try {
+    let photo = "#";
+    if (req.user) {
+      photo = req.user.Photo
     }
-    res.render("internships",{
+    res.render("internships", {
       photo: photo,
-        user: req.user
+      user: req.user
     });
-  });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 
 router.route("/contactus")
-.get((req,res)=>{
-    if (req.user) {
+  .get((req, res) => {
+    try {
+      if (req.user) {
         res.render("contactUs", {
           photo: req.user.Photo,
           user: req.user,
-       
+
         });
       } else {
         res.render("contactUs", {
@@ -62,11 +79,15 @@ router.route("/contactus")
           user: req.user,
         });
       }
-})
-.post((req,res)=>{
-    let obj=JSON.parse(JSON.stringify(req.body));
-    console.log(obj);
-    const smtpTrans = nodemailer.createTransport({
+    } catch (err) {
+      console.log(err);
+    }
+  })
+  .post((req, res) => {
+    try {
+      let obj = JSON.parse(JSON.stringify(req.body));
+      console.log(obj);
+      const smtpTrans = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
@@ -86,16 +107,19 @@ router.route("/contactus")
       smtpTrans.sendMail(mailOpts, (error, response) => {
         if (error) {
           console.log(error);
-           // Show a page indicating failure
+          // Show a page indicating failure
         }
         else {
-        //   res.render('contact-success') // Show a page indicating success
-        res.redirect("/contactus");
+          //   res.render('contact-success') // Show a page indicating success
+          res.redirect("/contactus");
         }
       })
-})
+    } catch (err) {
+      console.log(err);
+    }
+  })
 
-module.exports=router;
+module.exports = router;
 
 
 // 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
