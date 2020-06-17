@@ -1,29 +1,41 @@
 const router = require("express").Router();
 const passport = require("passport");
 const connection = require("../config/DBconnection");
-const Keys =require("../config/keys")
+const Keys = require("../config/keys")
 
 const nodemailer = require('nodemailer')
-const sendgridTransport=require("nodemailer-sendgrid-transport");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 const smtpTrans = nodemailer.createTransport(sendgridTransport({
- 
+
   auth: {
-    api_key:Keys.sendgridKey
+    api_key: Keys.sendgridKey
   }
 }));
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  try {
+    res.render("login");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/login");
+  try {
+    req.logout();
+    res.redirect("/auth/login");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/reviewer/login", (req, res) => {
-  res.render("ReviewerLoginForm");
+  try {
+    res.render("ReviewerLoginForm");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post(
@@ -35,11 +47,19 @@ router.post(
 );
 
 router.get("/reviewer/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/reviewer/login");
+  try {
+    req.logout();
+    res.redirect("/auth/reviewer/login");
+  } catch (err) {
+    console.log(err);
+  }
 });
 router.get("/admin/login", (req, res) => {
-  res.render("AdminLogin");
+  try {
+    res.render("AdminLogin");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post(
@@ -52,8 +72,12 @@ router.post(
 
 
 router.get("/admin/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/admin/login");
+  try {
+    req.logout();
+    res.redirect("/auth/admin/login");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get(
@@ -69,33 +93,37 @@ router.get(
     failureRedirect: "/auth/login"
   }),
   (req, res) => {
-    // console.log(req.user);
-    var sql = "select UserName from Users where ID='" + req.user.ID +"' ";
-    connection.query(sql, (err, results, fields) => {
-      if (err) {
-        return console.error(err.message);
-      }
-      // console.log(results);
-      if (results[0].UserName === null) {
+    try {
+      // console.log(req.user);
+      var sql = "select UserName from Users where ID='" + req.user.ID + "' ";
+      connection.query(sql, (err, results, fields) => {
+        if (err) {
+          return console.error(err.message);
+        }
+        // console.log(results);
+        if (results[0].UserName === null) {
 
           res.redirect("/profile");
-        const mailOpts = {
-          to: req.user.Email,
-          from:"contactgeeksportal@gmail.com",
-          subject: 'Sign Up successfully',
-          html:"<h1>You successfully signed UP!!</h1>"
-        }
-
-        smtpTrans.sendMail(mailOpts, (error, response) => {
-          if (error) {
-            console.log(error);
-             // Show a page indicating failure
+          const mailOpts = {
+            to: req.user.Email,
+            from: "contactgeeksportal@gmail.com",
+            subject: 'Sign Up successfully',
+            html: "<h1>You successfully signed UP!!</h1>"
           }
-        })
-      } else {
-        res.redirect("/home");
-      }
-    });
+
+          smtpTrans.sendMail(mailOpts, (error, response) => {
+            if (error) {
+              console.log(error);
+              // Show a page indicating failure
+            }
+          })
+        } else {
+          res.redirect("/home");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
@@ -112,32 +140,36 @@ router.get(
     failureRedirect: "/auth/login"
   }),
   (req, res) => {
-    // console.log(req.user);
-    var sql = "select UserName from Users where ID='" + req.user.ID +"' ";
-    connection.query(sql, (err, results, fields) => {
-      if (err) {
-        return console.error(err.message);
-      }
-      // console.log(results);
-      if (results[0].UserName === null) {
-        res.redirect("/profile");
-        const mailOpts = {
-          to: req.user.Email,
-          from:"contactgeeksportal@gmail.com",
-          subject: 'Sign Up successfully',
-          html:"<h1>You successfully signed UP!!</h1>"
+    try {
+      // console.log(req.user);
+      var sql = "select UserName from Users where ID='" + req.user.ID + "' ";
+      connection.query(sql, (err, results, fields) => {
+        if (err) {
+          return console.error(err.message);
         }
-
-        smtpTrans.sendMail(mailOpts, (error, response) => {
-          if (error) {
-            console.log(error);
-             // Show a page indicating failure
+        // console.log(results);
+        if (results[0].UserName === null) {
+          res.redirect("/profile");
+          const mailOpts = {
+            to: req.user.Email,
+            from: "contactgeeksportal@gmail.com",
+            subject: 'Sign Up successfully',
+            html: "<h1>You successfully signed UP!!</h1>"
           }
-        });
-      } else {
-        res.redirect("/home");
-      }
-    });
+
+          smtpTrans.sendMail(mailOpts, (error, response) => {
+            if (error) {
+              console.log(error);
+              // Show a page indicating failure
+            }
+          });
+        } else {
+          res.redirect("/home");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
