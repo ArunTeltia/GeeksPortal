@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const connection = require("../config/DBconnection");
 const db = require("../config/makeDB");
+const shortid = require('shortid');
+const bcrypt=require("bcryptjs");
 
 const AauthCheck = require("../config/AauthCheck");
 const fs = require('fs');
@@ -166,16 +168,22 @@ router.get("/Reviewers", AauthCheck, async (req, res) => {
     console.log(err);
   }
 });
-router.post("/Reviewers", AauthCheck, (req, res) => {
+router.post("/Reviewers", AauthCheck, async(req, res) => {
   try {
     var obj = JSON.parse(JSON.stringify(req.body));
     // consol.log(obj);
     // console.log(req.body);
+    var ReviewerId = shortid.generate();
+
     if (obj.password && obj.name && obj.level && obj.email && obj.sdate && obj.edate) {
+      
+      let hashedPassword;
+    hashedPassword= await bcrypt.hash(obj.password,12);
+
       var post = {
-        // ID = uuidv4(),
+        ID: ReviewerId,
         Name: obj.name,
-        Password: obj.password,
+        Password: hashedPassword,
         Level: obj.level,
         StartDate: obj.sdate,
         EndDate: obj.edate,

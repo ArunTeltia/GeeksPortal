@@ -1,6 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const connection = require("./DBconnection");
+const bcrypt=require("bcryptjs");
 
 passport.serializeUser((user, done) => {
   if (isUser(user))
@@ -32,11 +33,11 @@ passport.use("reviewer-local",
       passwordField: "password",
       passReqToCallback: true,
     },
-    function (req, email, password, done) {
+     function (req, email, password, done) {
       try {
         connection.query(
           "SELECT * FROM `Reviewers` WHERE Email='" + email + "'",
-          function (err, rows) {
+          async function (err, rows) {
             if (err) return done(err);
 
             // console.log(rows);
@@ -51,7 +52,11 @@ passport.use("reviewer-local",
                   message: "please enter valid email",
                 })
               );
-            } else if (!(rows[0].Password == password)) {
+            }
+
+            let isValidPassword= await bcrypt.compare(password,rows[0].Password);
+
+            if (!isValidPassword) {
               return done(
                 null,
                 false,
