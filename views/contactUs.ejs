@@ -46,7 +46,9 @@ $('input.typeahead').typeahead({
     limit: 10
 });
 });
-</script>
+</script>    
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 <style type="text/css">
 
 .typeahead, .tt-query, .tt-hint {
@@ -312,13 +314,30 @@ input[type=text] {
      
                                         <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>     
                                    </div>
-     
+
                                    <div class="col-md-12 col-sm-12 ">
+                                    <div class="g-recaptcha text-center" data-sitekey="6Lf0e6YZAAAAALJpSNSGxYQoCZSX5ym5KUfyutDY"></div><br>
                                         <input type="submit" class="form-control" name="submit" value="Send Message">
                                    </div>
                                    </div>
                                    
                                 </form>
+                                <script>
+                                    $(document).ready(function() {
+                                      $('#comment_form').submit(function() {
+                                        $(this).ajaxSubmit({
+                                          error: function(xhr) {
+                                            status('Error: ' + xhr.status);
+                                          },
+                                         success: function(response) {
+                                           alert(response.responseDesc);
+                                         }
+                                        });
+                                        //Very important line, it disable the page refresh.
+                                        return false;
+                                      });
+                                    });
+                                  </script>
                          </div>
      
                     </div>

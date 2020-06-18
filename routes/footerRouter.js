@@ -1,5 +1,7 @@
 const router = require("express").Router();
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const request = require('request');
+
 
 
 
@@ -85,8 +87,28 @@ router.route("/contactus")
   })
   .post((req, res) => {
     try {
-      let obj = JSON.parse(JSON.stringify(req.body));
-      console.log(obj);
+      
+
+      if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+      return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    }
+    // console.log(JSON.parse(JSON.stringify(req.body)));
+    const {name,email,message}=JSON.parse(JSON.stringify(req.body));
+  
+    // Put your secret key here.
+    var secretKey = "6Lf0e6YZAAAAAIWvSxgV_mMeUCY-p24eh8gCRb_9";
+    // req.connection.remoteAddress will provide IP address of connected user.
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    // Hitting GET request to the URL, Google will respond with success or error scenario.
+    request(verificationUrl,function(error,response,body) {
+      body = JSON.parse(body);
+      // Success will be true or false depending upon captcha validation.
+      if(body.success !== undefined && !body.success) {
+        return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
+      }
+      // console.log(JSON.parse(JSON.stringify(req.body)));
+      // console.log(`${email}=====${comment}`)
+      // res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
       const smtpTrans = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -98,10 +120,10 @@ router.route("/contactus")
       })
 
       const mailOpts = {
-        from: obj.email, // This is ignored by Gmail
+        from: email, // This is ignored by Gmail
         to: 'contactgeeksportal@gmail.com',
         subject: 'New message from contact form at geekspotal',
-        text: `${obj.name} (${obj.email}) says: ${obj.message}`
+        text: `${name} (${email}) says: ${message}`
       }
 
       smtpTrans.sendMail(mailOpts, (error, response) => {
@@ -114,6 +136,15 @@ router.route("/contactus")
           res.redirect("/contactus");
         }
       })
+
+
+    });
+
+
+
+      // let obj = JSON.parse(JSON.stringify(req.body));
+      // console.log(obj);
+      
     } catch (err) {
       console.log(err);
     }

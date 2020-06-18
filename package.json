@@ -37,6 +37,7 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "promisify": "0.0.3",
+    "request": "^2.88.2",
     "sha1": "^1.1.1",
     "shortid": "^2.2.15",
     "then-busboy": "^4.4.0",
