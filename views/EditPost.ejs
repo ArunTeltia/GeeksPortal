@@ -197,8 +197,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 	  CKEDITOR.replace("blog", {
-	    "extraPlugins" : 'imagebrowser',
-			"imageBrowser_listUrl" : "/files"
+      extraPlugins: 'codesnippet',
+	    codeSnippet_theme: 'monokai_sublime',
+	    // "extraPlugins" : 'imagebrowser',
+			// "imageBrowser_listUrl" : "/files"
       });
       var t=document.getElementById("h").textContent;
       // ed.html.set('<p>My custom paragraph.</p>');
