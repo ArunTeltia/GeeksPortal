@@ -370,8 +370,16 @@
                            <div class="form-group">
                               <label class="col-sm-2 control-label">Date of Birth</label>
                               <div class="col-sm-4">
-                                 <input class="form-control" type="date" id="profile-dob" name="dob" value="<%= details.DOB %>"   placeholder="dob" ng-model="me.email">
+                                 <input class="form-control" type="date" id="dob" name="dob" value="" >
                               </div>
+                              <script>
+                                   var myDate = document.querySelector("#dob");
+                                   var date = "<%= details.DOB %>"
+                                   var d=new Date(date);
+                                   myDate.value = d.getFullYear().toString() + '-' + (d.getMonth() + 1).toString().padStart(2, 0) +
+                                    '-' + d.getDate().toString().padStart(2, 0);
+
+                               </script>
                            </div>
                            <div class="form-group">
                               <label class="col-sm-2 control-label">Phone</label>
