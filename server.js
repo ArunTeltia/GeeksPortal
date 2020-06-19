@@ -160,8 +160,8 @@ app.get("/reviewer", (req, res) => {
   res.redirect("/auth/reviewer/login");
 });
 
-app.get("/admin", (req, res) => {
-  res.redirect("/auth/admin/login");
+app.get("/panelforadmin", (req, res) => {
+  res.redirect("/auth/panelforadmin/login");
 });
 
 app.use(compression());
@@ -183,7 +183,7 @@ app.use("/intern",InternRouter);
 
 app.use("/compose", contributeRouter);
 
-app.use("/admin", adminRouter);
+app.use("/panelforadmin", adminRouter);
 
 
 

@@ -17,10 +17,10 @@ const loggedIn = (req, res, next) => {
         if (found) {
           next();
         } else {
-          res.redirect("/auth/admin/login");
+          res.redirect("/auth/panelforadmin/login");
         }
       } else {
-        res.redirect("/auth/admin/login");
+        res.redirect("/auth/panelforadmin/login");
       }
     });
   } catch (err) {

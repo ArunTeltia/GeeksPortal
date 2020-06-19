@@ -54,7 +54,7 @@ router.get("/reviewer/logout", (req, res) => {
     console.log(err);
   }
 });
-router.get("/admin/login", (req, res) => {
+router.get("/panelforadmin/login", (req, res) => {
   try {
     res.render("AdminLogin");
   } catch (err) {
@@ -63,18 +63,18 @@ router.get("/admin/login", (req, res) => {
 });
 
 router.post(
-  "/admin/login",
+  "/panelforadmin/login",
   passport.authenticate("admin-local", {
-    successRedirect: "/admin/home",
-    failureRedirect: "/auth/admin/login",
+    successRedirect: "/panelforadmin/home",
+    failureRedirect: "/auth/panelforadmin/login",
   })
 );
 
 
-router.get("/admin/logout", (req, res) => {
+router.get("/panelforadmin/logout", (req, res) => {
   try {
     req.logout();
-    res.redirect("/auth/admin/login");
+    res.redirect("/auth/panelforadmin/login");
   } catch (err) {
     console.log(err);
   }

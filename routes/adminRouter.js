@@ -49,11 +49,11 @@ router.post("/general", AauthCheck, async (req, res) => {
       connection.query(sql, (err, results, fields) => {
         if (err) throw err;
         console.log(results);
-        res.redirect("/admin/home")
+        res.redirect("/panelforadmin/home")
       });
 
     } else {
-      res.redirect("/admin/home")
+      res.redirect("/panelforadmin/home")
     }
   } catch (err) {
     console.log(err);
@@ -194,7 +194,7 @@ router.post("/Reviewers", AauthCheck, async(req, res) => {
       connection.query(qry, post, (err, results, fields) => {
         if (err) throw err;
         // console.log(results);
-        res.redirect("/admin/home");
+        res.redirect("/panelforadmin/home");
         // alert("Reviewers are added");
       });
     } else {
@@ -240,9 +240,9 @@ router.post("/login", AauthCheck, (req, res) => {
       }
 
       if (results.length === 0) {
-        res.redirect("/admin/login");
+        res.redirect("/panelforadmin/login");
       } else {
-        res.redirect("/admin/home");
+        res.redirect("/panelforadmin/home");
       }
     });
   } catch (err) {
