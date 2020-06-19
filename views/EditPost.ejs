@@ -26,6 +26,8 @@
 
     <div id="HTML" class="d-none">
         <div id="h" class="d-none"><%= post.Blog %></div>
+        <div id="h1" class="d-none"><%= post.Solution %></div>
+
     </div>
 <div class="container">
   
@@ -84,6 +86,17 @@
               <p >For image upload please upload your image <a href="https://postimages.org/" target="_blank"><span style="color: blue;">here.</span></a>and use image url for using the image in editor</p>
               <textarea  id="blog"  name="blog"></textarea>
               <script type="text/javascript">
+                  CKEDITOR.replace("blog", {
+                    extraPlugins: 'codesnippet',
+                    codeSnippet_theme: 'monokai_sublime',
+                    // "extraPlugins" : 'imagebrowser',
+                    // "imageBrowser_listUrl" : "/files"
+                    });
+                    var t=document.getElementById("h").textContent;
+                    // ed.html.set('<p>My custom paragraph.</p>');
+                    
+                    CKEDITOR.instances.blog.setData(t);
+                  // $('#blog').froalaEditor('html.set', t);
                 // CKEDITOR.replace('blog',{
                 //     "extraPlugins" : "imagebrowser",
                 //     "imageBrowser_listUrl":"/files"
@@ -104,7 +117,16 @@
                 </script>
             </div>
             <div class="form-group" id="sol">
-              <textarea name="sol" class="form-control " value=" " rows="5" style="width: 100%;" ><%= post.Solution %></textarea>
+              <p >For solution of puzzle type here..... </p>
+              <textarea name="sol" id="solution"  ></textarea>
+              <script>
+                CKEDITOR.replace('solution',{
+                  extraPlugins: 'codesnippet',
+                  codeSnippet_theme: 'monokai_sublime'
+                });
+                var t1=document.getElementById("h1").textContent;
+                CKEDITOR.instances.solution.setData(t1);
+              </script>
             </div>
             <script>
               var type="<%=post.Type%>"
@@ -195,7 +217,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	  CKEDITOR.replace("blog", {
       extraPlugins: 'codesnippet',
 	    codeSnippet_theme: 'monokai_sublime',
@@ -207,7 +229,7 @@
       
        CKEDITOR.instances.blog.setData(t);
     // $('#blog').froalaEditor('html.set', t);
-	</script>
+	</script> -->
 </body>
 </html>
  <!-- %- include("partials/footer") %>  -->
