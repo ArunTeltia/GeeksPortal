@@ -7,6 +7,10 @@ const authCheck = require("../config/authCheck");
 const db = require("../config/makeDB");
 const connection = require("../config/DBconnection");
 
+const imagemin = require('imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminPngquant = require('imagemin-pngquant');
+
 profile
   .route("/")
   .get(authCheck, (req, res) => {
@@ -57,6 +61,19 @@ profile
             file.mimetype == "image/png" ||
             file.mimetype == "image/gif"
           ) {
+            // (async () => {
+            //   const files = await imagemin(['public/ProfileImages/*.{jpg,png}'], {
+            //     plugins: [
+            //       imageminJpegtran(),
+            //       imageminPngquant({
+            //         quality: '65-80'
+            //       })
+            //     ]
+            //   });
+            
+            //   console.log(files);
+            //   //=> [{data: <Buffer 89 50 4e …>, destinationPath: 'build/images/foo.jpg'}, …]
+            // })();
             file.mv("public/ProfileImages/" + file.name, function (err) {
               let image = "/ProfileImages/" + file.name;
               if (err) return res.status(500).send(err);
