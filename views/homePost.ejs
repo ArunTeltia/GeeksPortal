@@ -350,8 +350,16 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p><%= post.Solution %> </p>
-                        </div>
+                            <div class="row">
+                                <div class="col-12" id="HTML1" >
+                                    <div id="h1" class="d-none">><%= post.Solution %></div>
+                                </div>
+                                <script>
+                                  var txt=document.getElementById("h1").textContent;
+                                      document.getElementById("HTML1").innerHTML=txt;
+                              </script>
+                            </div>
+                          </div>
                         
                       </div>
                       

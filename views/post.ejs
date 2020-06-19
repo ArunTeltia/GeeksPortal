@@ -51,7 +51,15 @@
                         <div class="row" style="margin-top: 100px;">
                             <div class="col-12">
                                 <h5>Solution:</h5>
-                                <p><%=sol %> </p>
+                                <div class="row">
+                                  <div class="col-12" id="HTML1" >
+                                      <div id="h1" class="d-none"><%=sol %></div>
+                                  </div>
+                                  <script>
+                                    var txt=document.getElementById("h1").textContent;
+                                        document.getElementById("HTML1").innerHTML=txt;
+                                </script>
+                              </div>
                             </div>
                         </div>
                         <% } %> 
