@@ -64,8 +64,9 @@ profile
               var sql =
                 "UPDATE `Users` set Photo='" +
                 image +
-                "'  where ID=" +
-                req.user.ID;
+                "'  where ID='" +
+                req.user.ID +
+                "'" ;
 
               var query = connection.query(sql, function (err, result) {
                 if (err) {

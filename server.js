@@ -10,6 +10,7 @@ const http = require("http");
 const path = require("path");
 const busboy = require("then-busboy");
 const fileUpload = require("express-fileupload");
+const compression = require('compression')
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 // var busboy = require('connect-busboy');
@@ -162,6 +163,8 @@ app.get("/reviewer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.redirect("/auth/admin/login");
 });
+
+app.use(compression());
 
 
 app.use("/auth", authRouter);
