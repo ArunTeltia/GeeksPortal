@@ -1,17 +1,18 @@
 const router = require("express").Router();
 const passport = require("passport");
 const connection = require("../config/DBconnection");
-const Keys = require("../config/keys")
+const Keys = require("../config/keys");
 
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
-
-const smtpTrans = nodemailer.createTransport(sendgridTransport({
-
-  auth: {
-    api_key: Keys.sendgridKey
-  }
-}));
+var aws = require("aws-sdk");
+const smtpTrans = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: Keys.sendgridKey,
+    },
+  })
+);
 
 router.get("/login", (req, res) => {
   try {
@@ -19,6 +20,54 @@ router.get("/login", (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+var email = "contactgeeksportal@gmail.com";
+
+// Load your AWS credentials and try to instantiate the object.
+aws.config.loadFromPath(__dirname + "/config.json");
+
+// Instantiate SES.
+var ses = new aws.SES();
+
+// Verify email addresses.
+router.get("/verify", function (req, res) {
+  var params = {
+    EmailAddress: email,
+  };
+
+  ses.verifyEmailAddress(params, function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+// Listing the verified email addresses.
+router.get("/list", function (req, res) {
+  ses.listVerifiedEmailAddresses(function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+router.get("/delete", function (req, res) {
+  var params = {
+    EmailAddress: email,
+  };
+
+  ses.deleteVerifiedEmailAddress(params, function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 router.get("/logout", (req, res) => {
@@ -70,7 +119,6 @@ router.post(
   })
 );
 
-
 router.get("/panelforadmin/logout", (req, res) => {
   try {
     req.logout();
@@ -90,7 +138,7 @@ router.get(
 router.get(
   "/google/geeksportal",
   passport.authenticate("google", {
-    failureRedirect: "/auth/login"
+    failureRedirect: "/auth/login",
   }),
   (req, res) => {
     try {
@@ -102,21 +150,33 @@ router.get(
         }
         // console.log(results);
         if (results[0].UserName === null) {
-
           res.redirect("/profile");
           const mailOpts = {
             to: req.user.Email,
             from: "contactgeeksportal@gmail.com",
-            subject: 'Sign Up successfully',
-            html: "<h1>You successfully signed UP!!</h1>"
-          }
+            subject: "Sign Up successfully",
+            html: "<h1>You successfully signed UP!!</h1>",
+          };
 
           smtpTrans.sendMail(mailOpts, (error, response) => {
             if (error) {
               console.log(error);
               // Show a page indicating failure
             }
-          })
+          });
+          var ses_mail = "YOu successfully signed up";
+          var params = {
+            RawMessage: { Data: new Buffer(ses_mail) },
+            Destinations: [req.user.email],
+            Source: "'AWS Tutorial Series' <" + email + ">'",
+          };
+          ses.sendRawEmail(params, function (err, data) {
+            if (err) {
+              res.send(err);
+            } else {
+              res.send(data);
+            }
+          });
         } else {
           res.redirect("/home");
         }
@@ -130,14 +190,14 @@ router.get(
 router.get(
   "/facebook",
   passport.authenticate("facebook", {
-    scope: ["email"]
+    scope: ["email"],
   })
 );
 
 router.get(
   "/facebook/geeksportal",
   passport.authenticate("facebook", {
-    failureRedirect: "/auth/login"
+    failureRedirect: "/auth/login",
   }),
   (req, res) => {
     try {
@@ -153,9 +213,9 @@ router.get(
           const mailOpts = {
             to: req.user.Email,
             from: "contactgeeksportal@gmail.com",
-            subject: 'Sign Up successfully',
-            html: "<h1>You successfully signed UP!!</h1>"
-          }
+            subject: "Sign Up successfully",
+            html: "<h1>You successfully signed UP!!</h1>",
+          };
 
           smtpTrans.sendMail(mailOpts, (error, response) => {
             if (error) {
