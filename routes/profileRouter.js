@@ -2,7 +2,7 @@ const profile = require("express").Router();
 const http = require("http");
 const path = require("path");
 const busboy = require("then-busboy");
-const fileUpload = require("express-fileupload");
+// const fileUpload = require("express-fileupload");
 const authCheck = require("../config/authCheck");
 const db = require("../config/makeDB");
 const connection = require("../config/DBconnection");
@@ -40,7 +40,8 @@ profile
   .post(authCheck, (req, res) => {
     try {
       console.log(req.body);
-      console.log(req.files);
+      console.log(req.file);
+      var image=req.file;
 
       let usr = req.body.usr.trim();
       if (req.body.usr === null || !usr.match(/^[0-9a-z]+$/)) {
@@ -51,15 +52,15 @@ profile
         };
         res.redirect("/profile");
       } else {
-        if (req.files) {
-          var file = req.files.uploaded_image;
+        if (image) {
+          // var file = req.files.uploaded_image;
           // console.log(file);
-          var img_name = file.name;
+          // var img_name = file.name;
 
           if (
-            file.mimetype == "image/jpeg" ||
-            file.mimetype == "image/png" ||
-            file.mimetype == "image/gif"
+            image.mimetype == "image/jpeg" ||
+            image.mimetype == "image/png" ||
+            image.mimetype == "image/jp"
           ) {
             // (async () => {
             //   const files = await imagemin(['public/ProfileImages/*.{jpg,png}'], {
@@ -74,13 +75,27 @@ profile
             //   console.log(files);
             //   //=> [{data: <Buffer 89 50 4e …>, destinationPath: 'build/images/foo.jpg'}, …]
             // })();
-            file.mv("public/ProfileImages/" + file.name, function (err) {
-              let image = "/ProfileImages/" + file.name;
-              if (err) return res.status(500).send(err);
+
+            // file.mv("public/ProfileImages/" + file.name, function (err) {
+            //   let image = "/ProfileImages/" + file.name;
+            //   if (err) return res.status(500).send(err);
+            (async () => {
+            const files = await imagemin([image.path], {
+              destination: "public/ProfileImages",
+              plugins: [imageminJpegtran({
+                quality: [0.5, 0.60]
+              }), imageminPngquant({
+                quality: [0.5, 0.60]
+              })]
+            });
+            console.log("Images optimized", files);
+          })();
+
+            const imageUrl=image.path;
 
               var sql =
                 "UPDATE `Users` set Photo='" +
-                image +
+                imageUrl +
                 "'  where ID='" +
                 req.user.ID +
                 "'" ;
@@ -91,12 +106,13 @@ profile
                 }
                 console.log(result);
               });
-            });
+            // });
+
           } else {
             req.session.message = {
               type: "danger",
               intro: "Invalid Image format",
-              message: "please upload file with '.png','.gif','.jpg'",
+              message: "please upload file with '.png','.jpeg','.jpg'",
             };
             res.redirect("/profile");
           }
