@@ -80,7 +80,10 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(multer({storage:fileStorage,fileFilter:filefilter}).single("uploaded_image"));
+app.use(multer({
+  storage:fileStorage,
+  fileFilter:filefilter
+}).single("uploaded_image"));
 
 //CKeditor imageUploadroutes///////////////////////////////////
 // app.get("/files", function (req, res) {
