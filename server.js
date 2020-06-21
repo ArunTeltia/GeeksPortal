@@ -42,6 +42,7 @@ const certiAuthRouter =require("./routes/certiAuthRouter");
 const InternRouter = require("./routes/internRouter");
 // =======
 const footerRouter=require("./routes/footerRouter");
+const navbarRouter=require("./routes/navbarRouter")
 // >>>>>>> master
 
 
@@ -190,6 +191,7 @@ app.get("/panelforadmin", (req, res) => {
 
 app.use(compression());
 
+app.use("/",navbarRouter);
 
 app.use("/auth", authRouter);
 
