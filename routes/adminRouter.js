@@ -32,8 +32,6 @@ router.get("/general", AauthCheck, async (req, res) => {
 });
 router.post("/general", AauthCheck, async (req, res) => {
   try {
-
-
     var obj = JSON.parse(JSON.stringify(req.body));
 
     if (obj.name && obj.password && obj.username) {

@@ -171,7 +171,7 @@ router.get("/download", (req, res) => {
 
       // TODO: export to CSV file
       const xls = json2xls(jsonData);
-      fs.writeFileSync('sample.xlsx', xls, 'binary', (err) => {
+      fs.writeFileSync('intern.xlsx', xls, 'binary', (err) => {
         if (err) throw err;
         console.log('Data written to file');
       });
