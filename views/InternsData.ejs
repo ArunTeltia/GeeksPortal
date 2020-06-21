@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Interns Data</title>
-	<style type="text/css">
+	<!-- <style type="text/css">
 		body {
 			font-family: "Open Sans", sans-serif;
 			line-height: 1.25;
@@ -117,7 +117,7 @@
 			color: aliceblue;
 			background-color: #623954;
 		}
-	</style>
+	</style> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -127,25 +127,26 @@
 	<nav class="navbar navbar-light bg-light">
 		<form class="form-inline">
 			<span class="navbar-brand mb-0 h1"><a href="/intern/form">Add Intern</a></span>
-			<span id="downloadExcelLink" download="../sample.xlsx" class="navbar-brand mb-0 h1"><a
+			<span id="downloadExcelLink" download="../intern.xlsx" class="navbar-brand mb-0 h1"><a
 					href="/intern/download">Download Table</a></span>
 			<script type="text/javascript" src="../public/js/download.js"></script>
 		</form>
 	</nav>
-	<table>
+	<table class="table" border="1">
 		<h1 style="text-align:center;">Interns Data</h1>
 		<thead>
 			<tr>
-				<th scope="col" style="width: 10%;">Name</th>
-				<th scope="col" style="width: 18%;">Email</th>
+				<th scope="col" style="width: 9%;">Name</th>
+				<th scope="col" style="width: 16%;">Email</th>
 				<th scope="col" style="width: 10%;">Role</th>
-				<th scope="col" style="width: 12%;">Description of Work</th>
-				<th scope="col" style="width: 6%;">Start Date</th>
-				<th scope="col" style="width: 6%;">End Date</th>
+				<th scope="col" style="width: 10%;">Description of Work</th>
+				<th scope="col" style="width: 7%;">Start Date</th>
+				<th scope="col" style="width: 7%;">End Date</th>
 				<th scope="col" style="width: 8%;">Stipend Paid</th>
 				<th scope="col" style="width: 7%;">Hired Via</th>
 				<th scope="col" style="width: 10%;">Certificate Number</th>
-				<th scope="col" style="width: 5%;">Update</th>
+				<th scope="col" style="width: 7%;">Previous</th>
+				<th scope="col" style="width: 6%;">Update</th>
 				<th scope="col" style="width: 5%;">Delete</th>
 
 
@@ -176,6 +177,7 @@
 				<td><%=result[6]%></td>
 				<td><%=result[7]%></td>
 				<td><%=result[8]%></td>
+				<td><%=result[9]%></td>
 				<td><a href="/intern/update-<%=result[1]%>">Update</a></td>
 				<td><a href="/intern/delete-<%=result[1]%>">Delete</a></td>
 			</tr>
