@@ -136,16 +136,17 @@
 		<h1 style="text-align:center;">Interns Data</h1>
 		<thead>
 			<tr>
-				<th scope="col" style="width: 10%;">Name</th>
-				<th scope="col" style="width: 18%;">Email</th>
+				<th scope="col" style="width: 9%;">Name</th>
+				<th scope="col" style="width: 16%;">Email</th>
 				<th scope="col" style="width: 10%;">Role</th>
-				<th scope="col" style="width: 12%;">Description of Work</th>
-				<th scope="col" style="width: 6%;">Start Date</th>
-				<th scope="col" style="width: 6%;">End Date</th>
+				<th scope="col" style="width: 10%;">Description of Work</th>
+				<th scope="col" style="width: 7%;">Start Date</th>
+				<th scope="col" style="width: 7%;">End Date</th>
 				<th scope="col" style="width: 8%;">Stipend Paid</th>
 				<th scope="col" style="width: 7%;">Hired Via</th>
 				<th scope="col" style="width: 10%;">Certificate Number</th>
-				<th scope="col" style="width: 5%;">Update</th>
+				<th scope="col" style="width: 7%;">Previous</th>
+				<th scope="col" style="width: 6%;">Update</th>
 				<th scope="col" style="width: 5%;">Delete</th>
 
 
@@ -176,6 +177,7 @@
 				<td><%=result[6]%></td>
 				<td><%=result[7]%></td>
 				<td><%=result[8]%></td>
+				<td><%=result[9]%></td>
 				<td><a href="/intern/update-<%=result[1]%>">Update</a></td>
 				<td><a href="/intern/delete-<%=result[1]%>">Delete</a></td>
 			</tr>

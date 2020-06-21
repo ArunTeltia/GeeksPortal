@@ -128,6 +128,15 @@ router.get("/data", AauthCheck, async (req, res) => {
 
     var internData = [];
     for (let i = 0; i < results2.length; i++) {
+      let isPrevious= false;
+      // console.log(Date.now());
+      // console.log(results2[i].EndDate)
+      if(Date.now()>results2[i].EndDate){
+        isPrevious = true;
+      }else{
+        isPrevious =false;
+      }
+      console.log(isPrevious);
       let obj = [];
       obj.push(results2[i].Name);
       obj.push(results2[i].Email);
@@ -138,6 +147,7 @@ router.get("/data", AauthCheck, async (req, res) => {
       obj.push(results2[i].StipendPaid);
       obj.push(results2[i].HiredVia);
       obj.push(results2[i].CertiNum);
+      obj.push(isPrevious);
       obj.push(results2[i].InstituteName);
       internData.push(obj);
     }
