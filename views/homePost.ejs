@@ -169,78 +169,67 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
     
                         <% } %> 
 
-                    <li><a href="/home">Home</a></li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu" >
-                            <li><a href="algo.html">Analysis of algorithm</a></li>
-                            <li><a href="search.html">Searching and Sorting</a></li>
-                            <li><a href="ga.html">Greedy Algorithms</a></li>
-                            <li><a href="dp.html">Dynamic Programming</a></li><li>
-                                    <a  href="sa.html">String Algorithms</a></li><li>   
+                        <li><a href="/home">Home</a></li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu" >
+                                <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
+                                <li><a href="/searching-sorting">Searching and Sorting</a></li>
+                                <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
+                                <li><a href="#">Dynamic Programming</a></li><li>
+                                        <a  href="string-Algo">String Algorithms</a></li><li>   
+                                    
+                                    <a  href="/backtracing">Backtracking</a></li><li>
+                                    <a  href="/divide-conquer">Divide and Conquer</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li>
+                                    <a  href="/ds">Data Structures</a></li><li>
+                                    <a  href="/array">Array</a></li><li>
+                                    
+                                        <a href="/list">Linked List</a></li><li>
+                                        <a href="/stack">Stack</a></li><li>
+                                        <a  href="/queue">Queue</a> </li><li>
+                                    
+                                    <a  href="/bt">Binary Tree</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="/c">C</a></li>
+                                <li><a href="/cpp">C++</a></li>
+                                <li><a href="/java">JAVA</a></li>
+                                <li><a href="/py">Python</a></li>
+                                <li><a href="/sql">SQL</a></li>
+                                <li><a href="/php">PHP</a></li>
+                                <li><a href="/js">Javascript</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="/campus">Campus Programs</a></li>
+                                <li><a href="/project">Projects</a></li>
+                                <li><a href="/place">Placemant cources</a></li>
                                 
-                                <a  href="backt.html">Backtracking</a></li><li>
-                                <a  href="dc.html">Divide and Conquer</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li>
-                                <a  href="ds.html">Data Structures</a></li><li>
-                                <a  href="array.html">Array</a></li><li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="/gnote">Gate notes</a></li>
+                                <li><a href="/gcs">Gate CS Corner</a></li>
+                                <li><a href="/gpaper">Gate Papers</a></li>
                                 
-                                    <a href="list.html">Linked List</a></li><li>
-                                    <a href="stack.html">Stack</a></li><li>
-                                    <a  href="queue.html">Queue</a> </li><li>
-                                
-                                <a  href="bt.html">Binary Tree</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="c.html">C</a></li>
-                            <li><a href="cpp.html">C++</a></li>
-                            <li><a href="java.html">JAVA</a></li>
-                            <li><a href="py.html">Python</a></li>
-                            <li><a href="sql.html">SQL</a></li>
-                            <li><a href="php.html">PHP</a></li>
-                            <li><a href="js.html">Javascript</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="campus.html">Campus Programs</a></li>
-                            <li><a href="proj.html">Projects</a></li>
-                            <li><a href="place.html">Placemant cources</a></li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <form class="form-inline"  action="/home" method="POST" >
-                            <!-- <li><input type="text"  name="search" class="typeahead tt-query" autocomplete="off" spellcheck="false"  placeholder="Search"><button type="submit" style="margin-top: 0px;" class="btn btn-default"><i class="fa fa-search"></i></button></li> -->
-                            <div class="input-group">
-                                <input type="text" class="form-control typeahead tt-query" size="10" name="search"  autocomplete="off" spellcheck="false" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                  <!-- <button class="btn btn-default" type="button">Go!</button> -->
-                                  <button style="height: 37px;" type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </span>
-                              </div>
-                          </form>
-                    </li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="gnote.html">Gate notes</a></li>
-                            <li><a href="gcs.html">Gate CS Corner</a></li>
-                            <li><a href="gpaper.html">Gate Papers</a></li>
-                            
-                        </ul>
-                    </li>
-                   
-                    <li><a href="fncode.html">Codes</a></li>
-                    <li><a href="fnpuzzle.html">Puzzles</a></li>
-                    <li><a href="/compose">Contribute</a></li>
-                    
-                    
-                </ul>
+                            </ul>
+                        </li>
+                       
+                        <li><a href="#">Codes</a></li>
+                        <li><a href="#">Puzzles</a></li>
+                        <li><a href="/compose">Contribute</a></li>
+                        
+                        
+                    </ul>
             </div>
             <!-- menu nav -->
         </div>

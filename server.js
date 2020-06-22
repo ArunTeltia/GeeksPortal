@@ -42,6 +42,7 @@ const certiAuthRouter =require("./routes/certiAuthRouter");
 const InternRouter = require("./routes/internRouter");
 // =======
 const footerRouter=require("./routes/footerRouter");
+const navbarRouter=require("./routes/navbarRouter")
 // >>>>>>> master
 
 
@@ -49,6 +50,26 @@ var upload_file = require('./froalaEditorFiles/file_upload.js');
 var upload_image = require('./froalaEditorFiles//image_upload.js');
 
 const app = express();
+
+const fileStorage = multer.diskStorage({
+    destination:(req,file,cb)=>{
+       cb(null,"public/ProfileImages") ;
+    },
+    filename:(req,file,cb)=>{
+      cb(null,new Date().toISOString()+"-"+file.originalname);
+    }
+});
+
+const filefilter=(req,file,cb)=>{
+  if(file.mimetype == "image/jpeg" ||
+  file.mimetype == "image/png" ||
+  file.mimetype == "image/jpg"){
+    cb(null,true);
+  }
+  else{
+    cb(null,false);
+  }
+}
 
 app.set("view engine", "ejs");
 
@@ -60,6 +81,10 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+app.use(multer({
+  storage:fileStorage,
+  fileFilter:filefilter
+}).single("uploaded_image"));
 
 //CKeditor imageUploadroutes///////////////////////////////////
 // app.get("/files", function (req, res) {
@@ -166,6 +191,7 @@ app.get("/panelforadmin", (req, res) => {
 
 app.use(compression());
 
+app.use("/",navbarRouter);
 
 app.use("/auth", authRouter);
 

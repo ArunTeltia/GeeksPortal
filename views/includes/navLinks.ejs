@@ -1,0 +1,80 @@
+<ul class="menu-list"  >
+    <% if(user){ %>
+        <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+        <li style="float: right;font-weight: bold;"><a href="/profile">
+            <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+            <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+            <img  src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+            <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
+            <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+
+            <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+          </a></li>                   <% }else{ %>
+    <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
+
+    <% } %> 
+
+ 
+ 
+
+  <li><a href="/home">Home</a></li>
+    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
+        <ul class="custom-menu" >
+            <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
+            <li><a href="/searching-sorting">Searching and Sorting</a></li>
+            <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
+            <li><a href="#">Dynamic Programming</a></li><li>
+                    <a  href="string-Algo">String Algorithms</a></li><li>   
+                
+                <a  href="/backtracing">Backtracking</a></li><li>
+                <a  href="/divide-conquer">Divide and Conquer</a></li>
+        </ul>
+    </li>
+    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
+        <ul class="custom-menu">
+            <li>
+                <a  href="/ds">Data Structures</a></li><li>
+                <a  href="/array">Array</a></li><li>
+                
+                    <a href="/list">Linked List</a></li><li>
+                    <a href="/stack">Stack</a></li><li>
+                    <a  href="/queue">Queue</a> </li><li>
+                
+                <a  href="/bt">Binary Tree</a></li>
+        </ul>
+    </li>
+    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
+        <ul class="custom-menu">
+            <li><a href="/c">C</a></li>
+            <li><a href="/cpp">C++</a></li>
+            <li><a href="/java">JAVA</a></li>
+            <li><a href="/py">Python</a></li>
+            <li><a href="/sql">SQL</a></li>
+            <li><a href="/php">PHP</a></li>
+            <li><a href="/js">Javascript</a></li>
+        </ul>
+    </li>
+    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
+        <ul class="custom-menu">
+            <li><a href="/campus">Campus Programs</a></li>
+            <li><a href="/project">Projects</a></li>
+            <li><a href="/place">Placemant cources</a></li>
+            
+        </ul>
+    </li>
+    
+    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
+        <ul class="custom-menu">
+            <li><a href="/gnote">Gate notes</a></li>
+            <li><a href="/gcs">Gate CS Corner</a></li>
+            <li><a href="/gpaper">Gate Papers</a></li>
+            
+        </ul>
+    </li>
+   
+    <li><a href="#">Codes</a></li>
+    <li><a href="#">Puzzles</a></li>
+    <li><a href="/compose">Contribute</a></li>
+    
+    
+</ul>
