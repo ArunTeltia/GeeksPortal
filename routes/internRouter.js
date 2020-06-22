@@ -51,6 +51,7 @@ router.post(
       const sql12 = "Select * from Intern where Email ='" + obj.email + "'";
       const result3 = await db.query(sql12);
       // console.log(obj);
+      // console.log(result)
       console.log(result3)
       var post = {
         // Id: uuidv4(),
@@ -65,7 +66,7 @@ router.post(
         CertiNum: obj.certi,
         InstituteName: obj.institute,
       };
-      if (result3 === []) {
+      if (result3.length===0) {
         console.log(post);
         var qry = "INSERT into Intern SET ?";
         connection.query(qry, post, (err, results, fields) => {
