@@ -6,13 +6,13 @@ const Keys = require("../config/keys");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 var aws = require("aws-sdk");
-const smtpTrans = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: Keys.sendgridKey,
-    },
-  })
-);
+// const smtpTrans = nodemailer.createTransport(
+//   sendgridTransport({
+//     auth: {
+//       api_key: Keys.sendgridKey,
+//     },
+//   })
+// );
 
 router.get("/login", (req, res) => {
   try {
@@ -30,7 +30,7 @@ aws.config.update({
 });
 
 // Instantiate SES.
-var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDWBRD7LDA", "secretAccessKey": "BPK0LGSN9SVn+PuV5yzXNIrra6aoUSMTIgeHyxb35tmU", "region": "ap-south-1" });
+var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDSLAXSJPP", "secretAccessKey": "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", "region": "ap-south-1" });
 
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
@@ -153,19 +153,19 @@ router.get(
         // console.log(results);
         if (results[0].UserName === null) {
           res.redirect("/profile");
-          const mailOpts = {
-            to: req.user.Email,
-            from: "contactgeeksportal@gmail.com",
-            subject: "Sign Up successfully",
-            html: "<h1>You successfully signed UP!!</h1>",
-          };
+          // const mailOpts = {
+          //   to: req.user.Email,
+          //   from: "contactgeeksportal@gmail.com",
+          //   subject: "Sign Up successfully",
+          //   html: "<h1>You successfully signed UP!!</h1>",
+          // };
 
-          smtpTrans.sendMail(mailOpts, (error, response) => {
-            if (error) {
-              console.log(error);
-              // Show a page indicating failure
-            }
-          });
+          // smtpTrans.sendMail(mailOpts, (error, response) => {
+          //   if (error) {
+          //     console.log(error);
+          //     // Show a page indicating failure
+          //   }
+          // });
           var to = [req.user.Email]
           var from = 'contactgeeksportal@gmail.com'
           ses.sendEmail({
