@@ -25,10 +25,12 @@ router.get("/login", (req, res) => {
 var email = "contactgeeksportal@gmail.com";
 
 // Load your AWS credentials and try to instantiate the object.
-aws.config.loadFromPath(__dirname + "/config.json");
+aws.config.update({
+  region:"ap-south-1"
+});
 
 // Instantiate SES.
-var ses = new aws.SES();
+var ses = new aws.SES({"accessKeyId": "AKIA3ZCOFDFDWBRD7LDA", "secretAccessKey":"BPK0LGSN9SVn+PuV5yzXNIrra6aoUSMTIgeHyxb35tmU","region":"ap-south-1"});
 
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
@@ -46,15 +48,15 @@ var ses = new aws.SES();
 // });
 
 // Listing the verified email addresses.
-// router.get("/list", function (req, res) {
-//   ses.listVerifiedEmailAddresses(function (err, data) {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
+router.get("/list", function (req, res) {
+  ses.listVerifiedEmailAddresses(function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
 
 // router.get("/delete", function (req, res) {
 //   var params = {
