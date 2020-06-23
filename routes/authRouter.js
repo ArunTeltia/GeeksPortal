@@ -5,7 +5,7 @@ const Keys = require("../config/keys");
 
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
-// var aws = require("aws-sdk");
+var aws = require("aws-sdk");
 const smtpTrans = nodemailer.createTransport(
   sendgridTransport({
     auth: {
@@ -22,15 +22,15 @@ router.get("/login", (req, res) => {
   }
 });
 
-// var email = "contactgeeksportal@gmail.com";
+var email = "contactgeeksportal@gmail.com";
 
-// // Load your AWS credentials and try to instantiate the object.
-// aws.config.loadFromPath(__dirname + "/config.json");
+// Load your AWS credentials and try to instantiate the object.
+aws.config.loadFromPath(__dirname + "/config.json");
 
-// // Instantiate SES.
-// var ses = new aws.SES();
+// Instantiate SES.
+var ses = new aws.SES();
 
-// // Verify email addresses.
+// Verify email addresses.
 // router.get("/verify", function (req, res) {
 //   var params = {
 //     EmailAddress: email,
@@ -45,7 +45,7 @@ router.get("/login", (req, res) => {
 //   });
 // });
 
-// // Listing the verified email addresses.
+// Listing the verified email addresses.
 // router.get("/list", function (req, res) {
 //   ses.listVerifiedEmailAddresses(function (err, data) {
 //     if (err) {
@@ -164,19 +164,19 @@ router.get(
               // Show a page indicating failure
             }
           });
-          // var ses_mail = "YOu successfully signed up";
-          // var params = {
-          //   RawMessage: { Data: new Buffer(ses_mail) },
-          //   Destinations: [req.user.email],
-          //   Source: "'AWS Tutorial Series' <" + email + ">'",
-          // };
-          // ses.sendRawEmail(params, function (err, data) {
-          //   if (err) {
-          //     res.send(err);
-          //   } else {
-          //     res.send(data);
-          //   }
-          // });
+          var ses_mail = "YOu successfully signed up";
+          var params = {
+            RawMessage: { Data: new Buffer(ses_mail) },
+            Destinations: [req.user.email],
+            Source: "'AWS Tutorial Series' <" + email + ">'",
+          };
+          ses.sendRawEmail(params, function (err, data) {
+            if (err) {
+              res.send(err);
+            } else {
+              res.send(data);
+            }
+          });
         } else {
           res.redirect("/home");
         }
