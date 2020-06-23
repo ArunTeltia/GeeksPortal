@@ -26,11 +26,11 @@ var email = "contactgeeksportal@gmail.com";
 
 // Load your AWS credentials and try to instantiate the object.
 aws.config.update({
-  region:"ap-south-1"
+  region: "ap-south-1"
 });
 
 // Instantiate SES.
-var ses = new aws.SES({"accessKeyId": "AKIA3ZCOFDFDWBRD7LDA", "secretAccessKey":"BPK0LGSN9SVn+PuV5yzXNIrra6aoUSMTIgeHyxb35tmU","region":"ap-south-1"});
+var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDWBRD7LDA", "secretAccessKey": "BPK0LGSN9SVn+PuV5yzXNIrra6aoUSMTIgeHyxb35tmU", "region": "ap-south-1" });
 
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
@@ -166,19 +166,27 @@ router.get(
               // Show a page indicating failure
             }
           });
-          var ses_mail = "YOu successfully signed up";
-          var params = {
-            RawMessage: { Data: new Buffer(ses_mail) },
-            Destinations: [req.user.email],
-            Source: "'AWS Tutorial Series' <" + email + ">'",
-          };
-          ses.sendRawEmail(params, function (err, data) {
-            if (err) {
-              res.send(err);
-            } else {
-              res.send(data);
+          var to = [req.user.Email]
+          var from = 'contactgeeksportal@gmail.com'
+          ses.sendEmail({
+            Source: from,
+            Destination: { ToAddresses: to },
+            Message: {
+              Subject: {
+                Data: "Sending emails through SES"
+              },
+              Body: {
+                Text: {
+                  Data: 'Tou just sign up',
+                }
+              }
             }
-          });
+          }
+            , function (err, data) {
+              if (err) throw err
+              console.log('Email sent:');
+              console.log(data);
+            }
         } else {
           res.redirect("/home");
         }
