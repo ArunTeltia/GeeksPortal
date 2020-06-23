@@ -186,7 +186,8 @@ router.get(
               if (err) throw err
               console.log('Email sent:');
               console.log(data);
-            }
+            })
+
         } else {
           res.redirect("/home");
         }
