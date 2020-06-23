@@ -30,8 +30,8 @@ aws.config.update({
 });
 
 // Instantiate SES.
-var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDWNNX5U5F", "secretAccessKey": "BMrsC2qjpcn5yWZlskkFm/hUnL+aDeB8RR87CZIom7g9", "region": "ap-south-1" });
-
+var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
+// email-smtp.ap-south-1.amazonaws.com
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
 //   var params = {
