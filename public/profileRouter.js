@@ -10,8 +10,8 @@ const connection = require("../config/DBconnection");
 const imagemin = require('imagemin');
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
-const sharp = require("sharp");
-const fs = require("fs");
+const sharp=require("sharp");
+const fs=require("fs");
 
 profile
   .route("/")
@@ -43,7 +43,7 @@ profile
     try {
       console.log(req.body);
       console.log(req.file);
-      var image = req.file;
+      var image=req.file;
 
       let usr = req.body.usr.trim();
       if (req.body.usr === null || !usr.match(/^[0-9a-z]+$/)) {
@@ -73,7 +73,7 @@ profile
             //       })
             //     ]
             //   });
-
+            
             //   console.log(files);
             //   //=> [{data: <Buffer 89 50 4e …>, destinationPath: 'build/images/foo.jpg'}, …]
             // })();
@@ -81,52 +81,52 @@ profile
             // file.mv("public/ProfileImages/" + file.name, function (err) {
             //   let image = "/ProfileImages/" + file.name;
             //   if (err) return res.status(500).send(err);
-            //   (async () => {
-            //   const files = await imagemin([image.path], {
-            //     destination: "public/ProfileImages",
-            //     plugins: [imageminJpegtran({
-            //       quality: [0.5, 0.60]
-            //     }), imageminPngquant({
-            //       quality: [0.5, 0.60]
-            //     })]
-            //   });
-            //   console.log("Images optimized", files);
-            // })();
-            let compath = path.join(__dirname, '../', 'public', 'Pimages', new Date() + "-" + image.originalname)
+          //   (async () => {
+          //   const files = await imagemin([image.path], {
+          //     destination: "public/ProfileImages",
+          //     plugins: [imageminJpegtran({
+          //       quality: [0.5, 0.60]
+          //     }), imageminPngquant({
+          //       quality: [0.5, 0.60]
+          //     })]
+          //   });
+          //   console.log("Images optimized", files);
+          // })();
+          let compath=path.join(__dirname,'../','public','Pimages',new Date()+"-"+image.originalname)
 
-            sharp(req.file.path).resize(640, 480).jpeg({
-              quality: 80,
-              chromaSubsampling: '4:4:4'
-            }).toFile(compath, (err, info) => {
-              if (err) {
-                console.log(err);
-              }
-              else {
-                console.log(info);
-                var filePath = req.file.path;
-                fs.unlinkSync(filePath);
-              }
+          sharp(req.file.path).resize(640,480).jpeg({
+              quality:80,
+              chromaSubsampling:'4:4:4'
+          }).toFile(compath,(err,info)=>{
+            if(err){
+              console.log(err);
+            }
+            else{
+              console.log(info);
+               var filePath = req.file.path; 
+          fs.unlinkSync(filePath);
+            }
 
-            });
+          });
+
+         
 
 
+            const imageUrl=path.join('public','Pimages',new Date()+"-"+image.originalname)
 
+              var sql =
+                "UPDATE `Users` set Photo='" +
+                imageUrl +
+                "'  where ID='" +
+                req.user.ID +
+                "'" ;
 
-            const imageUrl = path.join('public', 'Pimages', new Date() + "-" + image.originalname)
-
-            var sql =
-              "UPDATE `Users` set Photo='" +
-              imageUrl +
-              "'  where ID='" +
-              req.user.ID +
-              "'";
-
-            var query = connection.query(sql, function (err, result) {
-              if (err) {
-                console.log(err);
-              }
-              console.log(result);
-            });
+              var query = connection.query(sql, function (err, result) {
+                if (err) {
+                  console.log(err);
+                }
+                console.log(result);
+              });
             // });
 
           } else {
