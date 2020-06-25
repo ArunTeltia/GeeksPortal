@@ -2,440 +2,508 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Computer Science</title>
-    <base href="/">
+  <title>Computer Science</title>
+  <base href="/">
 
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
-    <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="css/slick.css" />
-    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="css/slick.css" />
+  <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
 
-    <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-  
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <style type="text/css">
-        
-        
-        .cookie{
-            background-color: black;
-            color: white;border-radius: 10px;
-            padding-left:  20px;
-            padding-right: 20px;
-        }
-        
-  .img-replace {
-display: inline-block;
-overflow: hidden;
-text-indent: 100%; 
-color: transparent;
-white-space: nowrap;
-}
-  
-  .main-nav ul {
-position:fixed;
-width: 100%;
-top: 8%;
 
-}
-.main-nav li {
-list-style: none;
-float: left;
-}
-.main-nav a {
-display: block;
-height: 30px;
-padding: 2px 10px;
-text-decoration: none;
-color: #FFF;
-/* -webkit-transition: all 0.30s ease-in-out;
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+  <style type="text/css">
+    .cookie {
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .img-replace {
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 100%;
+      color: transparent;
+      white-space: nowrap;
+    }
+
+    .main-nav ul {
+      position: fixed;
+      width: 100%;
+      top: 8%;
+
+    }
+
+    .main-nav li {
+      list-style: none;
+      float: left;
+    }
+
+    .main-nav a {
+      display: block;
+      height: 30px;
+      padding: 2px 10px;
+      text-decoration: none;
+      color: #FFF;
+      /* -webkit-transition: all 0.30s ease-in-out;
 -moz-transition: all 0.30s ease-in-out;
 -ms-transition: all 0.30s ease-in-out;
 -o-transition: all 0.30s ease-in-out; */
-}
+    }
 
 
-.user-modal {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(1, 1, 2, 0.9);
-z-index: 3;
-overflow-y: auto;
-cursor: pointer;
-visibility: hidden;
-opacity: 0;
-transition: opacity 0.3s 0, visibility 0 0.3s;
-}
-.user-modal.is-visible {
-visibility: visible;
-opacity: 1;
-transition: opacity 0.3s 0, visibility 0 0;
-}
-.user-modal.is-visible .user-modal-container {
--webkit-transform: translateY(0);
-transform: translateY(0);
-}
+    .user-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(1, 1, 2, 0.9);
+      z-index: 3;
+      overflow-y: auto;
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s 0, visibility 0 0.3s;
+    }
 
-.user-modal-container {
-position: relative;
-width: 90%;
-max-width: 600px;
+    .user-modal.is-visible {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.3s 0, visibility 0 0;
+    }
 
-  background-image: url("https://i.pinimg.com/originals/65/20/7e/65207e416d092b13f2f079cdae2e58a5.gif");
-margin: 3em auto 4em;
-cursor: auto;
-border-radius: 0.25em;
--webkit-transform: translateY(-30px);
-transform: translateY(-30px);
-transition-property: -webkit-transform;
-transition-property: transform;
-transition-property: transform, -webkit-transform;
-transition-duration: 0.3s;
-}
-.user-modal-container .switcher:after {
-content: "";
-display: table;
-clear: both;
-}
-.user-modal-container .switcher li {
-width: 50%;
-float: left;
-text-align: center;
-list-style:none;
-}
-.user-modal-container .switcher li:first-child a {
-border-radius: .25em 0 0 0;
-}
-.user-modal-container .switcher li:last-child a {
-border-radius: 0 .25em 0 0;
-}
-.user-modal-container .switcher a {
-display: block;
-width: 100%;
-height: 50px;
-line-height: 50px;
-background: #d2d8d8;
-color: #809191;
-text-decoration: none;
-}
-.user-modal-container .switcher a.selected {
-background: #FFF;
-color: #505260;
-}
-@media only screen and (min-width: 600px) {
-.user-modal-container {
-margin: 4em auto;
-}
-.user-modal-container .switcher a {
-height: 70px;
-line-height: 70px;
-}
-}
+    .user-modal.is-visible .user-modal-container {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
 
-.form {
-padding: 1.4em;
-}
-.form .fieldset {
-position: relative;
-margin: 1.4em 0;
-}
-.form .fieldset:first-child {
-margin-top: 0;
-}
-.form .fieldset:last-child {
-margin-bottom: 0;
-}
-.form label {
-font-size: 14px;
-font-size: 0.875rem;
-}
-.form label.image-replace {
-/* replace text with an icon */
-display: inline-block;
-position: absolute;
-left: 15px;
-top: 50%;
-bottom: auto;
--webkit-transform: translateY(-50%);
-transform: translateY(-50%);
-height: 20px;
-width: 20px;
-overflow: hidden;
-text-indent: 100%;
-white-space: nowrap;
-color: transparent;
-text-shadow: none;
-background-repeat: no-repeat;
-background-position: 50% 0;
-}
+    .user-modal-container {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
 
-.form input {
-margin: 0;
-padding: 0;
-border-radius: 0.25em;
-}
-.form input.full-width {
-width: 100%;
-}
-.form input.has-padding {
-padding: 12px 20px 12px 50px;
-}
-.form input.has-border {
-border: 1px solid #d2d8d8;
--webkit-appearance: none;
--moz-appearance: none;
--ms-appearance: none;
--o-appearance: none;
-appearance: none;
-}
-.form input.has-border:focus {
-border-color: #343642;
-box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
-outline: none;
-}
+      background-image: url("https://i.pinimg.com/originals/65/20/7e/65207e416d092b13f2f079cdae2e58a5.gif");
+      margin: 3em auto 4em;
+      cursor: auto;
+      border-radius: 0.25em;
+      -webkit-transform: translateY(-30px);
+      transform: translateY(-30px);
+      transition-property: -webkit-transform;
+      transition-property: transform;
+      transition-property: transform, -webkit-transform;
+      transition-duration: 0.3s;
+    }
 
+    .user-modal-container .switcher:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
-#login, #signup, #reset-password {
-display: none;
-}
+    .user-modal-container .switcher li {
+      width: 50%;
+      float: left;
+      text-align: center;
+      list-style: none;
+    }
 
-#login.is-selected, #signup.is-selected, #reset-password.is-selected {
-display: block;
-}
+    .user-modal-container .switcher li:first-child a {
+      border-radius: .25em 0 0 0;
+    }
 
-#standalone-container {
-margin: 50px auto;
-max-width: 1700px;
-}
-#editor-container {
-height: 350px;
-}
+    .user-modal-container .switcher li:last-child a {
+      border-radius: 0 .25em 0 0;
+    }
 
-* {
-box-sizing: border-box;
-}
+    .user-modal-container .switcher a {
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      background: #d2d8d8;
+      color: #809191;
+      text-decoration: none;
+    }
 
-/*the container must be positioned relative:*/
-.autocomplete {
-/* display: inline-block; */
-float: right;
-}
+    .user-modal-container .switcher a.selected {
+      background: #FFF;
+      color: #505260;
+    }
 
-input {
-border: 1px solid transparent;
-background-color: #f1f1f1;
-padding: 10px;
-font-size: 16px;
-}
+    @media only screen and (min-width: 600px) {
+      .user-modal-container {
+        margin: 4em auto;
+      }
 
-input[type=text] {
-background-color: #f1f1f1;
-width: 100%;
-}
+      .user-modal-container .switcher a {
+        height: 70px;
+        line-height: 70px;
+      }
+    }
 
-input[type=submit] {
-background-color: DodgerBlue;
-color: #fff;
-cursor: pointer;
-font-size: 14px;
-}
+    .form {
+      padding: 1.4em;
+    }
 
-.autocomplete-items {
-border: 1px solid #d4d4d4;
-border-bottom: none;
-border-top: none;
-z-index: 99;
-/*position the autocomplete items to be the same width as the container:*/
-top: 100%;
-left: 0;
-right: 0;
-font-size: 14px;
-}
+    .form .fieldset {
+      position: relative;
+      margin: 1.4em 0;
+    }
 
-.autocomplete-items div {
-padding: 10px;
-cursor: pointer;
-background-color: #fff; 
-border-bottom: 1px solid #d4d4d4; 
-}
+    .form .fieldset:first-child {
+      margin-top: 0;
+    }
 
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-background-color: #e9e9e9; 
-}
+    .form .fieldset:last-child {
+      margin-bottom: 0;
+    }
 
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-background-color: DodgerBlue !important; 
-color: #ffffff; 
-}	
-.dropdown-backdrop {
-display:none;
-}
-.button {
- border:black;
- color: white;
- padding: 10px 20px;
- text-align: center;
- text-decoration: none;
- font-size: 10px;
- margin: 1px 1px;
- cursor: pointer;
- }		
-    </style>
-  
-<link rel="stylesheet" href="/tagify/tagify.css">
-<link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-<script src="/tagify/tagify.js"></script>
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<script src="/tagify/jQuery.tagify.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+    .form label {
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
 
-<script src="ckeditor/ckeditor.js"></script>
+    .form label.image-replace {
+      /* replace text with an icon */
+      display: inline-block;
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      bottom: auto;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      height: 20px;
+      width: 20px;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space: nowrap;
+      color: transparent;
+      text-shadow: none;
+      background-repeat: no-repeat;
+      background-position: 50% 0;
+    }
+
+    .form input {
+      margin: 0;
+      padding: 0;
+      border-radius: 0.25em;
+    }
+
+    .form input.full-width {
+      width: 100%;
+    }
+
+    .form input.has-padding {
+      padding: 12px 20px 12px 50px;
+    }
+
+    .form input.has-border {
+      border: 1px solid #d2d8d8;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+    }
+
+    .form input.has-border:focus {
+      border-color: #343642;
+      box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+      outline: none;
+    }
 
 
+    #login,
+    #signup,
+    #reset-password {
+      display: none;
+    }
+
+    #login.is-selected,
+    #signup.is-selected,
+    #reset-password.is-selected {
+      display: block;
+    }
+
+    #standalone-container {
+      margin: 50px auto;
+      max-width: 1700px;
+    }
+
+    #editor-container {
+      height: 350px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      /* display: inline-block; */
+      float: right;
+    }
+
+    input {
+      border: 1px solid transparent;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    input[type=text] {
+      background-color: #f1f1f1;
+      width: 100%;
+    }
+
+    input[type=submit] {
+      background-color: DodgerBlue;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .autocomplete-items {
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+    }
+
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #d4d4d4;
+    }
+
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9;
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: DodgerBlue !important;
+      color: #ffffff;
+    }
+
+    .dropdown-backdrop {
+      display: none;
+    }
+
+    .button {
+      border: black;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 10px;
+      margin: 1px 1px;
+      cursor: pointer;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/tagify/tagify.css">
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+  <script src="/tagify/tagify.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="/tagify/jQuery.tagify.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+
+  <script src="ckeditor/ckeditor.js"></script>
+
+  <style>
+
+  </style>
 </head>
+
 <body>
-    <div id="navigation" >
+
+  <div id="navigation">
     <div id="header" style="padding: 0px;">
-        <div class="container">
+      <div class="container">
 
 
-                    <!-- Mobile nav toggle-->
-                    <li class="nav-toggle">
-                        <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                    </li>
-                    <!-- / Mobile nav toggle -->
-            
-            </div>
-        
-        <!-- header -->
+        <!-- Mobile nav toggle-->
+        <li class="nav-toggle">
+          <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+        </li>
+        <!-- / Mobile nav toggle -->
+
+      </div>
+
+      <!-- header -->
     </div>
     <!-- container -->
-    <div class="container" >
-        <div id="responsive-nav" >
-           
+    <div class="container">
+      <div id="responsive-nav">
 
-            <!-- menu nav -->
-            <div class="menu-nav"  >
-                    
-            <ul class="menu-list"  >
-              <ul class="menu-list"  >
-                <% if(user){ %>
-                    <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
-                    <li style="float: right;font-weight: bold;"><a href="/profile">
-                        <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-                        <!-- <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-                        <img  src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
-                        <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
-                        <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
 
-                        <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
-                      </a></li>                   <% }else{ %>
-                <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
+        <!-- menu nav -->
+        <div class="menu-nav">
 
-                <% } %> 
-                      
-                  
-                  
-                <li><a href="/home">Home</a></li>
-                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu" >
-                        <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
-                        <li><a href="/searching-sorting">Searching and Sorting</a></li>
-                        <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
-                        <li><a href="#">Dynamic Programming</a></li><li>
-                                <a  href="string-Algo">String Algorithms</a></li><li>   
-                            
-                            <a  href="/backtracing">Backtracking</a></li><li>
-                            <a  href="/divide-conquer">Divide and Conquer</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li>
-                            <a  href="/ds">Data Structures</a></li><li>
-                            <a  href="/array">Array</a></li><li>
-                            
-                                <a href="/list">Linked List</a></li><li>
-                                <a href="/stack">Stack</a></li><li>
-                                <a  href="/queue">Queue</a> </li><li>
-                            
-                            <a  href="/bt">Binary Tree</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li><a href="/c">C</a></li>
-                        <li><a href="/cpp">C++</a></li>
-                        <li><a href="/java">JAVA</a></li>
-                        <li><a href="/py">Python</a></li>
-                        <li><a href="/sql">SQL</a></li>
-                        <li><a href="/php">PHP</a></li>
-                        <li><a href="/js">Javascript</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li><a href="/campus">Campus Programs</a></li>
-                        <li><a href="/project">Projects</a></li>
-                        <li><a href="/place">Placemant cources</a></li>
-                        
-                    </ul>
-                </li>
-                
-                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li><a href="/gnote">Gate notes</a></li>
-                        <li><a href="/gcs">Gate CS Corner</a></li>
-                        <li><a href="/gpaper">Gate Papers</a></li>
-                        
-                    </ul>
-                </li>
-               
-                <li><a href="#">Codes</a></li>
-                <li><a href="#">Puzzles</a></li>
-                <li><a href="/compose">Contribute</a></li>
-                
-                
+          <ul class="menu-list">
+            <ul class="menu-list">
+              <% if(user){ %>
+              <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()"
+                  class="button" style="color:white">LOGOUT</a></li>
+              <li style="float: right;font-weight: bold;"><a href="/profile">
+                  <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+                  <!-- <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+                  <img src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"
+                    style=" width:30px ; border-radius:20px;" align="center">
+                  <img src="<%=photo%>" onerror="this.style.display='none'" style=" width:30px ; border-radius:20px;"
+                    align="center">
+                  <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+
+                  <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+                </a></li> <% }else{ %>
+              <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button"
+                  style="color:white">LOGIN</a></li>
+
+              <% } %>
+
+
+
+              <li><a href="/home">Home</a></li>
+              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                  aria-expanded="true" href="">Algorithms <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
+                  <li><a href="/searching-sorting">Searching and Sorting</a></li>
+                  <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
+                  <li><a href="#">Dynamic Programming</a></li>
+                  <li>
+                    <a href="string-Algo">String Algorithms</a></li>
+                  <li>
+
+                    <a href="/backtracing">Backtracking</a></li>
+                  <li>
+                    <a href="/divide-conquer">Divide and Conquer</a></li>
+                </ul>
+              </li>
+              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                  aria-expanded="true" href="">DS <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li>
+                    <a href="/ds">Data Structures</a></li>
+                  <li>
+                    <a href="/array">Array</a></li>
+                  <li>
+
+                    <a href="/list">Linked List</a></li>
+                  <li>
+                    <a href="/stack">Stack</a></li>
+                  <li>
+                    <a href="/queue">Queue</a> </li>
+                  <li>
+
+                    <a href="/bt">Binary Tree</a></li>
+                </ul>
+              </li>
+              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                  aria-expanded="true" href="">Languages <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="/c">C</a></li>
+                  <li><a href="/cpp">C++</a></li>
+                  <li><a href="/java">JAVA</a></li>
+                  <li><a href="/py">Python</a></li>
+                  <li><a href="/sql">SQL</a></li>
+                  <li><a href="/php">PHP</a></li>
+                  <li><a href="/js">Javascript</a></li>
+                </ul>
+              </li>
+              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                  aria-expanded="true" href="">Students <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="/campus">Campus Programs</a></li>
+                  <li><a href="/project">Projects</a></li>
+                  <li><a href="/place">Placemant cources</a></li>
+
+                </ul>
+              </li>
+
+              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                  aria-expanded="true" href="">GATE <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="/gnote">Gate notes</a></li>
+                  <li><a href="/gcs">Gate CS Corner</a></li>
+                  <li><a href="/gpaper">Gate Papers</a></li>
+
+                </ul>
+              </li>
+
+              <li><a href="#">Codes</a></li>
+              <li><a href="#">Puzzles</a></li>
+              <li><a href="/compose">Contribute</a></li>
+
+
             </ul>
-          
-       </div>
-       </div>
-       </div>
-       
-        <!-- /container -->
-    </div>
-    <!-- /NAVIGATION -->
 
-    <section>     
-      <main>
+        </div>
+      </div>
+    </div>
+
+    <!-- /container -->
+  </div>
+  <!-- /NAVIGATION -->
+
+  <section>
+    <main>
+
       <!-- section -->
       <div class="section" style="padding: 10px;">
-          <!-- container -->
-          <div class="container">
-              <div class="jumbotron static-slider" style="padding: 10px;">
-                              <h4 class="text-center">Editor</h4>
-                          </div>
+        <!-- container -->
+        <div class="container">
+
+          <div class="jumbotron static-slider" style="padding: 10px;">
+            <h4 class="text-center">Editor</h4>
+          </div>
+          <% if(isUserName){ %>
+          <script>
+            function showAlert() {
+              alert("Please fill your username in the profile page");
+            }
+            showAlert();
+          </script>
+          <!-- <script>showAlert()</script> -->
+          <div class="jumbotron static-slider" style="padding: 10px;">
+            <center>
+              Please Fill your UserName <a href="/profile">Click Here</a>
+            </center>
+          </div>
+          <%}%>
+          
                       <!-- </div>  -->
                       <form action="/compose" method="POST">
                         <div class="form-group mt-3">
@@ -500,13 +568,13 @@ display:none;
 
                       <script>
                         // <script type="text/javascript">
-                        CKEDITOR.replace('blog',{
+                        CKEDITOR.replace('blog', {
                           extraPlugins: 'codesnippet',
-	                        codeSnippet_theme: 'monokai_sublime'
-                            // "extraPlugins" : "imagebrowser",
-                            // "imageBrowser_listUrl":"/files"
+                          codeSnippet_theme: 'monokai_sublime'
+                          // "extraPlugins" : "imagebrowser",
+                          // "imageBrowser_listUrl":"/files"
                         });
-                        // </script>
+                        //</script>
                     <!-- //     new FroalaEditor('#blog',{
                     //    fileUploadURL: './e2/file_upload',
                     //    fileUploadParams: {
@@ -524,9 +592,9 @@ display:none;
                       <p >For solution of puzzle type here..... </p>
                       <textarea name="sol" id="solution"  ></textarea>
                       <script>
-                        CKEDITOR.replace('solution',{
+                        CKEDITOR.replace('solution', {
                           extraPlugins: 'codesnippet',
-	                        codeSnippet_theme: 'monokai_sublime'
+                          codeSnippet_theme: 'monokai_sublime'
                         });
                       </script>
                     </div>
@@ -561,7 +629,7 @@ display:none;
                     </div>
                     <script data-name="dropdown-tags">
                       // (function(){
-                      
+
                       // var input = document.querySelector('input[name="tags"]'),
                       //     // init Tagify script on the above inputs
                       //     tagify = new Tagify(input, {
@@ -576,32 +644,32 @@ display:none;
                       //     })
                       // })()
                       var input = document.querySelector('input[name="tags"]'),
-                      tagify = new Tagify(input, {whitelist:[]}),
-                      controller; // for aborting the call
+                        tagify = new Tagify(input, { whitelist: [] }),
+                        controller; // for aborting the call
 
-                  // listen to any keystrokes which modify tagify's input
-                  tagify.on('input', onInput)
+                      // listen to any keystrokes which modify tagify's input
+                      tagify.on('input', onInput)
 
-                  function onInput( e ){
-                    var value = e.detail.value;
-                    tagify.settings.whitelist.length = 0; // reset the whitelist
+                      function onInput(e) {
+                        var value = e.detail.value;
+                        tagify.settings.whitelist.length = 0; // reset the whitelist
 
-                    // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
-                    controller && controller.abort();
-                    controller = new AbortController();
+                        // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
+                        controller && controller.abort();
+                        controller = new AbortController();
 
-                    // show loading animation and hide the suggestions dropdown
-                    tagify.loading(true).dropdown.hide.call(tagify)
-                    var url='/compose/tags?value=' + value 
-                    fetch(url, {signal:controller.signal})
-                      .then(RES => RES.json())
-                      .then(function(whitelist){
-                        // update inwhitelist Array in-place
-                        tagify.settings.whitelist.splice(0, whitelist.length, ...whitelist)
-                        tagify.loading(false).dropdown.show.call(tagify, value); // render the suggestions dropdown
-                      })
-                  }
-                      </script>
+                        // show loading animation and hide the suggestions dropdown
+                        tagify.loading(true).dropdown.hide.call(tagify)
+                        var url = '/compose/tags?value=' + value
+                        fetch(url, { signal: controller.signal })
+                          .then(RES => RES.json())
+                          .then(function (whitelist) {
+                            // update inwhitelist Array in-place
+                            tagify.settings.whitelist.splice(0, whitelist.length, ...whitelist)
+                            tagify.loading(false).dropdown.show.call(tagify, value); // render the suggestions dropdown
+                          })
+                      }
+                    </script>
                       
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -659,17 +727,17 @@ display:none;
        <script src="js/jquery.zoom.min.js"></script>
        <script src="js/main.js"></script>
        <script>
-                 $("#sol").hide();
-        $("#ty").change(function(){
-          var sel=$(this).children("option:selected").val();
+        $("#sol").hide();
+        $("#ty").change(function () {
+          var sel = $(this).children("option:selected").val();
           // alert(sel);
-          if(sel==="Puzzle"){
+          if (sel === "Puzzle") {
             $("#hide").hide();
             $("#sol").show();
 
 
           }
-          else{
+          else {
             $("#hide").show();
             $("#sol").hide();
 
@@ -677,7 +745,7 @@ display:none;
           }
         });
 
-    </script>
+      </script>
   
     </body>
 </html>

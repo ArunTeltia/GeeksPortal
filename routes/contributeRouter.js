@@ -1,6 +1,8 @@
 const contribute = require("express").Router();
 const connection = require("../config/DBconnection");
 const authCheck = require("../config/authCheck");
+const db = require("../config/makeDB");
+
 const shortid = require('shortid');
 const Keys = require("../config/keys")
 
@@ -23,24 +25,39 @@ const smtpTrans = nodemailer.createTransport(sendgridTransport({
 
 contribute
   .route("/")
-  .get(authCheck, (req, res) => {
+  .get(authCheck, async (req, res) => {
     try {
+      // console.log(req.user);
+      const sql = "Select UserName from Users where ID = '" + req.user.ID + "'";
+      // const sql ="Select UserName from Users";
+      const resultss = await db.query(sql);
+      console.log(resultss)
+
+      let isUserName;
+      // console.log(isUserName);
+      if (resultss[0].UserName === "") {
+
+        isUserName = false;
+      } else {
+        // res.redirect('/profile/status');
+        isUserName = true;
+      }
+      // res.redirect('/profile/status');
+      console.log(isUserName)
       res.render("E2", {
         photo: req.user.Photo,
-        user: req.user
+        user: req.user,
+        isUserName: isUserName
       });
     } catch (err) {
       console.log(err);
     }
-
   })
   .post(authCheck, (req, res) => {
     try {
       let obj = JSON.parse(JSON.stringify(req.body));
       var ArticleId = shortid.generate();
-
       console.log(obj);
-
       let ArtTags = JSON.parse(obj.tags);
       // console.log(ArtTags);
       var tags = [];
