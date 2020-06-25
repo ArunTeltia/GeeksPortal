@@ -242,6 +242,7 @@ profile
 profile.get("/Status", authCheck, (req, res) => {
   try {
     let usr = [];
+    let post;
     async function Render() {
       try {
         const r = await db.query(
@@ -251,18 +252,30 @@ profile.get("/Status", authCheck, (req, res) => {
         const r1 = await db.query(
           "select * from AllArticles where UserId='" + req.user.ID + "'"
         );
-        return r1;
+        post= r1;
+        const r2 = await db.query("select UserName from Users where ID='" + req.user.ID + "'");
+        console.log(r2);
+        let isUserName;
+        if(r2[0].UserName!==""){
+          isUserName=true
+        }else{
+          isUserName=false
+        }
+        console.log(isUserName);
+        return isUserName;
+        return r2;
       } catch (err) {
         console.log(err);
       }
-
+      
     }
     Render().then((results) => {
-      console.log(results)
-      console.log(usr);
+      // console.log(results)
+      // console.log(usr);
       res.render("ContributionStatus", {
         details: usr[0],
-        posts: results
+        posts: post,
+        isUserName: results
       });
     });
   } catch (err) {

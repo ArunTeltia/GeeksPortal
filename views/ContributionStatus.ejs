@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        <title>Computer Science</title>
-        <base href="/">
+   <title>Computer Science</title>
+   <base href="/">
 
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+   <!-- Google font -->
+   <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
-        <!-- Bootstrap -->
-        <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" /> -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <!-- Slick -->
-        <link type="text/css" rel="stylesheet" href="css/slick.css" />
-        <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+   <!-- Bootstrap -->
+   <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" /> -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <!-- Slick -->
+   <link type="text/css" rel="stylesheet" href="css/slick.css" />
+   <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
 
-        <!-- nouislider -->
-        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+   <!-- nouislider -->
+   <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
-        <!-- Font Awesome Icon -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+   <!-- Font Awesome Icon -->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
 
-        <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="css/style.css" />
-       
-      <style type="text/css">
-         .cookie{
+   <!-- Custom stlylesheet -->
+   <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+   <style type="text/css">
+      .cookie {
          background-color: black;
-         color: white;border-radius: 10px;
-         padding-left:  20px;
+         color: white;
+         border-radius: 10px;
+         padding-left: 20px;
          padding-right: 20px;
          opacity: 1;
-         }
-         .button {
-         border:black;
+      }
+
+      .button {
+         border: black;
          color: white;
          padding: 10px 20px;
          text-align: center;
@@ -46,8 +48,9 @@
          font-size: 10px;
          margin: 1px 1px;
          cursor: pointer;
-         }
-         .bts-popup {
+      }
+
+      .bts-popup {
          position: fixed;
          left: 0;
          top: 0;
@@ -59,21 +62,23 @@
          -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
          -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
          transition: opacity 0.3s 0s, visibility 0s 0.3s;
-         }
-         .bts-popup.is-visible {
+      }
+
+      .bts-popup.is-visible {
          opacity: 1;
          visibility: visible;
          -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
          -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
          transition: opacity 0.3s 0s, visibility 0s 0s;
-         }
-         .bts-popup-container {
+      }
+
+      .bts-popup-container {
          position: relative;
          width: 90%;
          max-width: 400px;
          margin: 15em auto;
-         background:black;
-         border-radius: none; 
+         background: black;
+         border-radius: none;
          text-align: center;
          box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
          -webkit-transform: translateY(-40px);
@@ -91,49 +96,58 @@
          transition-duration: 0.3s;
          border-radius: 10px;
          cursor: pointer;
-         }
-         .bts-popup-container img {
+      }
+
+      .bts-popup-container img {
          padding: 20px 0 0 0;
-         }
-         .bts-popup-container p {
+      }
+
+      .bts-popup-container p {
          color: white;
          padding: 10px 40px;
-         }
-         .bts-popup-container .bts-popup-button {
+      }
+
+      .bts-popup-container .bts-popup-button {
          padding: 5px 25px;
          border: 2px solid white;
          display: inline-block;
          margin-bottom: 10px;
-         }
-         .bts-popup-container a {
+      }
+
+      .bts-popup-container a {
          color: white;
          text-decoration: none;
          text-transform: uppercase;
-         }
-         .bts-popup-container .bts-popup-close {
+      }
+
+      .bts-popup-container .bts-popup-close {
          position: absolute;
          top: 8px;
          right: 8px;
          width: 30px;
          height: 30px;
-         }
-         .bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
+      }
+
+      .bts-popup-container .bts-popup-close::before,
+      .bts-popup-container .bts-popup-close::after {
          content: '';
          position: absolute;
          top: 12px;
          width: 16px;
          height: 3px;
          background-color: white;
-         }
-         .bts-popup-container .bts-popup-close::before {
+      }
+
+      .bts-popup-container .bts-popup-close::before {
          -webkit-transform: rotate(45deg);
          -moz-transform: rotate(45deg);
          -ms-transform: rotate(45deg);
          -o-transform: rotate(45deg);
          transform: rotate(45deg);
          left: 8px;
-         }
-         .bts-popup-container .bts-popup-close::after {
+      }
+
+      .bts-popup-container .bts-popup-close::after {
          -webkit-transform: rotate(-45deg);
          -moz-transform: rotate(-45deg);
          -ms-transform: rotate(-45deg);
@@ -141,254 +155,281 @@
          transform: rotate(-45deg);
          right: 6px;
          top: 13px;
-         }
-         .is-visible .bts-popup-container {
+      }
+
+      .is-visible .bts-popup-container {
          -webkit-transform: translateY(0);
          -moz-transform: translateY(0);
          -ms-transform: translateY(0);
          -o-transform: translateY(0);
          transform: translateY(0);
-         }
-         @media only screen and (min-width: 1170px) {
+      }
+
+      @media only screen and (min-width: 1170px) {
          .bts-popup-container {
-         margin: 8em auto;
+            margin: 8em auto;
          }
-         }
-         input[type="file"] {
+      }
+
+      input[type="file"] {
          display: none;
-         }
-         .custom-file-upload {
+      }
+
+      .custom-file-upload {
          border: solid #ccc;
          display: inline-block;
          padding: 2px 2px;
          cursor: pointer;
-         }
-      </style>
-      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css">
-      <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.js"></script>
-     
-   </head>
-   <body>
-      <!-- /HEADER -->
-      <!-- NAVIGATION -->
-      <div id="navigation" >
-         <div id="header" style="padding: 0px;">
-            <div class="container">
-               <!-- Mobile nav toggle-->
-               <li class="nav-toggle">
-                  <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-               </li>
-               <!-- / Mobile nav toggle -->
-            </div>
-            <!-- header -->
-         </div>
-         <!-- container -->
-         <div class="container" >
-            <div id="responsive-nav" >
-               <!-- menu nav -->
-               <div class="menu-nav"  >
-                  <ul class="menu-list"  >
+      }
+   </style>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css">
+   <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.js"></script>
 
-                     <% if(details){ %>
-                     <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
-                     <li style="float: right;font-weight: bold;"><a href="/profile">
+</head>
+
+<body>
+   <!-- /HEADER -->
+   <!-- NAVIGATION -->
+   <div id="navigation">
+      <div id="header" style="padding: 0px;">
+         <div class="container">
+            <!-- Mobile nav toggle-->
+            <li class="nav-toggle">
+               <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+            </li>
+            <!-- / Mobile nav toggle -->
+         </div>
+         <!-- header -->
+      </div>
+      <!-- container -->
+      <div class="container">
+         <div id="responsive-nav">
+            <!-- menu nav -->
+            <div class="menu-nav">
+               <ul class="menu-list">
+
+                  <% if(details){ %>
+                  <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()"
+                        class="button" style="color:white">LOGOUT</a></li>
+                  <li style="float: right;font-weight: bold;"><a href="/profile">
                         <!-- <img  src="https://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
                         <!-- <img  src="http://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
-                         <img  src="/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
-                         <img  src="<%=details.Photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;"  align="center">
+                        <img src="/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'" id="imgbox"
+                           style=" width:30px ; border-radius:20px;" align="center">
+                        <img src="<%=details.Photo%>" onerror="this.style.display='none'"
+                           style=" width:30px ; border-radius:20px;" align="center">
 
-                    </a></li>
-                    <% }else{ %>
-                     <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
-                     <% } %> 
+                     </a></li>
+                  <% }else{ %>
+                  <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button"
+                        style="color:white">LOGIN</a></li>
+                  <% } %>
 
-                     <li><a href="/home">Home</a></li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu" >
-                           <li><a href="algo.html">Analysis of algorithm</a></li>
-                           <li><a href="search.html">Searching and Sorting</a></li>
-                           <li><a href="ga.html">Greedy Algorithms</a></li>
-                           <li><a  href="dp.html">Dynamic Programming</a></li>
-                           <li>
-                              <a  href="sa.html">String Algorithms</a>
-                           </li>
-                           <li>   
-                              <a  href="backt.html">Backtracking</a>
-                           </li>
-                           <li>
-                              <a  href="dc.html">Divide and Conquer</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                           <li>
-                              <a  href="ds.html">Data Structures</a>
-                           </li>
-                           <li>
-                              <a  href="array.html">Array</a>
-                           </li>
-                           <li>
-                              <a href="list.html">Linked List</a>
-                           </li>
-                           <li>
-                              <a href="stack.html">Stack</a>
-                           </li>
-                           <li>
-                              <a  href="queue.html">Queue</a> 
-                           </li>
-                           <li>
-                              <a  href="bt.html">Binary Tree</a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                           <li><a href="c.html">C</a></li>
-                           <li><a href="cpp.html">C++</a></li>
-                           <li><a href="java.html">JAVA</a></li>
-                           <li><a href="py.html">Python</a></li>
-                           <li><a href="sql.html">SQL</a></li>
-                           <li><a href="php.html">PHP</a></li>
-                           <li><a href="js.html">Javascript</a></li>
-                        </ul>
-                     </li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                           <li><a href="campus.html">Campus Programs</a></li>
-                           <li><a href="proj.html">Projects</a></li>
-                           <li><a href="place.html">Placemant cources</a></li>
-                        </ul>
-                     </li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                           <li><a href="gnote.html">Gate notes</a></li>
-                           <li><a href="gcs.html">Gate CS Corner</a></li>
-                           <li><a href="gpaper.html">Gate Papers</a></li>
-                        </ul>
-                     </li>
-                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">CS Subjects <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                           <li><a href="#">CORE</a></li>
-                           <li><a href="#">Web Technology</a></li>
-                           <li><a href="#">Advance Topics</a></li>
-                           <li><a href="#">Machine Learning</a></li>
-                        </ul>
-                     </li>
-                     <li><a href="#">Puzzles</a></li>
-                     <li><a href="/compose">Editor</a></li>
-                  </ul>
-               </div>
-               <!-- menu nav -->
+                  <li><a href="/home">Home</a></li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">Algorithms <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li><a href="algo.html">Analysis of algorithm</a></li>
+                        <li><a href="search.html">Searching and Sorting</a></li>
+                        <li><a href="ga.html">Greedy Algorithms</a></li>
+                        <li><a href="dp.html">Dynamic Programming</a></li>
+                        <li>
+                           <a href="sa.html">String Algorithms</a>
+                        </li>
+                        <li>
+                           <a href="backt.html">Backtracking</a>
+                        </li>
+                        <li>
+                           <a href="dc.html">Divide and Conquer</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">DS <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li>
+                           <a href="ds.html">Data Structures</a>
+                        </li>
+                        <li>
+                           <a href="array.html">Array</a>
+                        </li>
+                        <li>
+                           <a href="list.html">Linked List</a>
+                        </li>
+                        <li>
+                           <a href="stack.html">Stack</a>
+                        </li>
+                        <li>
+                           <a href="queue.html">Queue</a>
+                        </li>
+                        <li>
+                           <a href="bt.html">Binary Tree</a>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">Languages <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li><a href="c.html">C</a></li>
+                        <li><a href="cpp.html">C++</a></li>
+                        <li><a href="java.html">JAVA</a></li>
+                        <li><a href="py.html">Python</a></li>
+                        <li><a href="sql.html">SQL</a></li>
+                        <li><a href="php.html">PHP</a></li>
+                        <li><a href="js.html">Javascript</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">Students <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li><a href="campus.html">Campus Programs</a></li>
+                        <li><a href="proj.html">Projects</a></li>
+                        <li><a href="place.html">Placemant cources</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">GATE <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li><a href="gnote.html">Gate notes</a></li>
+                        <li><a href="gcs.html">Gate CS Corner</a></li>
+                        <li><a href="gpaper.html">Gate Papers</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown default-dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="">CS Subjects <i
+                           class="fa fa-caret-down"></i></a>
+                     <ul class="custom-menu">
+                        <li><a href="#">CORE</a></li>
+                        <li><a href="#">Web Technology</a></li>
+                        <li><a href="#">Advance Topics</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">Puzzles</a></li>
+                  <li><a href="/compose">Editor</a></li>
+               </ul>
             </div>
-         </div>
-         <!-- /container -->
-      </div>
-      <!-- /NAVIGATION -->
-      <div class="content" style="padding-right: 10px; ">
-         <!-- container -->
-         <div class="container" >
-            <!-- Jumbtron / Slider -->
-            <div class="jumbotron" style="padding: 10px;">
-               <p class="lead text-center">Contributions</p>
-            </div>
+            <!-- menu nav -->
          </div>
       </div>
-      <!-- Main content area -->
+      <!-- /container -->
+   </div>
+   <!-- /NAVIGATION -->
+   <div class="content" style="padding-right: 10px; ">
+      <!-- container -->
       <div class="container">
-          <div class="row">
-
-                  <% if(posts.length===0){%> 
-                    <div class="col-12">
-
-                    <div class="text-center">
-                        <h4 >You Have no articles. Write your first article.</h4>
-                        <a href="/compose" > <button type="button" class="btn btn-primary">Contribute</button></a>
-                    </div>
-                </div>
-
-                 <% } %> 
-          </div>
-          <div class="row" >
-            <% if(posts.length!==0){%> 
-               <div class="col-12" style="margin:10px;">
-   
-                   <div class="text-center">
-                       <h4 >Contribute More!!</h4>
-                       <a href="/compose" > <button type="button" class="btn btn-primary">Contribute</button></a>
-                   </div>
-               </div>
-             </div>
-             <% } %> 
-            <% posts.forEach(p=>{%> 
-                
-                    <!-- <div class="col-12 "  > -->
-                        <div class="col-sm-12 " >
-                           <% var col=p.Status==="ACCEPTED" ? "bg-info" :"bg-danger" %>
-                          <div class="thumbnail  "  >
-                            <div class="caption <%= col %>   text-center" style="color:#623954;">
-
-                              <h4 id="thumbnail-label" style="color:#623954;"><%= p.Head %></h4>
-                              <div class="thumbnail-description smaller"><%= p.Type %></div>
-                            </div>
-                            <div class="caption <%= col %> > card-footer text-center">
-                              <ul style="color:#623954;" class="list-inline">
-                                <li><i class="people lighter" ></i>&nbsp;<%= p.Status %></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                    <!-- </div> -->
-            <% }) %> 
-      
-                 
-               
-          </div>
-
-     
-      
-      <!-- /row -->
-      <hr>
-      <!-- row -->
-      <div class="row">
-         <div class="col-md-8 col-md-offset-2 text-center">
-            <!-- footer copyright -->
-            <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"style="padding-right:30px;">Terms and Conditions</a>
-               <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a>
-            </p>
+         <!-- Jumbtron / Slider -->
+         <div class="jumbotron" style="padding: 10px;">
+            <p class="lead text-center">Contributions</p>
          </div>
       </div>
-      <!-- /row -->
-    
-      <!-- Footer -->
-      <div class="container-fluid footer-container">
-         <footer class="footer">
-            <div class="footer-lists">
-               <div class="col-sm">
-                  <p></p>
-               </div>
+   </div>
+   <!-- Main content area -->
+   <div class="container">
+      <div class="row">
+         <% if(!isUserName){%>
+         <div class="col-12">
+
+            <div class="text-center">
+               <h4>Update Your UserName</h4>
+               <a href="/compose"> <button type="button" class="btn btn-primary">Update</button></a>
             </div>
+         </div>
+
+         <% } %>
+
+         <% if(posts.length===0){%>
+         <div class="col-12">
+
+            <div class="text-center">
+               <h4>You Have no articles. Write your first article.</h4>
+               <a href="/compose"> <button type="button" class="btn btn-primary">Contribute</button></a>
+            </div>
+         </div>
+
+         <% } %>
       </div>
-      <!-- </footer>
+      <div class="row">
+         <% if(posts.length!==0){%>
+         <div class="col-12" style="margin:10px;">
+
+            <div class="text-center">
+               <h4>Contribute More!!</h4>
+               <a href="/compose"> <button type="button" class="btn btn-primary">Contribute</button></a>
+            </div>
+         </div>
+      </div>
+      <% } %>
+      <% posts.forEach(p=>{%>
+
+      <!-- <div class="col-12 "  > -->
+      <div class="col-sm-12 ">
+         <% var col=p.Status==="ACCEPTED" ? "bg-info" :"bg-danger" %>
+         <div class="thumbnail  ">
+            <div class="caption <%= col %>   text-center" style="color:#623954;">
+
+               <h4 id="thumbnail-label" style="color:#623954;"><%= p.Head %></h4>
+               <div class="thumbnail-description smaller"><%= p.Type %></div>
+            </div>
+            <div class="caption <%= col %> > card-footer text-center">
+               <ul style="color:#623954;" class="list-inline">
+                  <li><i class="people lighter"></i>&nbsp;<%= p.Status %></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- </div> -->
+      <% }) %>
+
+
+
+   </div>
+
+
+
+   <!-- /row -->
+   <hr>
+   <!-- row -->
+   <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+         <!-- footer copyright -->
+         <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"
+               style="padding-right:30px;">Terms and Conditions</a>
+            <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a>
+         </p>
+      </div>
+   </div>
+   <!-- /row -->
+
+   <!-- Footer -->
+   <div class="container-fluid footer-container">
+      <footer class="footer">
+         <div class="footer-lists">
+            <div class="col-sm">
+               <p></p>
+            </div>
+         </div>
+   </div>
+   <!-- </footer>
       </div> 
       </div>
       </div> -->
-     
 
-         
-     <a  id="backtotop" href="#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
-     <script src="js/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script src="js/slick.min.js"></script>
-     <script src="js/nouislider.min.js"></script>
-     <script src="js/jquery.zoom.min.js"></script>
-     <script src="js/main.js"></script>
-   </body>
+
+
+   <a id="backtotop" href="#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
+   <script src="js/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="js/slick.min.js"></script>
+   <script src="js/nouislider.min.js"></script>
+   <script src="js/jquery.zoom.min.js"></script>
+   <script src="js/main.js"></script>
+</body>
+
 </html>

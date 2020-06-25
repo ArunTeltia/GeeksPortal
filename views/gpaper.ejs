@@ -15,7 +15,7 @@
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="css/slick.css" />
     <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
@@ -29,182 +29,193 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <style type="text/css">
-        
-        .cookie{
+        .cookie {
             background-color: black;
-            color: white;border-radius: 10px;
-            padding-left:  20px;
+            color: white;
+            border-radius: 10px;
+            padding-left: 20px;
             padding-right: 20px;
             opacity: 1;
 
         }
+
         .button {
-     border:black;
-     color: white;
-     padding: 10px 20px;
-     text-align: center;
-     text-decoration: none;
-     font-size: 10px;
-     margin: 1px 1px;
-     cursor: pointer;
-     }
+            border: black;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 10px;
+            margin: 1px 1px;
+            cursor: pointer;
+        }
+
         .bts-popup {
-position: fixed;
-left: 0;
-top: 0;
-height: 100%;
-width: 100%;
-background-color: rgba(0, 0, 0, 0.5);
-opacity: 0;
-visibility: hidden;
--webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
--moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
-transition: opacity 0.3s 0s, visibility 0s 0.3s;
-}
-.bts-popup.is-visible {
-opacity: 1;
-visibility: visible;
--webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
--moz-transition: opacity 0.3s 0s, visibility 0s 0s;
-transition: opacity 0.3s 0s, visibility 0s 0s;
-}
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            transition: opacity 0.3s 0s, visibility 0s 0.3s;
+        }
 
-.bts-popup-container {
-position: relative;
-width: 90%;
-max-width: 400px;
-margin: 15em auto;
-background:black;
-border-radius: none; 
-text-align: center;
-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
--webkit-transform: translateY(-40px);
--moz-transform: translateY(-40px);
--ms-transform: translateY(-40px);
--o-transform: translateY(-40px);
-transform: translateY(-40px);
-/* Force Hardware Acceleration in WebKit */
--webkit-backface-visibility: hidden;
--webkit-transition-property: -webkit-transform;
--moz-transition-property: -moz-transform;
-transition-property: transform;
--webkit-transition-duration: 0.3s;
--moz-transition-duration: 0.3s;
-transition-duration: 0.3s;
-border-radius: 10px;
-cursor: pointer;
-}
-.bts-popup-container img {
-padding: 20px 0 0 0;
-}
-.bts-popup-container p {
-color: white;
-padding: 10px 40px;
-}
-.bts-popup-container .bts-popup-button {
-padding: 5px 25px;
-border: 2px solid white;
-display: inline-block;
-margin-bottom: 10px;
-}
+        .bts-popup.is-visible {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+            transition: opacity 0.3s 0s, visibility 0s 0s;
+        }
 
-.bts-popup-container a {
-color: white;
-text-decoration: none;
-text-transform: uppercase;
-}
+        .bts-popup-container {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            margin: 15em auto;
+            background: black;
+            border-radius: none;
+            text-align: center;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: translateY(-40px);
+            -moz-transform: translateY(-40px);
+            -ms-transform: translateY(-40px);
+            -o-transform: translateY(-40px);
+            transform: translateY(-40px);
+            /* Force Hardware Acceleration in WebKit */
+            -webkit-backface-visibility: hidden;
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            transition-property: transform;
+            -webkit-transition-duration: 0.3s;
+            -moz-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .bts-popup-container img {
+            padding: 20px 0 0 0;
+        }
+
+        .bts-popup-container p {
+            color: white;
+            padding: 10px 40px;
+        }
+
+        .bts-popup-container .bts-popup-button {
+            padding: 5px 25px;
+            border: 2px solid white;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .bts-popup-container a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
 
 
 
 
 
-.bts-popup-container .bts-popup-close {
-position: absolute;
-top: 8px;
-right: 8px;
-width: 30px;
-height: 30px;
-}
-.bts-popup-container .bts-popup-close::before, .bts-popup-container .bts-popup-close::after {
-content: '';
-position: absolute;
-top: 12px;
-width: 16px;
-height: 3px;
-background-color: white;
-}
-.bts-popup-container .bts-popup-close::before {
--webkit-transform: rotate(45deg);
--moz-transform: rotate(45deg);
--ms-transform: rotate(45deg);
--o-transform: rotate(45deg);
-transform: rotate(45deg);
-left: 8px;
-}
-.bts-popup-container .bts-popup-close::after {
--webkit-transform: rotate(-45deg);
--moz-transform: rotate(-45deg);
--ms-transform: rotate(-45deg);
--o-transform: rotate(-45deg);
-transform: rotate(-45deg);
-right: 6px;
-top: 13px;
-}
-.is-visible .bts-popup-container {
--webkit-transform: translateY(0);
--moz-transform: translateY(0);
--ms-transform: translateY(0);
--o-transform: translateY(0);
-transform: translateY(0);
-}
-@media only screen and (min-width: 1170px) {
-.bts-popup-container {
-margin: 8em auto;
-}
-}
+        .bts-popup-container .bts-popup-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 30px;
+            height: 30px;
+        }
 
-.dropdown-backdrop {
-display:none;
-}
+        .bts-popup-container .bts-popup-close::before,
+        .bts-popup-container .bts-popup-close::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            width: 16px;
+            height: 3px;
+            background-color: white;
+        }
 
+        .bts-popup-container .bts-popup-close::before {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 8px;
+        }
+
+        .bts-popup-container .bts-popup-close::after {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            right: 6px;
+            top: 13px;
+        }
+
+        .is-visible .bts-popup-container {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        @media only screen and (min-width: 1170px) {
+            .bts-popup-container {
+                margin: 8em auto;
+            }
+        }
+
+        .dropdown-backdrop {
+            display: none;
+        }
     </style>
-    
 
 
-   
+
+
 </head>
 
 <body>
-    
+
     <!-- /HEADER -->
 
     <!-- NAVIGATION -->
-   
-    <div id="navigation" >
+
+    <div id="navigation">
         <div id="header" style="padding: 0px;">
             <div class="container">
-    
 
-                        <!-- Mobile nav toggle-->
-                        <li class="nav-toggle">
-                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                        </li>
-                        <!-- / Mobile nav toggle -->
-                
-                </div>
-            
+
+                <!-- Mobile nav toggle-->
+                <li class="nav-toggle">
+                    <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                </li>
+                <!-- / Mobile nav toggle -->
+
+            </div>
+
             <!-- header -->
         </div>
         <!-- container -->
-        <div class="container" >
-            <div id="responsive-nav" >
-               
+        <div class="container">
+            <div id="responsive-nav">
+
 
                 <!-- menu nav -->
-                <div class="menu-nav"  >
-                    
-                    <%-include('includes/navLinks.ejs') %> 
+                <div class="menu-nav">
+
+                    <%-include('includes/navLinks.ejs') %>
 
                 </div>
                 <!-- menu nav -->
@@ -214,70 +225,336 @@ display:none;
     </div>
     <!-- /NAVIGATION -->
 
-    
-
-<!-- section -->
-<div class="section" style="padding: 10px;">
-    <!-- container -->
-    <div class="container">
-        <div class="jumbotron static-slider" style="padding: 10px;">
-                        <h3 class="text-center">GATE Papers</h3>
-                        
-                    </div>
-                    <div class="col-sm-8">
-                        <article style="padding: 30px;padding-left: 60px;padding-bottom: 60px;font-size: 18px;">
-                            
-                            
-                            <h3></h3><br>
-
-                            <ul style="list-style-type: circle;font-size: 17px;font-weight: bold;" >
-                                
-                                </ul>
-
-                        </article>
-                    </div>
 
 
-                    <!-- Sidebar -->
-                    <aside class="col-sm-4" style="padding-right: 60px; ">
-                        <div class="sidebar-box">
-                            <h4>Categories</h4>
-                            <div class="list-group list-group-root">
-                                <a class="list-group-item " href="gnote.html">GATE Notes</a>
-                                <div class="list-group">
-                                <a class="list-group-item " href="gcs.html">GATE CS Corner</a>
-                                
-                                    <a class="list-group-item active" href="gpaper.html">GATE Papers</a>
-                                   
-                               
-                                </div>
-                                
-                            </div>
+    <!-- section -->
+    <div class="section" style="padding: 10px;">
+        <!-- container -->
+        <div class="container">
+            <div class="jumbotron static-slider" style="padding: 10px;">
+                <h3 class="text-center">GATE Papers</h3>
+
+            </div>
+            <div class="col-sm-8">
+                <article style="padding: 30px;padding-left: 60px;padding-bottom: 60px;font-size: 18px;">
+
+
+                    <h3>Download the papers by clicking on the link below</h3><br>
+                    <table id="customers">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left">Year</th>
+                                <th style="text-align:left">Original Paper</th>
+                                <th style="text-align:left">Official Keys</th>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="2">2020</td>
+                                <td><a href="https://drive.google.com/open?id=1e5moLO0FOU1XYJsmrOgPfM20NyrnITA-"
+                                        target="_blank">2020 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=194B216FU2SplG-sPH5yYJiimviQEyLzX"
+                                        target="_blank">2020 Keys</a></td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2019</td>
+                                <td> <a href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190220120422/2019_CS_Paper.pdf"
+                                        target="_blank">2019 Paper</a> </td>
+                                <td> <a href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190313151559/2019-Keys.pdf"
+                                        target="_blank">2019 Keys</a> </td>
+                            </tr>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td rowspan="2">2018</td>
+                                <td><a href="https://drive.google.com/open?id=1CcOpvMbmoneCockBJxqsuyrcFzVjlyhZ"
+                                        target="_blank">2018 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=1-Hhl9QJlTYyjU6lzO8GhdXxURZnhH_3S"
+                                        target="_blank">2018 Keys</a></td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2017</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iZFd0TU9lVDhPbDA"
+                                        target="_blank">2017 Set 1 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6idWNtSXViMkktZUk"
+                                        target="_blank">2017 Set 1 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iT2xGMVlKOWYxS3c"
+                                        target="_blank">2017 Set 2 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRWtITmVGSmtDVXM"
+                                        target="_blank">2017 Set 2 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2016</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRTdoUkRBc0FadE0"
+                                        target="_blank">2016 Set 1 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ibllBempRcGxaUDg"
+                                        target="_blank">2016 Set 1 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iZWVHYTB5eUpsMGc"
+                                        target="_blank">2016 Set 2 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6icTdzZmgxb3lieWM"
+                                        target="_blank">2016 Set 2 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">2015</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iZHZWanRYR2pPazA"
+                                        target="_blank">2015 Set 1 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ia0d4NWIzZXJETHc"
+                                        target="_blank">2015 Set 1 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iTTdhOTFzVzFHQzQ"
+                                        target="_blank">2015 Set 2 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRm9XZng2ZjVxUDg"
+                                        target="_blank">2015 Set 2 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iaTZhaEE4OEZOTGs"
+                                        target="_blank">2015 Set 3 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iVDZzU2tDazJxSDQ"
+                                        target="_blank">2015 Set 3 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">2014</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6idm50dHo3TnByTXc"
+                                        target="_blank">2014 Set 1 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6idFRGMnBNbFFiTk0"
+                                        target="_blank">2014 Set 1 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ieXF2ckxoM1hBWm8"
+                                        target="_blank">2014 Set 2 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iakVhT1ZNU0ozMjg"
+                                        target="_blank">2014 Set 2 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRnliMDlMT2o2T2M"
+                                        target="_blank">2014 Set 3 Paper</a></a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iNHJOMGJQOHFFMHc"
+                                        target="_blank">2014 Set 3 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iM2x5blMwS2lBZDA"
+                                        target="_blank">2013 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iLXpKLTZBWWU4dEk"
+                                        target="_blank">2013 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td>2012</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iLTFlM2FTT0ZLclk"
+                                        target="_blank">2012 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ieVRSZ29TRmozd0U"
+                                        target="_blank">2012 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6icXVwZFhaS0hLRE0"
+                                        target="_blank">2011 Paper</a></td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRExmTEVmRlgzNWc"
+                                        target="_blank">2011 Keys</a></td>
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ieWhEdmd6SUx2aXM"
+                                        target="_blank">2010 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2009</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iaWJ1dkhWNW5GU1E"
+                                        target="_blank">2009 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2008</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iQzlId2JoZFU0SUE"
+                                        target="_blank">2008 CS Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6idnFFSHZJNlRTTXM"
+                                        target="_blank">2008 IT Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2007</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6ieWVRX09mSXBiTXc"
+                                        target="_blank">2007 CS Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iZjFCeFdSS0otbG8"
+                                        target="_blank">2007 IT Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2006</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iNFRmcGpyVlRSV00"
+                                        target="_blank">2006 CS Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iTnhPYkYxTFdZdEE"
+                                        target="_blank">2006 IT Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2005</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iYmNTeHVWUnZYQVE"
+                                        target="_blank">2005 CS Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iMDBnNkFSd3ItNTA"
+                                        target="_blank">2005 IT Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">2004</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iaVFReHFuNWVpYXc"
+                                        target="_blank">2004 CS Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iWThFRTdydHRwc1U"
+                                        target="_blank">2004 IT Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2003</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iTV9yRjFWRmFyYW8"
+                                        target="_blank">2003 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2002</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iOFJjUVBVNXZLVzA"
+                                        target="_blank">2002 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2001</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iQmZhdXpuMWlWTmc"
+                                        target="_blank">2001 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2000</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6icDlPRTFiUlN2M2c"
+                                        target="_blank">2000 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1999</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iem5nYURWZDF2R2s"
+                                        target="_blank">1999 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1998</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iRmxJc1pwRkJMUGs"
+                                        target="_blank">1998 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1997</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iWjlLbGFkc3dyTEk"
+                                        target="_blank">1997 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1996</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iTGp6SkhBYmh2ejQ"
+                                        target="_blank">1996 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1995</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iQUtQN3NoTERBcXc"
+                                        target="_blank">1995 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1994</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iNHhYNW5QYXZFUVE"
+                                        target="_blank">1994 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1993</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iZ2ktMlI4VGZsclE"
+                                        target="_blank">1993 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1992</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iMDlRa0F2WTUxd0E"
+                                        target="_blank">1992 Paper</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1991</td>
+                                <td><a href="https://drive.google.com/open?id=0By-VZ5fZo_6iWE1FR3FJNmxuTzA"
+                                        target="_blank">1991 Paper</a></td>
+                                <td></td>
+                            </tr>
+                    </table>
+                    <ul style="list-style-type: circle;font-size: 17px;font-weight: bold;">
+
+                    </ul>
+
+                </article>
+            </div>
+
+
+            <!-- Sidebar -->
+            <aside class="col-sm-4" style="padding-right: 60px; ">
+                <div class="sidebar-box">
+                    <h4>Categories</h4>
+                    <div class="list-group list-group-root">
+                        <a class="list-group-item " href="gnote.html">GATE Notes</a>
+                        <div class="list-group">
+                            <a class="list-group-item " href="gcs.html">GATE CS Corner</a>
+
+                            <a class="list-group-item active" href="gpaper.html">GATE Papers</a>
+
+
                         </div>
 
-                      
-                    </aside> 
+                    </div>
+                </div>
 
 
-                </div> 
-            </main>
+            </aside>
 
 
-     <div class="footer-bottom" style="float: right;padding-right: 10px;">
-                            
-                             <a  id="backtotop" href="#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
-                    </div> 
-        </div> 
         </div>
-        <!-- /row -->
+        </main>
+
+
+        <div class="footer-bottom" style="float: right;padding-right: 10px;">
+
+            <a id="backtotop" href="#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
+        </div>
+    </div>
+    </div>
+    <!-- /row -->
     </div>
     <!-- /container -->
-</div>
-<!-- /section -->
-<!-- Sidebar -->
-               
-                  
-<%-include('includes/footerLinks.ejs') %> 
+    </div>
+    <!-- /section -->
+    <!-- Sidebar -->
 
-    </body>
+
+    <%-include('includes/footerLinks.ejs') %>
+
+</body>
+
 </html>
