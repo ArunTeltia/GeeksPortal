@@ -2,27 +2,16 @@
     <% if(user){ %>
     <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button"
             style="color:white">LOGOUT</a></li>
-    <li style="float: right;font-weight: bold;"><a href="/profile" style="width: 100px;
-            height: 100px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 50%;">
-            <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
-            <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-            <img src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'" style="display: inline;
-            margin: 0 auto;
-            height: 100%;
-            width: auto;" ; " align=" center">
-            <img src="<%=photo%>" onerror="this.style.display='none'" style="display: inline;
-                margin: 0 auto;
-                height: 100%;
-                width: auto;" align="center">
-            <img src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'" style="display: inline;
-                margin: 0 auto;
-                height: 100%;
-                width: auto;" align="center">
+    <li style="float: right;font-weight: bold;"><a href="/profile">
+            <!-- <img src="%= details.Photo %>" -->
+            <!-- <img  src="https://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center">
+                <img  src="http://geeksportal.org/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
+            <img src="/ProfileImages/<%=details.Photo%>" onerror="this.style.display='none'" id="imgbox"
+                style=" width:30px ;height:30px ; border-radius:20px;" align="center">
+            <img src="<%=details.Photo%>" onerror="this.style.display='none'"
+                style=" width:30px ;height:30px ; border-radius:20px;" align="center">
+            <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  id="imgbox" style=" width:30px ; border-radius:20px;" align="center"> -->
 
-            <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
         </a></li> <% }else{ %>
     <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button"
             style="color:white">LOGIN</a></li>
