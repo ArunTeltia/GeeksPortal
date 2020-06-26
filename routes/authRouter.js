@@ -6,13 +6,13 @@ const Keys = require("../config/keys");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 var aws = require("aws-sdk");
-// const smtpTrans = nodemailer.createTransport(
-//   sendgridTransport({
-//     auth: {
-//       api_key: Keys.sendgridKey,
-//     },
-//   })
-// );
+const smtpTrans = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: Keys.sendgridKey,
+    },
+  })
+);
 
 router.get("/login", (req, res) => {
   try {
@@ -33,19 +33,19 @@ aws.config.update({
 var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
 // email-smtp.ap-south-1.amazonaws.com
 // Verify email addresses.
-// router.get("/verify", function (req, res) {
-//   var params = {
-//     EmailAddress: email,
-//   };
+router.get("/verify", function (req, res) {
+  var params = {
+    EmailAddress: email,
+  };
 
-//   ses.verifyEmailAddress(params, function (err, data) {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
+  ses.verifyEmailAddress(params, function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
 
 // Listing the verified email addresses.
 router.get("/list", function (req, res) {
@@ -153,19 +153,19 @@ router.get(
         // console.log(results);
         if (results[0].UserName === null) {
           res.redirect("/profile");
-          // const mailOpts = {
-          //   to: req.user.Email,
-          //   from: "contactgeeksportal@gmail.com",
-          //   subject: "Sign Up successfully",
-          //   html: "<h1>You successfully signed UP!!</h1>",
-          // };
+          const mailOpts = {
+            to: req.user.Email,
+            from: "contactgeeksportal@gmail.com",
+            subject: "Sign Up successfully",
+            html: "<h1>You successfully signed UP!!</h1>",
+          };
 
-          // smtpTrans.sendMail(mailOpts, (error, response) => {
-          //   if (error) {
-          //     console.log(error);
-          //     // Show a page indicating failure
-          //   }
-          // });
+          smtpTrans.sendMail(mailOpts, (error, response) => {
+            if (error) {
+              console.log(error);
+              // Show a page indicating failure
+            }
+          });
           var to = [req.user.Email]
           var from = 'contactgeeksportal@gmail.com'
           ses.sendEmail({
