@@ -150,9 +150,10 @@ router.get(
         if (err) {
           return console.error(err.message);
         }
-        // console.log(results);
+        console.log(results);
         if (results[0].UserName === null) {
           res.redirect("/profile");
+
           const mailOpts = {
             to: req.user.Email,
             from: "contactgeeksportal@gmail.com",
