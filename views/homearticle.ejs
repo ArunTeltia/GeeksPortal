@@ -1,35 +1,35 @@
-   <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        <title>Computer Science</title>
-        <base href="/">
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+    <title>Computer Science</title>
+    <base href="/">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
-        <!-- Bootstrap -->
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <!-- Slick -->
-        <link type="text/css" rel="stylesheet" href="css/slick.css" />
-        <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
 
-        <!-- nouislider -->
-        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
-        <!-- Font Awesome Icon -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-        <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="css/style.css" />
-        
-        <link rel="stylesheet" type="text/css" href="styles/theme.css"/>
-        <!-- <style>
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="styles/theme.css" />
+    <!-- <style>
             input[type=text] {
                 width: 100%;
                 padding: 7px 7px;
@@ -37,203 +37,240 @@
                 box-sizing: border-box;
                 border: 2px solid #623954;
                 border-radius: 4px;
-
                 }
         </style> -->
-        <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous">
-</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script  type="text/javascript" src="typeahead/typeahead.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('input.typeahead').typeahead({
-        name: 'countries',
-        remote: '/home/search?key=%QUERY',
-        limit: 10
-    });
-});
-</script>
-<link rel="stylesheet"
-href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="typeahead/typeahead.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input.typeahead').typeahead({
+                name: 'countries',
+                remote: '/home/search?key=%QUERY',
+                limit: 10
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
-<style type="text/css">
-    
-    .typeahead, .tt-query, .tt-hint {
-        border: 2px solid #CCCCCC;
-        border-radius: 8px;
-        font-size: 15px;
-        height: 30px;
-        line-height: 30px;
-        outline: medium none;
-        padding: 8px 12px;
-        width: 396px;
-    }
-    .typeahead {
-        background-color: #FFFFFF;
-    }
-    .typeahead:focus {
-        border: 2px solid #0097CF;
-    }
-    .tt-query {
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    }
-    .tt-hint {
-        color: #999999;
-    }
-    .tt-dropdown-menu {
-        background-color: #FFFFFF;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        margin-top: 12px;
-        padding: 8px 0;
-        width: 422px;
-    }
-    .tt-suggestion {
-        font-size: 15px;
-        line-height: 15px;
-        padding: 3px 20px;
-    }
-    .tt-suggestion.tt-is-under-cursor {
-        background-color: #0097CF;
-        color: #FFFFFF;
-    }
-    .tt-suggestion p {
-        margin: 0;
-    }
-    input[type=text] {
-                width: 100%;
-                padding:7px 7px;
-                margin-bottom: 10px;
-                margin-top: 7px;
-                margin-left: 5px;
-                box-sizing: border-box;
-                border: 2px solid #623954;
-                border-radius: 4px;
-                height: 40px;
-                
-                }
+    <style type="text/css">
+        .typeahead,
+        .tt-query,
+        .tt-hint {
+            border: 2px solid #CCCCCC;
+            border-radius: 8px;
+            font-size: 15px;
+            height: 30px;
+            line-height: 30px;
+            outline: medium none;
+            padding: 8px 12px;
+            width: 396px;
+        }
+
+        .typeahead {
+            background-color: #FFFFFF;
+        }
+
+        .typeahead:focus {
+            border: 2px solid #0097CF;
+        }
+
+        .tt-query {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        }
+
+        .tt-hint {
+            color: #999999;
+        }
+
+        .tt-dropdown-menu {
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 12px;
+            padding: 8px 0;
+            width: 422px;
+        }
+
+        .tt-suggestion {
+            font-size: 15px;
+            line-height: 15px;
+            padding: 3px 20px;
+        }
+
+        .tt-suggestion.tt-is-under-cursor {
+            background-color: #0097CF;
+            color: #FFFFFF;
+        }
+
+        .tt-suggestion p {
+            margin: 0;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 7px 7px;
+            margin-bottom: 10px;
+            margin-top: 7px;
+            margin-left: 5px;
+            box-sizing: border-box;
+            border: 2px solid #623954;
+            border-radius: 4px;
+            height: 40px;
+
+        }
     </style>
 
-       
-    </head>
 
-    <body>
-        
-        <!-- /HEADER -->
+</head>
+
+<body>
+
+    <!-- /HEADER -->
 
     <!-- NAVIGATION -->
-   <div id="navigation" >
+    <div id="navigation">
         <div id="header" style="padding: 0px;">
             <div class="container">
-    
 
-                        <!-- Mobile nav toggle-->
-                        <li class="nav-toggle">
-                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                        </li>
-                        <!-- / Mobile nav toggle -->
-                
-                </div>
-            
+
+                <!-- Mobile nav toggle-->
+                <li class="nav-toggle">
+                    <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                </li>
+                <!-- / Mobile nav toggle -->
+
+            </div>
+
             <!-- header -->
         </div>
-    
+
         <!-- container -->
-        <div class="container" >
-            <div id="responsive-nav" >
-               
+        <div class="container">
+            <div id="responsive-nav">
+
 
                 <!-- menu nav -->
-                <div class="menu-nav"  >
-                    
-                    <ul class="menu-list"  >
-                        <ul class="menu-list"  >
+                <div class="menu-nav">
+
+                    <ul class="menu-list">
+                        <ul class="menu-list">
                             <% if(user){ %>
-                                <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
-                                <li style="float: right;font-weight: bold;"><a href="/profile">
+                            <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div"
+                                    onclick="signOut()" class="button" style="color:white">LOGOUT</a></li>
+                            <li style="float: right;font-weight: bold;"><a href="/profile">
                                     <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
                                     <!-- <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-                                    <img  src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px; height:30px ; border-radius:20px;" align="center">
-                                    <img  src="<%=photo%>" onerror="this.style.display='none'"  style=" width:30px; height:30px; border-radius:20px;"  align="center">
+                                    <img src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"
+                                        style=" width:30px ; border-radius:20px;" align="center">
+                                    <img src="<%=photo%>" onerror="this.style.display='none'"
+                                        style=" width:30px ; border-radius:20px;" align="center">
                                     <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-        
+
                                     <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
-                                  </a></li>                   <% }else{ %>
-                            <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button" style="color:white">LOGIN</a></li>
-        
-                            <% } %> 
-                       
-                    
-                     
-                     
-  
+                                </a></li> <% }else{ %>
+                            <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div"
+                                    class="button" style="color:white">LOGIN</a></li>
+
+                            <% } %>
+
+
+
+
+
                             <li><a href="/home">Home</a></li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Algorithms <i class="fa fa-caret-down"></i></a>
-                                <ul class="custom-menu" >
-                                    <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
-                                    <li><a href="/searching-sorting">Searching and Sorting</a></li>
-                                    <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
-                                    <li><a href="#">Dynamic Programming</a></li><li>
-                                            <a  href="string-Algo">String Algorithms</a></li><li>   
-                                        
-                                        <a  href="/backtracing">Backtracking</a></li><li>
-                                        <a  href="/divide-conquer">Divide and Conquer</a></li>
+                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="true" href="">Algorithms <i class="fa fa-caret-down"></i></a>
+                                <ul class="custom-menu">
+                                    <li><a href="algo.html">Analysis of algorithm</a></li>
+                                    <li><a href="search.html">Searching and Sorting</a></li>
+                                    <li><a href="ga.html">Greedy Algorithms</a></li>
+                                    <li><a href="dp.html">Dynamic Programming</a></li>
+                                    <li>
+                                        <a href="sa.html">String Algorithms</a></li>
+                                    <li>
+
+                                        <a href="backt.html">Backtracking</a></li>
+                                    <li>
+                                        <a href="dc.html">Divide and Conquer</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">DS <i class="fa fa-caret-down"></i></a>
+                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="true" href="">DS <i class="fa fa-caret-down"></i></a>
                                 <ul class="custom-menu">
                                     <li>
-                                        <a  href="/ds">Data Structures</a></li><li>
-                                        <a  href="/array">Array</a></li><li>
-                                        
-                                            <a href="/list">Linked List</a></li><li>
-                                            <a href="/stack">Stack</a></li><li>
-                                            <a  href="/queue">Queue</a> </li><li>
-                                        
-                                        <a  href="/bt">Binary Tree</a></li>
+                                        <a href="ds.html">Data Structures</a></li>
+                                    <li>
+                                        <a href="array.html">Array</a></li>
+                                    <li>
+
+                                        <a href="list.html">Linked List</a></li>
+                                    <li>
+                                        <a href="stack.html">Stack</a></li>
+                                    <li>
+                                        <a href="queue.html">Queue</a> </li>
+                                    <li>
+
+                                        <a href="bt.html">Binary Tree</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Languages <i class="fa fa-caret-down"></i></a>
+                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="true" href="">Languages <i class="fa fa-caret-down"></i></a>
                                 <ul class="custom-menu">
-                                    <li><a href="/c">C</a></li>
-                                    <li><a href="/cpp">C++</a></li>
-                                    <li><a href="/java">JAVA</a></li>
-                                    <li><a href="/py">Python</a></li>
-                                    <li><a href="/sql">SQL</a></li>
-                                    <li><a href="/php">PHP</a></li>
-                                    <li><a href="/js">Javascript</a></li>
+                                    <li><a href="c.html">C</a></li>
+                                    <li><a href="cpp.html">C++</a></li>
+                                    <li><a href="java.html">JAVA</a></li>
+                                    <li><a href="py.html">Python</a></li>
+                                    <li><a href="sql.html">SQL</a></li>
+                                    <li><a href="php.html">PHP</a></li>
+                                    <li><a href="js.html">Javascript</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">Students <i class="fa fa-caret-down"></i></a>
+                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="true" href="">Students <i class="fa fa-caret-down"></i></a>
                                 <ul class="custom-menu">
-                                    <li><a href="/campus">Campus Programs</a></li>
-                                    <li><a href="/project">Projects</a></li>
-                                    <li><a href="/place">Placemant cources</a></li>
-                                    
+                                    <li><a href="campus.html">Campus Programs</a></li>
+                                    <li><a href="proj.html">Projects</a></li>
+                                    <li><a href="place.html">Placemant cources</a></li>
+
                                 </ul>
                             </li>
-                            
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"href="">GATE <i class="fa fa-caret-down"></i></a>
+                            <li>
+                                <form class="form-inline" action="/home" method="POST">
+                                    <!-- <li><input type="text"  name="search" class="typeahead tt-query" autocomplete="off" spellcheck="false"  placeholder="Search"><button type="submit" style="margin-top: 0px;" class="btn btn-default"><i class="fa fa-search"></i></button></li> -->
+                                    <div class="input-group">
+                                        <input type="text" class="form-control typeahead tt-query" size="10"
+                                            name="search" autocomplete="off" spellcheck="false"
+                                            placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <!-- <button class="btn btn-default" type="button">Go!</button> -->
+                                            <button style="height: 37px;" type="submit" class="btn btn-default"><i
+                                                    class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="true" href="">GATE <i class="fa fa-caret-down"></i></a>
                                 <ul class="custom-menu">
-                                    <li><a href="/gnote">Gate notes</a></li>
-                                    <li><a href="/gcs">Gate CS Corner</a></li>
-                                    <li><a href="/gpaper">Gate Papers</a></li>
-                                    
+                                    <li><a href="gnote.html">Gate notes</a></li>
+                                    <li><a href="gcs.html">Gate CS Corner</a></li>
+                                    <li><a href="gpaper.html">Gate Papers</a></li>
+
                                 </ul>
                             </li>
-                           
-                            <li><a href="#">Codes</a></li>
-                            <li><a href="#">Puzzles</a></li>
+
+                            <li><a href="fncode.html">Codes</a></li>
+                            <li><a href="fnpuzzle.html">Puzzles</a></li>
                             <li><a href="/compose">Contribute</a></li>
-                            
-                            
+
+
                         </ul>
                 </div>
                 <!-- menu nav -->
@@ -245,21 +282,21 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
 
 
 
-        
+
 
     <!-- section -->
     <div class="section" style="padding: 5px;">
         <!-- container -->
         <div class="container">
             <div class="jumbotron static-slider" style="padding: 10px; margin-top: 100px;">
-                            <h4 class="text-center"><%= head %> </h4>
-                            
-                        </div>
+                <h4 class="text-center"><%= head %> </h4>
 
-                        
-                        <!-- Sidebar -->
-                        <aside class="col-sm-3" style="padding-right: 60px;padding-bottom: 50px">
-                            <!-- <div class="sidebar-box">
+            </div>
+
+
+            <!-- Sidebar -->
+            <aside class="col-sm-3" style="padding-right: 60px;padding-bottom: 50px">
+                <!-- <div class="sidebar-box">
                                 <h4>Categories Archives</h4>
                                 <div class="list-group list-group-root">
                                     <a class="list-group-item active " href="/home" id="allarticles-Button">All Articles</a>
@@ -282,19 +319,19 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
                                      </div>
                                      <br>
                                 </div> -->
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Data Structure</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Algorithms</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">DBMS</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Computer Organization</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Computer Networks</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Puzzles</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">GATE Notes</button>
-                                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">GATE Papers</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Data Structure</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Algorithms</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">DBMS</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Computer Organization</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Computer Networks</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">Puzzles</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">GATE Notes</button>
+                <button type="button" class="btn btn-default btn-lg btn-block asideBtn">GATE Papers</button>
 
-                            
-                        </aside>  
 
-                        <!-- <div class="col-sm-8 " style="border: none;">
+            </aside>
+
+            <!-- <div class="col-sm-8 " style="border: none;">
                                
                                 <ul class="z-depth-0 articlesView" >
                               
@@ -303,150 +340,155 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
                          -->
 
 
-     <!-- PENDING SINGLE ARTICLE LIST   -->
-     <div class="col-sm-8 " style="margin-top: 0px; ">
-      <!-- <ul class=" z-depth-0 " style="border: none;"> -->
-        <% if(posts.length==0){ %> 
-            <h4 style="color: #623954; text-align: center;">No results Found</h4>
-            <a href="/home/request/article"><h6 style=" text-decoration: underline; text-align: center;">You can request your Article here!!</h6></a>
-            <hr>
-            <%  } %> 
-        <div class="row">
-           
-          <% posts.forEach(function(post){ %>
-  
-              <% var Id="h"+post.Id %> 
-              <% var Idd="ht"+post.Id %> 
-              <% var tags=[] %> 
-              <% if(post.Title){ %> 
-              <% tags=post.Title.split(",")} %> 
-              
-          <div class="col-12 mb-5">
-             
-              <div class="card CardArticle">
-                  <div class="card-body">
-                      <div class="row">
-                          <div class="col-12">
-                              <h1 class="card-title text-center"><%= post.Head %> </h1>
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                          <div class="col-12" id=<%= Idd %> >
-                              <div id=<%= Id %> class="d-none"><%= post.Blog %></div>
-                          </div>
-                          <a class="ArticleLink" class="text-center" href="/home/<%= post.Head %>-<%= post.Id %>  ">...Read more</a>
-                          <!-- <div class="col-12">
+            <!-- PENDING SINGLE ARTICLE LIST   -->
+            <div class="col-sm-8 " style="margin-top: 0px; ">
+                <!-- <ul class=" z-depth-0 " style="border: none;"> -->
+                <% if(posts.length==0){ %>
+                <h4 style="color: #623954; text-align: center;">No results Found</h4>
+                <a href="/home/request/article">
+                    <h6 style=" text-decoration: underline; text-align: center;">You can request your Article here!!
+                    </h6>
+                </a>
+                <hr>
+                <%  } %>
+                <div class="row">
+
+                    <% posts.forEach(function(post){ %>
+
+                    <% var Id="h"+post.Id %>
+                    <% var Idd="ht"+post.Id %>
+                    <% var tags=[] %>
+                    <% if(post.Title){ %>
+                    <% tags=post.Title.split(",")} %>
+
+                    <div class="col-12 mb-5">
+
+                        <div class="card CardArticle">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="card-title text-center"><%= post.Head %> </h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12" id=<%= Idd %>>
+                                        <div id=<%= Id %> class="d-none"><%= post.Blog %></div>
+                                    </div>
+                                    <a class="ArticleLink" class="text-center"
+                                        href="/home/<%= post.Head %>-<%= post.Id %>  ">...Read more</a>
+                                    <!-- <div class="col-12">
                           </div> -->
-                          <script>
-                              var a="<%= Idd %>";
-                              var b="<%= Id %>";
-                              var txt=document.getElementById(b).textContent;
-                              var s=txt.substring(0,1000);
-                            //       for(let i=1000;i<s.length;i++){
-                            //       if(s.charAt(i)!=='<' && s.charAt(i)!=='>' && s.charAt(i)!=='/' ){
-                            //           s=s.substring(0,i);
-                            //           break;
-                            //       }
-                            //   }
-                              document.getElementById(a).innerHTML=s;
-                          </script>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-2 ">
-                          <% tags.forEach(tag=>{ %>
-                              
-                            <a class="ArticleLink" href="/home/tag/<%= tag %>"> <%= tag %> </a>
-                        
-                        <% }) %>
-                      </div>
+                                    <script>
+                                        var a = "<%= Idd %>";
+                                        var b = "<%= Id %>";
+                                        var txt = document.getElementById(b).textContent;
+                                        var s = txt.substring(0, 1000);
+                                        //       for(let i=1000;i<s.length;i++){
+                                        //       if(s.charAt(i)!=='<' && s.charAt(i)!=='>' && s.charAt(i)!=='/' ){
+                                        //           s=s.substring(0,i);
+                                        //           break;
+                                        //       }
+                                        //   }
+                                        document.getElementById(a).innerHTML = s;
+                                    </script>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-2 ">
+                                        <% tags.forEach(tag=>{ %>
+
+                                        <a class="ArticleLink" href="/home/tag/<%= tag %>"> <%= tag %> </a>
+
+                                        <% }) %>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
                         </div>
-                         
-                          
-                         
-                         
-                     
-                     
-                     
+
                     </div>
+                    <%})%>
                 </div>
-                
-          </div>
-          <%})%> 
-      </div>
-      <style>
-          #page a{
-                margin-left: 5px;
-                padding: 5px;
-                border:1px solid #623954;
-                text-align: center;
-                font-weight: bold;
-                text-decoration: #623954;
-          }
-          #page a:hover
-          {
-              color: aliceblue;
-              background-color: #623954;
-          }
-          .active{
-            color: aliceblue;
-              background-color: #623954;
-          }
-      </style>
-      <div class="row">
-          <section id="page" class="text-center">
-              <% if(currentPage!=1 && previousPage!=1){ %>
-                  <a href="/home?page=1" >1</a>
-                <%  } %> 
-                <% if(hasPreviousPage){ %>
-                    <a href="/home?page=<%= previousPage %>"><%= previousPage %> </a>
-                 <%} %> 
-                <a href="/home?page=<%= currentPage %>" class="active"><%= currentPage %> </a>
-                
-                <% if(hasNextPage){ %>
-                    <a href="/home?page=<%= nextPage %>"><%= nextPage %> </a>
-                 <%} %> 
-                 <% if(lastPage!==currentPage && lastPage!==nextPage){ %>
-                    <a href="/home?page=<%= lastPage %>"><%= lastPage %> </a>
-                 <%} %> 
+                <style>
+                    #page a {
+                        margin-left: 5px;
+                        padding: 5px;
+                        border: 1px solid #623954;
+                        text-align: center;
+                        font-weight: bold;
+                        text-decoration: #623954;
+                    }
 
-          </section>
-      </div>
-    </div>
- 
- 
+                    #page a:hover {
+                        color: aliceblue;
+                        background-color: #623954;
+                    }
 
-                    
+                    .active {
+                        color: aliceblue;
+                        background-color: #623954;
+                    }
+                </style>
+                <div class="row">
+                    <section id="page" class="text-center">
+                        <% if(currentPage!=1 && previousPage!=1){ %>
+                        <a href="/home?page=1">1</a>
+                        <%  } %>
+                        <% if(hasPreviousPage){ %>
+                        <a href="/home?page=<%= previousPage %>"><%= previousPage %> </a>
+                        <%} %>
+                        <a href="/home?page=<%= currentPage %>" class="active"><%= currentPage %> </a>
 
-                    
-                    </div> 
-                </main>
-<div class="footer-bottom" style="float: right;padding-right: 10px;">
-                                
-                                 <a  id="backtotop" href="/home/#top"style="float: right;"><i class="fa fa-chevron-up"></i></a>
-                        </div> 
-            </div> 
+                        <% if(hasNextPage){ %>
+                        <a href="/home?page=<%= nextPage %>"><%= nextPage %> </a>
+                        <%} %>
+                        <% if(lastPage!==currentPage && lastPage!==nextPage){ %>
+                        <a href="/home?page=<%= lastPage %>"><%= lastPage %> </a>
+                        <%} %>
+
+                    </section>
+                </div>
             </div>
-            <!-- /row -->
+
+
+
+
+
+
         </div>
-        <!-- /container -->
+        </main>
+        <div class="footer-bottom" style="float: right;padding-right: 10px;">
+
+            <a id="backtotop" href="/home/#top" style="float: right;"><i class="fa fa-chevron-up"></i></a>
+        </div>
+    </div>
+    </div>
+    <!-- /row -->
+    </div>
+    <!-- /container -->
     </div>
     <!-- /section -->
- <!-- Sidebar -->
-                   
-     
- <!-- FOOTER -->
+    <!-- Sidebar -->
+
+
+    <!-- FOOTER -->
     <footer id="footer" class="section section-grey">
         <!-- container -->
         <div class="container">
             <!-- row -->
             <div class="row">
-            
-                
+
+
 
                 <!-- footer subscribe -->
-                
+
                 <!-- /footer subscribe -->
             </div>
             <!-- /row -->
@@ -454,62 +496,60 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.cs
             <!-- row -->
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
-                        <!-- footer copyright -->
-                        
-                        <p><a href="/aboutus" style="padding-right:50px;">About Us </a><a href="/cookie" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="/tc"style="padding-right:30px;">Terms and Conditions</a>
-                            <a href="/internships" style="padding-right:50px;">Internship </a><a href="/contactus">Contact Us</a></p>
-                    </div>
+                    <!-- footer copyright -->
+
+                    <p><a href="/aboutus" style="padding-right:50px;">About Us </a><a href="/cookie"
+                            style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="/tc"
+                            style="padding-right:30px;">Terms and Conditions</a>
+                        <a href="/internships" style="padding-right:50px;">Internship </a><a href="/contactus">Contact
+                            Us</a></p>
+                </div>
             </div>
             <!-- /row -->
         </div>
-        
+
     </footer>
     <!-- /FOOTER -->
 
-    
-            <!-- <script src="js/jquery.min.js"></script> -->
-            <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/nouislider.min.js"></script>
-        <script src="js/jquery.zoom.min.js"></script>
-        <script src="js/main.js"></script>
-        <script>
 
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
             // $('.list-group').on('click', '.list-group-item', function() {
             //   $(this).addClass('active').siblings().removeClass('active');
             // });
-
           // $("#allarticles-Button").on("click",function(){
           //   $("#allarticles-Button").addClass("active");
           //   $("#puzzle-Button").removeClass("active");
           //   $("#article-Button").removeClass("active");
           //   $("#code-Button").removeClass("active");
-
           // })
           // $("#puzzle-Button").on("click",function(){
           //   $("#allarticles-Button").removeClass("active");
           //   $("#puzzle-Button").addClass("active");
           //   $("#article-Button").removeClass("active");
           //   $("#code-Button").removeClass("active");
-
           // })
           // $("#article-Button").on("click",function(){
           //   $("#allarticles-Button").removeClass("active");
           //   $("#puzzle-Button").removeClass("active");
           //   $("#article-Button").addClass("active");
           //   $("#code-Button").removeClass("active");
-
           // })
           // $("#allarticles-Button").on("click",function(){
           //   $("#allarticles-Button").addClass("active");
           //   $("#puzzle-Button").removeClass("active");
           //   $("#article-Button").removeClass("active");
           //   $("#code-Button").removeClass("active");
-
           // })
-        </script>
+    </script>
 
 
-        </body>
-    </html>
+</body>
+
+</html>

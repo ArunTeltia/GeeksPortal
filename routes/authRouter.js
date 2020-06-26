@@ -25,40 +25,40 @@ router.get("/login", (req, res) => {
 var email = "contactgeeksportal@gmail.com";
 
 // Load your AWS credentials and try to instantiate the object.
-aws.config.update({
-  region: "ap-south-1"
-});
+// aws.config.update({
+//   region: "ap-south-1"
+// });
 
 // Instantiate SES.
-var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
+// var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
 // email-smtp.ap-south-1.amazonaws.com
 // Verify email addresses.
-router.get("/verify", function (req, res) {
-  var params = {
-    EmailAddress: email,
-  };
+// router.get("/verify", function (req, res) {
+//   var params = {
+//     EmailAddress: email,
+//   };
 
-  ses.verifyEmailAddress(params, function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
+//   ses.verifyEmailAddress(params, function (err, data) {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// });
 
 // Listing the verified email addresses.
-router.get("/list", function (req, res) {
-  ses.listVerifiedEmailAddresses(function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
+// router.get("/list", function (req, res) {
+//   ses.listVerifiedEmailAddresses(function (err, data) {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// });
 
-// router.get("/delete", function (req, res) {
+// // router.get("/delete", function (req, res) {
 //   var params = {
 //     EmailAddress: email,
 //   };
@@ -166,27 +166,27 @@ router.get(
               // Show a page indicating failure
             }
           });
-          var to = [req.user.Email]
-          var from = 'contactgeeksportal@gmail.com'
-          ses.sendEmail({
-            Source: from,
-            Destination: { ToAddresses: to },
-            Message: {
-              Subject: {
-                Data: "Sending emails through SES"
-              },
-              Body: {
-                Text: {
-                  Data: 'Tou just sign up',
-                }
-              }
-            }
-          }
-            , function (err, data) {
-              if (err) throw err
-              console.log('Email sent:');
-              console.log(data);
-            })
+          // var to = [req.user.Email]
+          // var from = 'contactgeeksportal@gmail.com'
+          // ses.sendEmail({
+          //   Source: from,
+          //   Destination: { ToAddresses: to },
+          //   Message: {
+          //     Subject: {
+          //       Data: "Sending emails through SES"
+          //     },
+          //     Body: {
+          //       Text: {
+          //         Data: 'Tou just sign up',
+          //       }
+          //     }
+          //   }
+          // }
+          //   , function (err, data) {
+          //     if (err) throw err
+          //     console.log('Email sent:');
+          //     console.log(data);
+          //   })
 
         } else {
           res.redirect("/home");
