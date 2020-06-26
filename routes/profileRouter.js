@@ -94,8 +94,8 @@ profile
             // })();
             let compath = path.join(__dirname, '../', 'public', 'Pimages', new Date() + "-" + image.originalname)
 
-            sharp(req.file.path).resize(640, 480).jpeg({
-              quality: 80,
+            sharp(req.file.path).resize(480, 480).jpeg({
+              quality: 20,
               chromaSubsampling: '4:4:4'
             }).toFile(compath, (err, info) => {
               if (err) {
