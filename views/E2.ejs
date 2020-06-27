@@ -348,18 +348,20 @@
 </head>
 
 <body>
+  <h1><%=isUserName%></h1>
   <% if(!isUserName){ %>
   <script>
     function showAlert() {
       alert("Please fill your username in the profile page");
     }
+
     showAlert();
 
     window.location.href = "/some/url"
 
   </script>
   <!-- <script>showAlert()</script> -->
-  <div class="jumbotron static-slider" style="padding: 10px;">
+  <div style="padding: 10px;">
     <center>
       Please Fill your UserName <a href="/profile">Click Here</a>
     </center>
