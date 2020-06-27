@@ -154,40 +154,40 @@ router.get(
         if (results[0].UserName === null) {
           res.redirect("/profile");
 
-          const mailOpts = {
-            to: req.user.Email,
-            from: "contactgeeksportal@gmail.com",
-            subject: "Sign Up successfully",
-            html: "<h1>You successfully signed UP!!</h1>",
-          };
+          // const mailOpts = {
+          //   to: req.user.Email,
+          //   from: "contactgeeksportal@gmail.com",
+          //   subject: "Sign Up successfully",
+          //   html: "<h1>You successfully signed UP!!</h1>",
+          // };
 
-          smtpTrans.sendMail(mailOpts, (error, response) => {
-            if (error) {
-              console.log(error);
-              // Show a page indicating failure
-            }
-          });
-          // var to = [req.user.Email]
-          // var from = 'contactgeeksportal@gmail.com'
-          // ses.sendEmail({
-          //   Source: from,
-          //   Destination: { ToAddresses: to },
-          //   Message: {
-          //     Subject: {
-          //       Data: "Sending emails through SES"
-          //     },
-          //     Body: {
-          //       Text: {
-          //         Data: 'Tou just sign up',
-          //       }
-          //     }
+          // smtpTrans.sendMail(mailOpts, (error, response) => {
+          //   if (error) {
+          //     console.log(error);
+          //     // Show a page indicating failure
           //   }
-          // }
-          //   , function (err, data) {
-          //     if (err) throw err
-          //     console.log('Email sent:');
-          //     console.log(data);
-          //   })
+          // });
+          var to = [req.user.Email]
+          var from = 'no-reply@geeksportal.org'
+          ses.sendEmail({
+            Source: from,
+            Destination: { ToAddresses: to },
+            Message: {
+              Subject: {
+                Data: "Sending emails through SES"
+              },
+              Body: {
+                Text: {
+                  Data: 'Tou just sign up',
+                }
+              }
+            }
+          }
+            , function (err, data) {
+              if (err) throw err
+              console.log('Email sent:');
+              console.log(data);
+            })
 
         } else {
           res.redirect("/home");
