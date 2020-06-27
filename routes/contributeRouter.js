@@ -34,8 +34,8 @@ contribute
       console.log(resultss)
 
       let isUserName;
-      // console.log(isUserName);
-      if (resultss[0].UserName === "") {
+      console.log(isUserName);
+      if (resultss[0].UserName === null) {
 
         isUserName = false;
       } else {

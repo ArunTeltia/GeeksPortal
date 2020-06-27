@@ -5,7 +5,7 @@ const Keys = require("../config/keys");
 
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
-var aws = require("aws-sdk");
+// var aws = require("aws-sdk");
 const smtpTrans = nodemailer.createTransport(
   sendgridTransport({
     auth: {
