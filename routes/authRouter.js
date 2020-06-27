@@ -22,15 +22,15 @@ router.get("/login", (req, res) => {
   }
 });
 
-var email = "contactgeeksportal@gmail.com";
+// var email = "contactgeeksportal@gmail.com";
 
 // Load your AWS credentials and try to instantiate the object.
-// aws.config.update({
-//   region: "ap-south-1"
-// });
+aws.config.update({
+  region: "ap-south-1"
+});
 
 // Instantiate SES.
-// var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
+var ses = new aws.SES({ "accessKeyId": "AKIAJFLYHQDSTPTEFJOA", "secretAccessKey": "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", "region": "ap-south-1" });
 // email-smtp.ap-south-1.amazonaws.com
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
@@ -154,19 +154,19 @@ router.get(
         if (results[0].UserName === null) {
           res.redirect("/profile");
 
-          // const mailOpts = {
-          //   to: req.user.Email,
-          //   from: "contactgeeksportal@gmail.com",
-          //   subject: "Sign Up successfully",
-          //   html: "<h1>You successfully signed UP!!</h1>",
-          // };
+          const mailOpts = {
+            to: req.user.Email,
+            from: "contactgeeksportal@gmail.com",
+            subject: "Sign Up successfully",
+            html: "<h1>You successfully signed UP!!</h1>",
+          };
 
-          // smtpTrans.sendMail(mailOpts, (error, response) => {
-          //   if (error) {
-          //     console.log(error);
-          //     // Show a page indicating failure
-          //   }
-          // });
+          smtpTrans.sendMail(mailOpts, (error, response) => {
+            if (error) {
+              console.log(error);
+              // Show a page indicating failure
+            }
+          });
           var to = [req.user.Email]
           var from = 'no-reply@geeksportal.org'
           ses.sendEmail({
