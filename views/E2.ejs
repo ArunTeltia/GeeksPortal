@@ -348,6 +348,23 @@
 </head>
 
 <body>
+  <% if(!isUserName){ %>
+  <script>
+    function showAlert() {
+      alert("Please fill your username in the profile page");
+    }
+    showAlert();
+
+    window.location.href = "/some/url"
+
+  </script>
+  <!-- <script>showAlert()</script> -->
+  <div class="jumbotron static-slider" style="padding: 10px;">
+    <center>
+      Please Fill your UserName <a href="/profile">Click Here</a>
+    </center>
+  </div>
+  <%}%>
 
   <div id="navigation">
     <div id="header" style="padding: 0px;">
@@ -375,120 +392,119 @@
           <ul class="menu-list">
             <ul class="menu-list">
               <% if(user){ %>
-              <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()"
-                  class="button" style="color:white">LOGOUT</a></li>
-              <li style="float: right;font-weight: bold;"><a href="/profile">
-                  <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
+  <li style="float: right;font-weight: bold;"><a href="/auth/logout" id="user_div" onclick="signOut()" class="button"
+      style="color:white">LOGOUT</a></li>
+  <li style="float: right;font-weight: bold;"><a href="/profile">
+      <!-- <img  src="http://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center">
                     <img  src="https://geeksportal.org/ProfileImages/<%=photo%>" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-                  <img src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"
-                    style=" width:30px ; height:30px; object-fit:cover; border-radius:50%; " align="center">
-                  <img src="<%=photo%>" onerror="this.style.display='none'"
-                    style="width:30px ; height:30px; object-fit:cover; border-radius:50%;" align="center">
-                  <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
-                  <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
+      <img src="/ProfileImages/<%=photo%>" onerror="this.style.display='none'"
+        style=" width:30px ; height:30px; object-fit:cover; border-radius:50%; " align="center">
+      <img src="<%=photo%>" onerror="this.style.display='none'"
+        style="width:30px ; height:30px; object-fit:cover; border-radius:50%;" align="center">
+      <!-- <img  src="http://localhost:3000/ProfileImages/defaultimg.jpg" onerror="this.style.display='none'"  style=" width:30px ; border-radius:20px;" align="center"> -->
+      <!-- <img src=%= photo %>   style=" width:30px ; border-radius:20px;"> -->
 
-                </a></>
-                <% }else{ %>
-              <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button"
-                  style="color:white">LOGIN</a></li>
+    </a></>
+    <% }else{ %>
+  <li style="float: right;font-weight: bold;"><a href="/auth/login" id="login_div" class="button"
+      style="color:white">LOGIN</a></li>
 
-              <% } %>
-
-
-
-              <li><a href="/home">Home</a></li>
-              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                  aria-expanded="true" href="">Algorithms <i class="fa fa-caret-down"></i></a>
-                <ul class="custom-menu">
-                  <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
-                  <li><a href="/searching-sorting">Searching and Sorting</a></li>
-                  <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
-                  <li><a href="#">Dynamic Programming</a></li>
-                  <li>
-                    <a href="string-Algo">String Algorithms</a></li>
-                  <li>
-
-                    <a href="/backtracing">Backtracking</a></li>
-                  <li>
-                    <a href="/divide-conquer">Divide and Conquer</a></li>
-                </ul>
-              </li>
-              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                  aria-expanded="true" href="">DS <i class="fa fa-caret-down"></i></a>
-                <ul class="custom-menu">
-                  <li>
-                    <a href="/ds">Data Structures</a></li>
-                  <li>
-                    <a href="/array">Array</a></li>
-                  <li>
-
-                    <a href="/list">Linked List</a></li>
-                  <li>
-                    <a href="/stack">Stack</a></li>
-                  <li>
-                    <a href="/queue">Queue</a> </li>
-                  <li>
-
-                    <a href="/bt">Binary Tree</a></li>
-                </ul>
-              </li>
-              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                  aria-expanded="true" href="">Languages <i class="fa fa-caret-down"></i></a>
-                <ul class="custom-menu">
-                  <li><a href="/c">C</a></li>
-                  <li><a href="/cpp">C++</a></li>
-                  <li><a href="/java">JAVA</a></li>
-                  <li><a href="/py">Python</a></li>
-                  <li><a href="/sql">SQL</a></li>
-                  <li><a href="/php">PHP</a></li>
-                  <li><a href="/js">Javascript</a></li>
-                </ul>
-              </li>
-              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                  aria-expanded="true" href="">Students <i class="fa fa-caret-down"></i></a>
-                <ul class="custom-menu">
-                  <li><a href="/campus">Campus Programs</a></li>
-                  <li><a href="/project">Projects</a></li>
-                  <li><a href="/place">Placemant cources</a></li>
-
-                </ul>
-              </li>
-              <li>
-                <form class="form-inline" action="/home" method="POST">
-                  <!-- <li><input type="text"  name="search" class="typeahead tt-query" autocomplete="off" spellcheck="false"  placeholder="Search"><button type="submit" style="margin-top: 0px;" class="btn btn-default"><i class="fa fa-search"></i></button></li> -->
-                  <div class="input-group">
-                    <input type="text" class="form-control typeahead tt-query" size="10" name="search"
-                      autocomplete="off" spellcheck="false" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <!-- <button class="btn btn-default" type="button">Go!</button> -->
-                      <button style="height: 37px;" type="submit" class="btn btn-default"><i
-                          class="fa fa-search"></i></button>
-                    </span>
-                  </div>
-                </form>
-              </li>
-              <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                  aria-expanded="true" href="">GATE <i class="fa fa-caret-down"></i></a>
-                <ul class="custom-menu">
-                  <li><a href="/gnote">Gate notes</a></li>
-                  <li><a href="/gcs">Gate CS Corner</a></li>
-                  <li><a href="/gpaper">Gate Papers</a></li>
-
-                </ul>
-              </li>
-
-              <li><a href="#">Codes</a></li>
-              <li><a href="#">Puzzles</a></li>
-              <li><a href="/compose">Contribute</a></li>
+  <% } %>
 
 
-            </ul>
 
-        </div>
+  <li><a href="/home">Home</a></li>
+  <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+      href="">Algorithms <i class="fa fa-caret-down"></i></a>
+    <ul class="custom-menu">
+      <li><a href="/Analysis-of-Algo">Analysis of algorithm</a></li>
+      <li><a href="/searching-sorting">Searching and Sorting</a></li>
+      <li><a href="/greedy-Algo">Greedy Algorithms</a></li>
+      <li><a href="#">Dynamic Programming</a></li>
+      <li>
+        <a href="string-Algo">String Algorithms</a></li>
+      <li>
+
+        <a href="/backtracing">Backtracking</a></li>
+      <li>
+        <a href="/divide-conquer">Divide and Conquer</a></li>
+    </ul>
+  </li>
+  <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+      href="">DS <i class="fa fa-caret-down"></i></a>
+    <ul class="custom-menu">
+      <li>
+        <a href="/ds">Data Structures</a></li>
+      <li>
+        <a href="/array">Array</a></li>
+      <li>
+
+        <a href="/list">Linked List</a></li>
+      <li>
+        <a href="/stack">Stack</a></li>
+      <li>
+        <a href="/queue">Queue</a> </li>
+      <li>
+
+        <a href="/bt">Binary Tree</a></li>
+    </ul>
+  </li>
+  <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+      href="">Languages <i class="fa fa-caret-down"></i></a>
+    <ul class="custom-menu">
+      <li><a href="/c">C</a></li>
+      <li><a href="/cpp">C++</a></li>
+      <li><a href="/java">JAVA</a></li>
+      <li><a href="/py">Python</a></li>
+      <li><a href="/sql">SQL</a></li>
+      <li><a href="/php">PHP</a></li>
+      <li><a href="/js">Javascript</a></li>
+    </ul>
+  </li>
+  <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+      href="">Students <i class="fa fa-caret-down"></i></a>
+    <ul class="custom-menu">
+      <li><a href="/campus">Campus Programs</a></li>
+      <li><a href="/project">Projects</a></li>
+      <li><a href="/place">Placemant cources</a></li>
+
+    </ul>
+  </li>
+  <li>
+    <form class="form-inline" action="/home" method="POST">
+      <!-- <li><input type="text"  name="search" class="typeahead tt-query" autocomplete="off" spellcheck="false"  placeholder="Search"><button type="submit" style="margin-top: 0px;" class="btn btn-default"><i class="fa fa-search"></i></button></li> -->
+      <div class="input-group">
+        <input type="text" class="form-control typeahead tt-query" size="10" name="search" autocomplete="off"
+          spellcheck="false" placeholder="Search for...">
+        <span class="input-group-btn">
+          <!-- <button class="btn btn-default" type="button">Go!</button> -->
+          <button style="height: 37px;" type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </span>
       </div>
-    </div>
+    </form>
+  </li>
+  <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+      href="">GATE <i class="fa fa-caret-down"></i></a>
+    <ul class="custom-menu">
+      <li><a href="/gnote">Gate notes</a></li>
+      <li><a href="/gcs">Gate CS Corner</a></li>
+      <li><a href="/gpaper">Gate Papers</a></li>
 
-    <!-- /container -->
+    </ul>
+  </li>
+
+  <li><a href="#">Codes</a></li>
+  <li><a href="#">Puzzles</a></li>
+  <li><a href="/compose">Contribute</a></li>
+
+
+  </ul>
+
+  </div>
+  </div>
+  </div>
+
+  <!-- /container -->
   </div>
   <!-- /NAVIGATION -->
 
@@ -503,96 +519,82 @@
           <div class="jumbotron static-slider" style="padding: 10px;">
             <h4 class="text-center">Editor</h4>
           </div>
-          <% if(!isUserName){ %>
-          <script>
-            function showAlert() {
-              alert("Please fill your username in the profile page");
-            }
-            showAlert();
 
-            window.location.href = "/some/url"
 
-          </script>
-          <!-- <script>showAlert()</script> -->
-          <div class="jumbotron static-slider" style="padding: 10px;">
-            <center>
-              Please Fill your UserName <a href="/profile">Click Here</a>
-            </center>
-          </div>
-          <%}%>
-          
-                      <!-- </div>  -->
-                      <form action="/compose" method="POST">
-                        <div class="form-group mt-3">
-                        <div class="row">
-                      <div class="col-12 d-flex justify-content-center text-center">
-                        <h4>Choose the theme for the editor use.</h4>
-                      </div>
-                        <div class="col-12 d-flex justify-content-center text-center">
-                          
-                          <select id="ty" name="theme">
-                      <option><button class="button2" value="Code" id="code" name="type">Code</button></option>
-                      <option> <button class="button1 " value="Puzzle" id="puz" name="type">Puzzle</button></option>
-                       <option><button class="button3 " value="Article" id="art" name="type">Article</button></option>
+          <!-- </div>  -->
+          <form action="/compose" method="POST">
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center text-center">
+                  <h4>Choose the theme for the editor use.</h4>
+                </div>
+                <div class="col-12 d-flex justify-content-center text-center">
+
+                  <select id="ty" name="theme">
+                    <option><button class="button2" value="Code" id="code" name="type">Code</button></option>
+                    <option> <button class="button1 " value="Puzzle" id="puz" name="type">Puzzle</button></option>
+                    <option><button class="button3 " value="Article" id="art" name="type">Article</button></option>
+                  </select>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center text-center">
+                  <h4>Choose the language to be used and the difficulty level</h4>
+                </div>
+                <div class="col-6 d-flex justify-content-center text-center" style="margin-bottom: 10px;">
+                  <div class="row">
+                    <div id="hide" class="d-block col-12">
+                      <h5>Programming language</h5>
+                      <select name="lang">
+                        <option> <button class="button1 " id="t1" name="type">C++</button></option>
+                        <option><button class="button2" id="t2" name="type">Java</button></option>
+                        <option><button class="button3 " id="t3" name="type">C</button></option>
+                        <option><button class="button3 " id="t4" name="type">Python</button></option>
                       </select>
-                     
+                    </div>
 
-                        </div>
-                        </div>
-                        </div>
-                    <div class="form-group mt-3">
-                      <div class="row">
-                        <div class="col-12 d-flex justify-content-center text-center">
-                          <h4>Choose the language to be used and the difficulty level</h4>
-                        </div>
-                        <div class="col-6 d-flex justify-content-center text-center" style="margin-bottom: 10px;">
-                          <div class="row">
-                            <div id="hide" class="d-block col-12">
-                              <h5>Programming language</h5>
-                              <select name="lang">
-                                <option> <button class="button1 "  id="t1" name="type">C++</button></option>
-                                 <option><button class="button2" id="t2" name="type">Java</button></option>
-                                 <option><button class="button3 " id="t3" name="type">C</button></option>
-                                 <option><button class="button3 " id="t4" name="type">Python</button></option>
-                                </select>
-                            </div>
 
-                           
-                          </div>
-                         </div>
-                         <div class="col-6 d-flex justify-content-center text-center">
-                          <div class="row">
-                            <div class="d-block col-12">
-                              <h5>Difficulty Level</h5>
-                                <select name="level">
-                                <option> <button class="button1 "  id="l1" >Easy</button></option>
-                                  <option><button class="button2" id="l2" >Medium</button></option>
-                                  <option><button class="button3 " id="l3" >Hard</button></option>
-                                  </select>
-                            </div>
-                          </div>
-                         </div>
-                       </div>
-                     </div>
-                    <div class="form-group">
-                      <!-- <label for="head">Blog Heading</label> -->
-                      <input type="text" name="head" class="form-control" placeholder="Enter article title here.." required id="head">
-                     </div>
-                    <div class="form-group">
-                      <!-- <label for="blog">Blog Body</label> -->
-                      <p >For image upload please upload your image <a href="https://postimages.org/" target="_blank"><span style="color: blue;">here.</span></a>and use image url for using the image in editor</p>
-                      <textarea  id="blog"  name="blog"></textarea>
+                  </div>
+                </div>
+                <div class="col-6 d-flex justify-content-center text-center">
+                  <div class="row">
+                    <div class="d-block col-12">
+                      <h5>Difficulty Level</h5>
+                      <select name="level">
+                        <option> <button class="button1 " id="l1">Easy</button></option>
+                        <option><button class="button2" id="l2">Medium</button></option>
+                        <option><button class="button3 " id="l3">Hard</button></option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- <label for="head">Blog Heading</label> -->
+              <input type="text" name="head" class="form-control" placeholder="Enter article title here.." required
+                id="head">
+            </div>
+            <div class="form-group">
+              <!-- <label for="blog">Blog Body</label> -->
+              <p>For image upload please upload your image <a href="https://postimages.org/" target="_blank"><span
+                    style="color: blue;">here.</span></a>and use image url for using the image in editor</p>
+              <textarea id="blog" name="blog"></textarea>
 
-                      <script>
-                        // <script type="text/javascript">
-                        CKEDITOR.replace('blog', {
-                          extraPlugins: 'codesnippet',
-                          codeSnippet_theme: 'monokai_sublime'
-                          // "extraPlugins" : "imagebrowser",
-                          // "imageBrowser_listUrl":"/files"
-                        });
+              <script>
+                // <script type="text/javascript">
+                CKEDITOR.replace('blog', {
+                  extraPlugins: 'codesnippet',
+                  codeSnippet_theme: 'monokai_sublime'
+                  // "extraPlugins" : "imagebrowser",
+                  // "imageBrowser_listUrl":"/files"
+                });
                         //</script>
-                    <!-- //     new FroalaEditor('#blog',{
+              <!-- //     new FroalaEditor('#blog',{
                     //    fileUploadURL: './e2/file_upload',
                     //    fileUploadParams: {
                     //      id: 'my_editor'
@@ -602,167 +604,170 @@
                     //      id: 'my_editor'
                     //    },
                     //  }); -->
-                       <!-- </script> -->
-                     
-                    </div>
-                    <div class="form-group" id="sol">
-                      <p >For solution of puzzle type here..... </p>
-                      <textarea name="sol" id="solution"  ></textarea>
-                      <script>
-                        CKEDITOR.replace('solution', {
-                          extraPlugins: 'codesnippet',
-                          codeSnippet_theme: 'monokai_sublime'
-                        });
-                      </script>
-                    </div>
-                    <div class="form-group">
-                      <style contenteditable>
-                        .tags-look .tagify__dropdown__item{
-                          display: inline-block;
-                          border-radius: 3px;
-                          padding: .3em .5em;
-                          border: 1px solid #CCC;
-                          background: #F3F3F3;
-                          margin: .2em;
-                          font-size: .85em;
-                          color: black;
-                          transition: 0s;
-                        }
-                        
-                        .tags-look .tagify__dropdown__item--active{
-                          color: black;
-                        }
-                        
-                        .tags-look .tagify__dropdown__item:hover{
-                          background: lightyellow;
-                          border-color: gold;
-                        }
-                        </style>
-                      <p style="text-align:right;">Choose the Appropriate Tags or type manually.</p>
-                      <!-- <label for="tags"style="text-align:right;">Choose the Appropriate Tags or type manually.</label> -->
-                      <input type="text" name="tags" class="form-control tagify--custom-dropdown" style="width: 300px;  float:right;" id="tags">
-                      <!-- <input name='input-custom-dropdown' class='tagify--custom-dropdown' placeholder='write some tags' value='css, html, javascript'> -->
+              <!-- </script> -->
 
-                    </div>
-                    <script data-name="dropdown-tags">
-                      // (function(){
+            </div>
+            <div class="form-group" id="sol">
+              <p>For solution of puzzle type here..... </p>
+              <textarea name="sol" id="solution"></textarea>
+              <script>
+                CKEDITOR.replace('solution', {
+                  extraPlugins: 'codesnippet',
+                  codeSnippet_theme: 'monokai_sublime'
+                });
+              </script>
+            </div>
+            <div class="form-group">
+              <style contenteditable>
+                .tags-look .tagify__dropdown__item {
+                  display: inline-block;
+                  border-radius: 3px;
+                  padding: .3em .5em;
+                  border: 1px solid #CCC;
+                  background: #F3F3F3;
+                  margin: .2em;
+                  font-size: .85em;
+                  color: black;
+                  transition: 0s;
+                }
 
-                      // var input = document.querySelector('input[name="tags"]'),
-                      //     // init Tagify script on the above inputs
-                      //     tagify = new Tagify(input, {
-                      //       whitelist: ["Data Structure","Algorithm","Operating System","Data Analysis","DBMS"],
-                      //       maxTags: 10,
-                      //       dropdown: {
-                      //         maxItems: 20,           // <- mixumum allowed rendered suggestions
-                      //         classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
-                      //         enabled: 0,             // <- show suggestions on focus
-                      //         closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
-                      //       }
-                      //     })
-                      // })()
-                      var input = document.querySelector('input[name="tags"]'),
-                        tagify = new Tagify(input, { whitelist: [] }),
-                        controller; // for aborting the call
+                .tags-look .tagify__dropdown__item--active {
+                  color: black;
+                }
 
-                      // listen to any keystrokes which modify tagify's input
-                      tagify.on('input', onInput)
+                .tags-look .tagify__dropdown__item:hover {
+                  background: lightyellow;
+                  border-color: gold;
+                }
+              </style>
+              <p style="text-align:right;">Choose the Appropriate Tags or type manually.</p>
+              <!-- <label for="tags"style="text-align:right;">Choose the Appropriate Tags or type manually.</label> -->
+              <input type="text" name="tags" class="form-control tagify--custom-dropdown"
+                style="width: 300px;  float:right;" id="tags">
+              <!-- <input name='input-custom-dropdown' class='tagify--custom-dropdown' placeholder='write some tags' value='css, html, javascript'> -->
 
-                      function onInput(e) {
-                        var value = e.detail.value;
-                        tagify.settings.whitelist.length = 0; // reset the whitelist
+            </div>
+            <script data-name="dropdown-tags">
+              // (function(){
 
-                        // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
-                        controller && controller.abort();
-                        controller = new AbortController();
+              // var input = document.querySelector('input[name="tags"]'),
+              //     // init Tagify script on the above inputs
+              //     tagify = new Tagify(input, {
+              //       whitelist: ["Data Structure","Algorithm","Operating System","Data Analysis","DBMS"],
+              //       maxTags: 10,
+              //       dropdown: {
+              //         maxItems: 20,           // <- mixumum allowed rendered suggestions
+              //         classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+              //         enabled: 0,             // <- show suggestions on focus
+              //         closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+              //       }
+              //     })
+              // })()
+              var input = document.querySelector('input[name="tags"]'),
+                tagify = new Tagify(input, { whitelist: [] }),
+                controller; // for aborting the call
 
-                        // show loading animation and hide the suggestions dropdown
-                        tagify.loading(true).dropdown.hide.call(tagify)
-                        var url = '/compose/tags?value=' + value
-                        fetch(url, { signal: controller.signal })
-                          .then(RES => RES.json())
-                          .then(function (whitelist) {
-                            // update inwhitelist Array in-place
-                            tagify.settings.whitelist.splice(0, whitelist.length, ...whitelist)
-                            tagify.loading(false).dropdown.show.call(tagify, value); // render the suggestions dropdown
-                          })
-                      }
-                    </script>
-                      
+              // listen to any keystrokes which modify tagify's input
+              tagify.on('input', onInput)
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                 
-              </div>   
-              </div> 
-      
-                  </main>
-                  </section>
-         
-]
-                     
-   <!-- FOOTER -->
-   <footer id="footer" class="section section-grey">
-       <!-- container -->
-       <div class="container">
-           <hr>
-           <div class="row">
-                   <div class="col-md-8 col-md-offset-2 text-center">
-                       <!-- footer copyright -->
-                       
-                       <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"style="padding-right:30px;">Terms and Conditions</a>
-                           <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a></p>
-                   </div>
-               </div>
-               <!-- /row -->
-           </div>
+              function onInput(e) {
+                var value = e.detail.value;
+                tagify.settings.whitelist.length = 0; // reset the whitelist
 
-                   <!-- Footer -->
-                   <div class="container-fluid footer-container">
-                       <footer class="footer">
-                           <div class="footer-lists">
-                              
-                                   <div class="col-sm">
-                                       
-                                       <p></p>
+                // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
+                controller && controller.abort();
+                controller = new AbortController();
 
-                                       
-                                   </div>
-                               </div>
-                           </div>
+                // show loading animation and hide the suggestions dropdown
+                tagify.loading(true).dropdown.hide.call(tagify)
+                var url = '/compose/tags?value=' + value
+                fetch(url, { signal: controller.signal })
+                  .then(RES => RES.json())
+                  .then(function (whitelist) {
+                    // update inwhitelist Array in-place
+                    tagify.settings.whitelist.splice(0, whitelist.length, ...whitelist)
+                    tagify.loading(false).dropdown.show.call(tagify, value); // render the suggestions dropdown
+                  })
+              }
+            </script>
 
-                         
-                          
-                       </footer>
-                   </div> 
-               </div>
-           </div>
 
-           <script src="js/jquery.min.js"></script>
-       <script src="js/bootstrap.min.js"></script>
-       <script src="js/slick.min.js"></script>
-       <script src="js/nouislider.min.js"></script>
-       <script src="js/jquery.zoom.min.js"></script>
-       <script src="js/main.js"></script>
-       <script>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+      </div>
+
+    </main>
+  </section>
+
+  ]
+
+  <!-- FOOTER -->
+  <footer id="footer" class="section section-grey">
+    <!-- container -->
+    <div class="container">
+      <hr>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <!-- footer copyright -->
+
+          <p><a href="cookie.html" style="padding-right:30px; padding-left:20px;">Privacy Policy</a><a href="tc.html"
+              style="padding-right:30px;">Terms and Conditions</a>
+            <a href="intern.html" style="padding-right:50px;">Internship </a><a href="contact.html">Contact Us</a></p>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid footer-container">
+      <footer class="footer">
+        <div class="footer-lists">
+
+          <div class="col-sm">
+
+            <p></p>
+
+
+          </div>
+        </div>
+    </div>
+
+
+
+  </footer>
+  </div>
+  </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/slick.min.js"></script>
+  <script src="js/nouislider.min.js"></script>
+  <script src="js/jquery.zoom.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    $("#sol").hide();
+    $("#ty").change(function () {
+      var sel = $(this).children("option:selected").val();
+      // alert(sel);
+      if (sel === "Puzzle") {
+        $("#hide").hide();
+        $("#sol").show();
+
+
+      }
+      else {
+        $("#hide").show();
         $("#sol").hide();
-        $("#ty").change(function () {
-          var sel = $(this).children("option:selected").val();
-          // alert(sel);
-          if (sel === "Puzzle") {
-            $("#hide").hide();
-            $("#sol").show();
 
 
-          }
-          else {
-            $("#hide").show();
-            $("#sol").hide();
+      }
+    });
 
+  </script>
 
-          }
-        });
+</body>
 
-      </script>
-  
-    </body>
 </html>
