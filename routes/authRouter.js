@@ -25,12 +25,12 @@ router.get("/login", (req, res) => {
 // var email = "contactgeeksportal@gmail.com";
 
 // Load your AWS credentials and try to instantiate the object.
-aws.config.update({
-  region: "ap-south-1"
-});
+// aws.config.update({
+//   region: "ap-south-1"
+// });
 
 // Instantiate SES.
-var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDSRM5C46M", "secretAccessKey": "BICzAvFoixUONcX9o1qrPvdT1zdM5D/LjNqm2G/aclPO", "region": "ap-south-1" });
+// var ses = new aws.SES({ "accessKeyId": "AKIA3ZCOFDFDSRM5C46M", "secretAccessKey": "BICzAvFoixUONcX9o1qrPvdT1zdM5D/LjNqm2G/aclPO", "region": "ap-south-1" });
 // email-smtp.ap-south-1.amazonaws.com
 // Verify email addresses.
 // router.get("/verify", function (req, res) {
@@ -167,30 +167,30 @@ router.get(
               // Show a page indicating failure
             }
           });
-          var to = [req.user.Email]
-          var from = 'no-reply@geeksportal.org'
-          ses.sendEmail({
-            Source: from,
-            Destination: { ToAddresses: to },
-            Message: {
-              Subject: {
-                Data: "Sending emails through SES"
-              },
-              Body: {
-                Text: {
-                  Data: 'Tou just sign up',
-                }
-              }
-            }
-          }
-            , function (err, data) {
-              if (err) throw err
-              console.log('Email sent:');
-              console.log(data);
-            })
+    //       var to = [req.user.Email]
+    //       var from = 'no-reply@geeksportal.org'
+    //       ses.sendEmail({
+    //         Source: from,
+    //         Destination: { ToAddresses: to },
+    //         Message: {
+    //           Subject: {
+    //             Data: "Sending emails through SES"
+    //           },
+    //           Body: {
+    //             Text: {
+    //               Data: 'Tou just sign up',
+    //             }
+    //           }
+    //         }
+    //       }
+    //         , function (err, data) {
+    //           if (err) throw err
+    //           console.log('Email sent:');
+    //           console.log(data);
+    //         })
 
-        } else {
-          res.redirect("/home");
+    //     } else {
+    //       res.redirect("/home");
         }
       });
     } catch (err) {
