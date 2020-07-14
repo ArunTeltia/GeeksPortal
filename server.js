@@ -41,9 +41,12 @@ const certiAuthRouter =require("./routes/certiAuthRouter");
 // <<<<<<< b3
 const InternRouter = require("./routes/internRouter");
 // =======
+// const Submission = require("./routes/submission");
 const footerRouter=require("./routes/footerRouter");
-const navbarRouter=require("./routes/navbarRouter")
+const navbarRouter=require("./routes/navbarRouter");
 // >>>>>>> master
+
+const Submission = require("./routes/submission")
 
 
 var upload_file = require('./froalaEditorFiles/file_upload.js');
@@ -211,7 +214,7 @@ app.use("/compose", contributeRouter);
 
 app.use("/panelforadmin", adminRouter);
 
-
+app.use("/submitForm",Submission);
 
 
 
@@ -221,7 +224,7 @@ app.use("/", (req, res) => {
   res.render("404");
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Server started on port 3000");
 });
 
