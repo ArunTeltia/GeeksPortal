@@ -8,7 +8,6 @@ const connection = require("./DBconnection");
 
 const shortid = require('shortid');
 
-
 passport.serializeUser((user, done) => {
   done(null, user.ID);
 });

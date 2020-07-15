@@ -5,9 +5,9 @@
 //     database: 'BlogDB'
 // }
 const DBconfig = {
-  host: "sql12.freemysqlhosting.net",
-  user: "sql12343108",
-  password: "XrW8FqeW8h",
-  database: "sql12343108",
+  host: "sql12.freesqldatabase.com",
+  user: "sql12354602",
+  password: "1BDXgzL754",
+  database: "sql12354602",
 };
 module.exports = DBconfig;

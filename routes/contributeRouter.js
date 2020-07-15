@@ -181,7 +181,6 @@ contribute
       console.log(err);
     }
   });
-
 contribute.get('/tags', function (req, res) {
   try {
     var sql = "SELECT Title FROM `Tags`";
