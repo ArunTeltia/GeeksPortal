@@ -145,13 +145,14 @@ router.get(
   (req, res) => {
     try {
       // console.log(req.user);
+      console.log("hellllllllllllllllllllllllloooooooooooooooooo");
       var sql = "select UserName from Users where ID='" + req.user.ID + "' ";
       connection.query(sql, (err, results, fields) => {
         if (err) {
           return console.error(err.message);
         }
         console.log(results);
-        if (results[0].UserName === null) {
+        if (results[0].UserName !== null) {
           res.redirect("/profile");
 
           const mailOpts = {
