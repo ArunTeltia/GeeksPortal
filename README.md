@@ -10,12 +10,18 @@
 ![Language: American English](https://img.shields.io/badge/language-american%20english-red.svg)
 ![Nodemailer: Version](https://img.shields.io/badge/nodemailer-v6.4.11-blue.svg)
 ![AWS EC2 Instance](https://img.shields.io/badge/aws-ec2-red.svg)
+![Frola Editor](https://img.shields.io/badge/frola-editor-red.svg)
+![Ses](https://img.shields.io/badge/ses-red.svg)
 
+Website Link : http://secure-woodland-97885.herokuapp.com/
 
 This is a website where users can publish there article which are being reviewed by the reviewers 
 There is a portal for users and reviewers 
 
 Reviewers are being appointed by the admins 
+
+
+NOTE: This website is not responsive :(
 ```
 /reviewers/auth/login
 ```
@@ -25,10 +31,45 @@ There is a portal for admin as well
  ```
  the admin is created directly in database and then admin can create reviewers check the action of users ,can ban user from coming and many more functionalities
  
- ![FullStack Screenshot]()
- ![MERN CRUD Screenshot]()
- ![MERN CRUD Screenshot]()
- 
- 
+ ![Admin Screenshot](1.jpeg)
+```
+```
+ ![Reviewer Screenshot](2.jpeg)
+```
+```
+ ![Main Site Screenshot](3.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 1](4.png)
+```
+```
+ ![Main Site Screenshot 2](5.png)
+ ```
+ ```
+ ![Main Site Screenshot 2](6.png)
+
+ ```
+ ```
+ ![Main Site Screenshot 2](7.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](8.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](9.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](10.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](11.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](12.jpeg)
+ ```
+ ```
+ ![Main Site Screenshot 2](email.JPG)
+
+
 ## License
-MERN is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+GeeksPortal is released under the [MIT License](http://www.opensource.org/licenses/MIT).
